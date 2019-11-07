@@ -53,3 +53,6 @@
     |E.g. | 10 (show 10 records) |"YYYY-MM"|"YYYY-MM"|| "Desc"/"Asc"|
 
    ** Record Same with 1.[Exchange Rate - Daily figures] **
+   
+   ## Userful Link
+   https://sandboxportal.apix.com.hk/jetco/sb/categories
