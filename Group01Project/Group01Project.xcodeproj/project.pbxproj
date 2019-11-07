@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		00FD97042373F79300294281 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FD97032373F79300294281 /* Router.swift */; };
-		00FD97062373F8DA00294281 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FD97052373F8DA00294281 /* HomeViewController.swift */; };
 		00FD97082373F96A00294281 /* Storyboard+Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FD97072373F96A00294281 /* Storyboard+Create.swift */; };
 		00FD970A2373F9D000294281 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FD97092373F9D000294281 /* RootRouter.swift */; };
 		00FD970C2373FBDF00294281 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FD970B2373FBDF00294281 /* BaseNavigationController.swift */; };
 		00FD9712237403F300294281 /* UIButtonDesignExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FD9711237403F300294281 /* UIButtonDesignExtension.swift */; };
 		00FD97142374049800294281 /* UIViewRoundCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FD97132374049800294281 /* UIViewRoundCorner.swift */; };
 		00FD9716237404DE00294281 /* UIColorInitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FD9715237404DE00294281 /* UIColorInitExtension.swift */; };
+		00FD97182374096500294281 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FD97172374096500294281 /* TestViewController.swift */; };
+		00FD971A23740FCA00294281 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FD971923740FCA00294281 /* HomeViewController.swift */; };
+		00FD971C2374120B00294281 /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FD971B2374120B00294281 /* RootNavigationController.swift */; };
 		108B976923279678000C09F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108B976823279678000C09F5 /* AppDelegate.swift */; };
 		108B976B23279678000C09F5 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108B976A23279678000C09F5 /* BaseViewController.swift */; };
 		108B976E23279678000C09F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 108B976C23279678000C09F5 /* Main.storyboard */; };
@@ -25,13 +27,15 @@
 
 /* Begin PBXFileReference section */
 		00FD97032373F79300294281 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		00FD97052373F8DA00294281 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		00FD97072373F96A00294281 /* Storyboard+Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard+Create.swift"; sourceTree = "<group>"; };
 		00FD97092373F9D000294281 /* RootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
 		00FD970B2373FBDF00294281 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		00FD9711237403F300294281 /* UIButtonDesignExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonDesignExtension.swift; sourceTree = "<group>"; };
 		00FD97132374049800294281 /* UIViewRoundCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewRoundCorner.swift; sourceTree = "<group>"; };
 		00FD9715237404DE00294281 /* UIColorInitExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorInitExtension.swift; sourceTree = "<group>"; };
+		00FD97172374096500294281 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		00FD971923740FCA00294281 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		00FD971B2374120B00294281 /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		108B976523279678000C09F5 /* Group01Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Group01Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		108B976823279678000C09F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		108B976A23279678000C09F5 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -59,8 +63,8 @@
 		00FD970D2374028000294281 /* Router */ = {
 			isa = PBXGroup;
 			children = (
-				00FD97032373F79300294281 /* Router.swift */,
 				00FD97092373F9D000294281 /* RootRouter.swift */,
+				00FD97032373F79300294281 /* Router.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -69,8 +73,10 @@
 			isa = PBXGroup;
 			children = (
 				108B976A23279678000C09F5 /* BaseViewController.swift */,
-				00FD97052373F8DA00294281 /* HomeViewController.swift */,
 				00FD970B2373FBDF00294281 /* BaseNavigationController.swift */,
+				00FD97172374096500294281 /* TestViewController.swift */,
+				00FD971923740FCA00294281 /* HomeViewController.swift */,
+				00FD971B2374120B00294281 /* RootNavigationController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -261,14 +267,16 @@
 			files = (
 				108B976B23279678000C09F5 /* BaseViewController.swift in Sources */,
 				00FD9712237403F300294281 /* UIButtonDesignExtension.swift in Sources */,
+				00FD97182374096500294281 /* TestViewController.swift in Sources */,
+				00FD971A23740FCA00294281 /* HomeViewController.swift in Sources */,
 				00FD97142374049800294281 /* UIViewRoundCorner.swift in Sources */,
+				00FD971C2374120B00294281 /* RootNavigationController.swift in Sources */,
 				00FD970C2373FBDF00294281 /* BaseNavigationController.swift in Sources */,
 				00FD97042373F79300294281 /* Router.swift in Sources */,
 				108B976923279678000C09F5 /* AppDelegate.swift in Sources */,
 				00FD97082373F96A00294281 /* Storyboard+Create.swift in Sources */,
 				00FD9716237404DE00294281 /* UIColorInitExtension.swift in Sources */,
 				00FD970A2373F9D000294281 /* RootRouter.swift in Sources */,
-				00FD97062373F8DA00294281 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

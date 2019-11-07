@@ -9,7 +9,8 @@
 import UIKit
 
 class BaseViewController: UIViewController {
-
+    var clearColorNavigationBar: Bool = false
+    var hideNavigationBarShadow: Bool = false
     var router: Router?
         
   @IBOutlet weak var loadingIndicator: UIActivityIndicatorView?

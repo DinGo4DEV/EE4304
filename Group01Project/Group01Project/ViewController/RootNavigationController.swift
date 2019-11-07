@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  RootNavigationController.swift
 //  Group01Project
 //
 //  Created by Zensis on 7/11/2019.
@@ -8,24 +8,18 @@
 
 import UIKit
 
-class HomeViewController: BaseViewController {
-    var rootRouter: RootRouter? {
-       return router as? RootRouter
-     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(false)
-        navigationItem.leftItemsSupplementBackButton = false
-    }
+class RootNavigationController: UINavigationController {
+    
+var router: RootRouter?
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
-
+       super.viewDidLoad()
+       router = RootRouter(self)
+        router?.showHome(animated: false)
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func buttonClicked(_ sender: Any) {
-        rootRouter?.showTest()
-    }
-    
+
     /*
     // MARK: - Navigation
 
