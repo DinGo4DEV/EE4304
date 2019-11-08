@@ -10,6 +10,7 @@ import UIKit
 extension UIStoryboard {
     enum Storyboard: String {
         case main = "Main"
+        case insights = "Insights"
     }
 
  static func storyboard(_ storyboard: Storyboard) -> UIStoryboard {

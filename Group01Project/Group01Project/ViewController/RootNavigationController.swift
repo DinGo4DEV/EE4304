@@ -15,7 +15,7 @@ var router: RootRouter?
     override func viewDidLoad() {
        super.viewDidLoad()
        router = RootRouter(self)
-        router?.showHome(animated: false)
+        router?.showStart(animated: false)
         // Do any additional setup after loading the view.
     }
     
