@@ -25,6 +25,8 @@
 		108B976E23279678000C09F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 108B976C23279678000C09F5 /* Main.storyboard */; };
 		108B97702327967B000C09F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 108B976F2327967B000C09F5 /* Assets.xcassets */; };
 		108B97732327967B000C09F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 108B97712327967B000C09F5 /* LaunchScreen.storyboard */; };
+		2489E78F2375880B004DB596 /* Calculator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2489E78E2375880B004DB596 /* Calculator.storyboard */; };
+		2489E79123758B5C004DB596 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2489E79023758B5C004DB596 /* CalculatorViewController.swift */; };
 		423D5ED2427DE993261AB5A6 /* Pods_Group01Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3422988C2CF1D2D615518A12 /* Pods_Group01Project.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +51,8 @@
 		108B976F2327967B000C09F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		108B97722327967B000C09F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		108B97742327967B000C09F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2489E78E2375880B004DB596 /* Calculator.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calculator.storyboard; sourceTree = "<group>"; };
+		2489E79023758B5C004DB596 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalculatorViewController.swift; path = Group01Project/Storyboard/CalculatorViewController.swift; sourceTree = SOURCE_ROOT; };
 		3422988C2CF1D2D615518A12 /* Pods_Group01Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Group01Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A40A16F86EDCCB9CAB7B05E /* Pods-Group01Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Group01Project.release.xcconfig"; path = "Target Support Files/Pods-Group01Project/Pods-Group01Project.release.xcconfig"; sourceTree = "<group>"; };
 		72FE25FBE31C2E5411B9FF49 /* Pods-Group01Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Group01Project.debug.xcconfig"; path = "Target Support Files/Pods-Group01Project/Pods-Group01Project.debug.xcconfig"; sourceTree = "<group>"; };
@@ -76,6 +80,7 @@
 		0000F60A23754A7A003B2AF2 /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				2489E79023758B5C004DB596 /* CalculatorViewController.swift */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";
@@ -117,6 +122,7 @@
 			children = (
 				108B976C23279678000C09F5 /* Main.storyboard */,
 				0000F60C23754AD3003B2AF2 /* Insights.storyboard */,
+				2489E78E2375880B004DB596 /* Calculator.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -262,6 +268,7 @@
 				108B97732327967B000C09F5 /* LaunchScreen.storyboard in Resources */,
 				108B97702327967B000C09F5 /* Assets.xcassets in Resources */,
 				108B976E23279678000C09F5 /* Main.storyboard in Resources */,
+				2489E78F2375880B004DB596 /* Calculator.storyboard in Resources */,
 				0000F60D23754AD3003B2AF2 /* Insights.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,6 +332,7 @@
 				00FD971C2374120B00294281 /* RootNavigationController.swift in Sources */,
 				00FD970C2373FBDF00294281 /* BaseNavigationController.swift in Sources */,
 				00FD97042373F79300294281 /* Router.swift in Sources */,
+				2489E79123758B5C004DB596 /* CalculatorViewController.swift in Sources */,
 				108B976923279678000C09F5 /* AppDelegate.swift in Sources */,
 				00FD97082373F96A00294281 /* Storyboard+Create.swift in Sources */,
 				00FD9716237404DE00294281 /* UIColorInitExtension.swift in Sources */,
