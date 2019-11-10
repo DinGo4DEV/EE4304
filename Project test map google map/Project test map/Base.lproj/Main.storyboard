@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Project_test_map" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="as2-KJ-1fK">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="m89-VY-v3T"/>
+                                </constraints>
+                                <items>
+                                    <tabBarItem systemItem="favorites" id="Vhk-4V-7dV"/>
+                                    <tabBarItem systemItem="more" id="Ki8-pw-u4w"/>
+                                </items>
+                            </tabBar>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hjS-PB-Cge">
+                                <rect key="frame" x="0.0" y="34" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Exchange store map" id="yRw-KE-6tc"/>
+                                </items>
+                            </navigationBar>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ffv-bT-p8P">
+                                <rect key="frame" x="0.0" y="78" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="xMp-Tf-3uM"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6nZ-RY-A5o" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="122" width="414" height="691"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ffv-bT-p8P" firstAttribute="leading" secondItem="6nZ-RY-A5o" secondAttribute="leading" id="A8V-Wd-5es"/>
+                            <constraint firstItem="hjS-PB-Cge" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="-10" id="Dza-HL-YVs"/>
+                            <constraint firstItem="as2-KJ-1fK" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="FT4-UI-vm9"/>
+                            <constraint firstItem="ffv-bT-p8P" firstAttribute="top" secondItem="hjS-PB-Cge" secondAttribute="bottom" id="FYS-jh-EcA"/>
+                            <constraint firstItem="6nZ-RY-A5o" firstAttribute="trailing" secondItem="as2-KJ-1fK" secondAttribute="trailing" id="Faw-YL-f9q"/>
+                            <constraint firstItem="hjS-PB-Cge" firstAttribute="trailing" secondItem="ffv-bT-p8P" secondAttribute="trailing" id="JU9-Uq-fxT"/>
+                            <constraint firstItem="hjS-PB-Cge" firstAttribute="leading" secondItem="ffv-bT-p8P" secondAttribute="leading" id="Qwo-yk-QaW"/>
+                            <constraint firstItem="hjS-PB-Cge" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Y5F-To-TqN"/>
+                            <constraint firstItem="ffv-bT-p8P" firstAttribute="trailing" secondItem="6nZ-RY-A5o" secondAttribute="trailing" id="cgF-JP-bIy"/>
+                            <constraint firstItem="6nZ-RY-A5o" firstAttribute="leading" secondItem="as2-KJ-1fK" secondAttribute="leading" id="dmN-md-waO"/>
+                            <constraint firstItem="6nZ-RY-A5o" firstAttribute="top" secondItem="ffv-bT-p8P" secondAttribute="bottom" id="hR2-RR-EBw"/>
+                            <constraint firstItem="as2-KJ-1fK" firstAttribute="top" secondItem="6nZ-RY-A5o" secondAttribute="bottom" id="wLe-O5-z0s"/>
+                            <constraint firstItem="ffv-bT-p8P" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xf3-it-nus"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="MapView" destination="6nZ-RY-A5o" id="ElV-E2-Ahd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="114.50892857142857"/>
+        </scene>
+    </scenes>
+</document>
