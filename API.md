@@ -55,7 +55,7 @@
    ** Record Same with 1.[Exchange Rate - Daily figures] **
    
    # HSBC ![Image of HSBC](https://scontent-hkg3-1.xx.fbcdn.net/v/t1.0-1/p50x50/19598631_1410961878970160_6055011217242112608_n.png?_nc_cat=1&_nc_oc=AQmjT0lpFY2015YB-F6tmHq-EVwj0HMVWYhLf0LvZ_PAM7Ucm4EGv6uDic1sLkhAFNM&_nc_ht=scontent-hkg3-1.xx&oh=c5a38d5125c2c22ce2622cfebcb77137&oe=5E50B817) / HangSeng ![Image of HangSeng](https://www.hangseng.com/etc/designs/hase/clientlib-common/images/logo.gif) 
-   FX change API:
+  1. FX change API:
    > https://rbwm-api.hsbc.com.hk/pws-hk-hase-rates-papi-prod-proxy/v1/fxtt-exchange-rates
    
    | | ccyCode | ccyDisplayCode | ccyDisplayName | ccyBaseRemark | chartFlag | ttBuyRate | ttySellRate | ccyNameZh | ccyNameCn | ccyNameEn |
@@ -225,6 +225,12 @@
     ]
 }
 ```
-   
+
+---
+
+2.[Branch](https://www.hangseng.com/en-hk/contact-us/branch-addresses.data.getjson.js)
+> https://www.hangseng.com/en-hk/contact-us/branch-addresses.data.getjson.js
+
+
    ## Userful Link
    https://sandboxportal.apix.com.hk/jetco/sb/categories
