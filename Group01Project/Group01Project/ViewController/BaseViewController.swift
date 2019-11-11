@@ -14,6 +14,7 @@ class BaseViewController: UIViewController {
     var router: Router?
     var tabBarItems: [UITabBarItem]?
     var itemName = ["Rate", "Calculator", "Home", "Insights", "Stores"]
+    var itemImage = [UIImage(named: "money-black"),UIImage(named: "calculator-black"),UIImage(named: "home-black"),UIImage(named: "search-black"),UIImage(named: "stores-black")]
     
     
   @IBOutlet weak var loadingIndicator: UIActivityIndicatorView?
@@ -41,8 +42,10 @@ class BaseViewController: UIViewController {
      }
     
     func setUpTabBar(){
+        var index:Int = 0;
         for item in itemName{
-            mainTabBar?.items?.append(UITabBarItem.init(title: item, image: UIImage.init(named: "tray"), selectedImage: UIImage.init(named: "tray.fill")))
+            mainTabBar?.items?.append(UITabBarItem.init(title: item, image: itemImage[index], selectedImage: UIImage.init(named: "tray.fill")))
+            index += 1
                
         }
     }
