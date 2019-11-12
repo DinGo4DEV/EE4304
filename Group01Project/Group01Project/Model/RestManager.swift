@@ -11,16 +11,21 @@ class RestManager{
     var requestHttpHeader = RestEntity()
     var urlQueryParameters = RestEntity()
     var httpBodyParameters = RestEntity()
-    var resultAction: (() ->Void)? = nil
+    var responseHandler: ((Any)->Void)?
+    
     init() {
         requestHttpHeader.add(value: "application/json", forKey: "content-type")
     }
-    func request_fxChange_HengSeng(){
+    
+    func request_fxChange_HengSeng(handler:@escaping ((Any) -> Void)){
         let url = URL(string: HengSeng.URL.FxChangeURL.rawValue)!
-        request(url: url, model: HengSeng.FxRate_HengSeng.self)
+        request(url: url, model: HengSeng.FxRateJson.self){
+            [weak self](result) in
+            handler(result)
+        }
     }
     
-    func request<T:Codable>(url:URL,model:T.Type){
+    func request<T:Codable>(url:URL, model:T.Type, completion: @escaping ((Any) -> Void)){
         let task = URLSession.shared.dataTask(with: url){
             (data,response,error) in
             guard let data = data else {
@@ -28,17 +33,13 @@ class RestManager{
             }
             let decoder = JSONDecoder()
             if let result = try? decoder.decode(model,from:data){
-                print(result)
+                completion(result)
+                self.responseHandler = completion
             } else {
                 print("error")
             }
-//            do{
-//                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String : Any]
-//                print(json as Any)
-//            } catch {
-//                print("erroMsg")
-//            }
         }
+        
         task.resume()
     }
 }

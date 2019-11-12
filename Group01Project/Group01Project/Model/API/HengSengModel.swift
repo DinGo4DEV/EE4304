@@ -9,11 +9,12 @@
 import Foundation
 
 struct HengSeng{
+    
     enum URL:String {
         case FxChangeURL = "https://rbwm-api.hsbc.com.hk/pws-hk-hase-rates-papi-prod-proxy/v1/fxtt-exchange-rates"
     }
     
-    struct FxRate_HengSeng:Codable{
+    struct FxRateJson:Codable{
         var lastUpdateTime: String
         var fxttExchangeRates:[fxttExchangeRates]?
     }
