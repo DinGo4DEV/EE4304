@@ -32,7 +32,7 @@ struct HengSeng{
         var ccyNameEn: String
     }
     
-    enum FxRate_HengSengKeys: String, CodingKey{
+    enum FxRateJsonKeys: String, CodingKey{
         case lastUpdateTime,fxttExchangeRates
     }
     

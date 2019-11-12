@@ -25,6 +25,17 @@ class RestManager{
         }
     }
     
+    func request_fxChange_HKMA(params:HKMA.params, handler:@escaping((Any) -> Void)){
+        let baseURL:String = HKMA.URL.FxChangeURL.rawValue
+        let fullURL:String = "\(baseURL)?\(params.offset)&\(params.form)&\(params.to)&\(params.sortOrder)"
+//        let url = URL(string: fullURL)
+        let url = URL(string: baseURL)!
+        request(url: url, model: HKMA.FxRateJson.self){
+            [weak self](result) in
+            handler(result)
+        }
+    }
+    
     func request<T:Codable>(url:URL, model:T.Type, completion: @escaping ((Any) -> Void)){
         let task = URLSession.shared.dataTask(with: url){
             (data,response,error) in
@@ -73,35 +84,4 @@ extension RestManager{
             return values.count
         }
     }
-}
-
-
-
-
-struct fxRate_HKMA: Codable{
-    //    var header: String
-    //    var result: fxRate_result?
-    var datasize: Int32
-}
-
-struct fxRate_result:Codable{
-    var datasize: Int
-    var records: String
-}
-struct Exchange_rate: Codable{
-    var aud: Float
-    var bef: Float
-    var cad: Float
-    var chf: Float
-    var cny: Float
-    var dem: Float
-    var end_of_day: Date
-    var eur: Float
-    var frf: Float
-    var gbp: Float
-    var inr: Float
-    var itl: Float
-    var jpy: Float
-    var krw: Float
-    var myr: Float
 }
