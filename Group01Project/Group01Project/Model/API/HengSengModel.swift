@@ -11,12 +11,22 @@ import Foundation
 struct HengSeng{
     
     enum URL:String {
-        case FxChangeURL = "https://rbwm-api.hsbc.com.hk/pws-hk-hase-rates-papi-prod-proxy/v1/fxtt-exchange-rates"
+        case TtFxChangeURL = "https://rbwm-api.hsbc.com.hk/pws-hk-hase-rates-papi-prod-proxy/v1/fxtt-exchange-rates"
+        case NoteFxChangeURL = "https://rbwm-api.hsbc.com.hk/pws-hk-hase-rates-papi-prod-proxy/v1/fxnotes-exchange-rates"
     }
     
     struct FxRateJson:Codable{
         var lastUpdateTime: String
         var fxttExchangeRates:[fxttExchangeRates]?
+        var fxnoteExchangeRates:[fxnoteExchangeRates]?
+    }
+    
+    struct fxnoteExchangeRates:Codable{
+        var ccyCode: String
+        var ccyDisplayCode: String
+        var ccyDisplayName: String
+        var noteBuyRate: String
+        var noteSellRate: String
     }
     
     struct fxttExchangeRates:Codable{

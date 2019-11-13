@@ -17,15 +17,23 @@ class RestManager{
         requestHttpHeader.add(value: "application/json", forKey: "content-type")
     }
     
-    func request_fxChange_HengSeng(handler:@escaping ((Any) -> Void)){
-        let url = URL(string: HengSeng.URL.FxChangeURL.rawValue)!
+    func request_fxChange_HengSeng(handler:@escaping ((Codable) -> Void)){
+        let url = URL(string: HengSeng.URL.TtFxChangeURL.rawValue)!
         request(url: url, model: HengSeng.FxRateJson.self){
             [weak self](result) in
             handler(result)
         }
     }
     
-    func request_fxChange_HKMA(params:HKMA.params, handler:@escaping((Any) -> Void)){
+    func request_fxnoteExchangeRates_HengSeng(handler:@escaping ((Codable) -> Void)){
+        let url = URL(string: HengSeng.URL.NoteFxChangeURL.rawValue)!
+        request(url: url, model: HengSeng.FxRateJson.self){
+            [weak self](result) in
+            handler(result)
+        }
+    }
+    
+    func request_fxChange_HKMA(params:HKMA.params, handler:@escaping((Codable) -> Void)){
         let baseURL:String = HKMA.URL.FxChangeURL.rawValue
         let fullURL:String = "\(baseURL)?\(params.offset)&\(params.form)&\(params.to)&\(params.sortOrder)"
 //        let url = URL(string: fullURL)
@@ -36,7 +44,7 @@ class RestManager{
         }
     }
     
-    func request<T:Codable>(url:URL, model:T.Type, completion: @escaping ((Any) -> Void)){
+    func request<T:Codable>(url:URL, model:T.Type, completion: @escaping ((Codable) -> Void)){
         let task = URLSession.shared.dataTask(with: url){
             (data,response,error) in
             guard let data = data else {
@@ -45,7 +53,7 @@ class RestManager{
             let decoder = JSONDecoder()
             if let result = try? decoder.decode(model,from:data){
                 completion(result)
-                self.responseHandler = completion
+            
             } else {
                 print("error")
             }

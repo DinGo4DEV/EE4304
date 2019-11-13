@@ -21,6 +21,22 @@ class HomeViewController: BaseViewController, UITabBarDelegate {
         super.viewDidLoad()
         self.mainTabBar?.delegate = self
         // Do any additional setup after loading the view.
+        let api:RestManager = RestManager.init()
+        api.request_fxChange_HengSeng(){
+            [weak self](result) in
+            let json:HengSeng.FxRateJson = result as! HengSeng.FxRateJson
+            let exchange = json.fxttExchangeRates as! [HengSeng.fxttExchangeRates]
+//            print(json.fxttExchangeRates)
+            print(exchange[0].ccyDisplayCode)
+//                print(result)
+//            print(result[0])
+            }
+        
+//        var parma:HKMA.params = HKMA.params()
+//        api.request_fxChange_HKMA(params: parma){
+//                        [weak self](result) in
+//                            print(result)
+//        }
     }
     
     @IBAction func buttonClicked(_ sender: Any) {
