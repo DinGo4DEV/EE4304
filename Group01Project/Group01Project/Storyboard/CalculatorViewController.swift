@@ -44,24 +44,33 @@ extension UIButton
         
     }
 }
-
-class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-    
+class CalculatorViewController: BaseViewController, UITabBarDelegate, UIPickerViewDataSource,UIPickerViewDelegate  {
+    var rootRouter: RootRouter? {
+        return router as? RootRouter
+    }
     var toolBar = UIToolbar()
     var picker  = UIPickerView()
+    var outtoolBar = UIToolbar()
+    var outpicker  = UIPickerView()
+    
     let cur : [String] = ["USD","GBP","JPY","CNY","CAD","AUD","SGD","TWD","CHF","THB","MYR","FRF"]
     let cur2 = ["USD","GBP","JPY","CNY","CAD","AUD","SGD","TWD","CHF","THB","MYR","FRF"]
     @IBOutlet var select: UIButton!
-    
+    @IBOutlet var selectout: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        self.mainTabBar?.delegate = self
         picker.delegate = self
         picker.dataSource = self
+        outpicker.delegate = self
+        outpicker.dataSource = self
+        
         select.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
         select.disclosureButton(baseColor: view.tintColor)
-        
-        
+        selectout.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
+        selectout.disclosureButton(baseColor: view.tintColor)
+        // Do any additional setup after loading the view.
     }
     override func viewDidLayoutSubviews() {
         view.layoutIfNeeded()
@@ -69,6 +78,7 @@ class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     @IBAction func ShowPicker(_ sender: UIButton) {
         picker = UIPickerView.init()
+        picker.tag = 1
         picker.delegate = self
         picker.backgroundColor = UIColor.white
         picker.setValue(UIColor.black, forKey: "textColor")
@@ -82,36 +92,80 @@ class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPicker
         toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
         self.view.addSubview(toolBar)
     }
+    @IBAction func ShowPickerOut(_ sender: UIButton) {
+        outpicker = UIPickerView.init()
+        outpicker.tag = 2
+        outpicker.delegate = self
+        outpicker.backgroundColor = UIColor.white
+        outpicker.setValue(UIColor.black, forKey: "textColor")
+        outpicker.autoresizingMask = .flexibleWidth
+        outpicker.contentMode = .center
+        outpicker.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
+        self.view.addSubview(outpicker)
+        
+        outtoolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
+        outtoolBar.barStyle = UIBarStyle.default
+        outtoolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
+        self.view.addSubview(outtoolBar)
+    }
+    
     @objc func onDoneButtonTapped() {
         toolBar.removeFromSuperview()
         picker.removeFromSuperview()
+        outtoolBar.removeFromSuperview()
+        outpicker.removeFromSuperview()
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return cur.count
+        if pickerView == picker{
+            return cur.count
+        }
+        else{
+            return cur2.count
+        }
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return cur[row]
+        if pickerView == picker{
+            return cur[row]
+        }
+        else{
+            return cur2[row]
+        }
+        
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        select.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
-        select.setTitle(cur[row], for: .normal)
+        if pickerView == picker{
+            select.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
+            select.setTitle(cur[row], for: .normal)
+        }
+        else{
+            selectout.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
+            selectout.setTitle(cur2[row], for: .normal)
+        }
         
     }
     
-    
-    
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        switch(tabBar.selectedItem?.title){
+        case "Insights":
+            self.dismiss(animated: false, completion: nil)
+            rootRouter?.showInsights()
+            break
+        case "Home":
+            self.dismiss(animated: false, completion: nil)
+            rootRouter?.showHome()
+        case "Calculator":
+            self.dismiss(animated: false, completion: nil)
+            rootRouter?.showCalculators()
+            break
+        case .none:
+            break
+        case .some(_):
+            break
+        }
     }
-    */
-
 }

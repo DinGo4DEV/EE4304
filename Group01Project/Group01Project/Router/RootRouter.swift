@@ -50,10 +50,19 @@ class RootRouter: Router{
             let insightViewController = UIStoryboard.storyboard(.insights).instantiateViewController(InsightsItemViewController.self) else {
               return
           }
+   
 //          insightViewController.modalPresentationStyle = .fullScreen
           insightViewController.router = self
         navigationController?.pushViewController(insightViewController, animated: true)
             
 //          navigationController?.present(insightViewController, animated: true, completion: nil)
+    }
+    func showCalculators(){
+        guard
+            let CalculatorViewController = UIStoryboard.storyboard(.calculator).instantiateViewController(CalculatorViewController.self) else {
+                return
+        }
+        CalculatorViewController.router = self
+        navigationController?.pushViewController(CalculatorViewController, animated: true)
     }
 }
