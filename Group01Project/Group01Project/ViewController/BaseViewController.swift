@@ -15,10 +15,29 @@ class BaseViewController: UIViewController {
     var tabBarItems: [UITabBarItem]?
     var itemName = ["Rate", "Calculator", "Home", "Insights", "Stores"]
     var itemImage = [UIImage(named: "money-black"),UIImage(named: "calculator-black"),UIImage(named: "home-black"),UIImage(named: "search-black"),UIImage(named: "stores-black")]
+    var apiManager = RestManager.init()
     
     
   @IBOutlet weak var loadingIndicator: UIActivityIndicatorView?
     @IBOutlet weak var mainTabBar: UITabBar?
+    
+    override func loadView() {
+        super.loadView()
+        if(RestManager.jsonHengSeng==nil){
+            apiManager.request_fxnoteExchangeRates_HengSeng(){
+                [weak self] (result) in
+                RestManager.jsonHengSeng = result as? HengSeng.FxRateJson
+            }
+        }
+        
+        if(RestManager.jsonHKMA == nil){
+            var parma:HKMA.params = HKMA.params()
+            apiManager.request_fxChange_HKMA(params: parma){
+                [weak self](result) in
+                RestManager.jsonHKMA = result as? HKMA.FxRateJson
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
