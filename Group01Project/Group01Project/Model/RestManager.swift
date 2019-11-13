@@ -13,11 +13,15 @@ class RestManager{
     var httpBodyParameters = RestEntity()
     var responseHandler: ((Any)->Void)?
     
+    static var jsonHengSeng:HengSeng.FxRateJson!
+    static var jsonHSBC:HSBC.FxRateJson!
+    static var jsonHKMA:HKMA.FxRateJson!
+    
     init() {
         requestHttpHeader.add(value: "application/json", forKey: "content-type")
     }
     
-    func request_fxChange_HengSeng(handler:@escaping ((Codable) -> Void)){
+    func request_fxttChange_HengSeng(handler:@escaping ((Codable) -> Void)){
         let url = URL(string: HengSeng.URL.TtFxChangeURL.rawValue)!
         request(url: url, model: HengSeng.FxRateJson.self){
             [weak self](result) in
