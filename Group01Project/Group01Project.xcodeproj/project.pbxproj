@@ -28,6 +28,7 @@
 		10A8CB80237971A80014B8A9 /* RestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8CB7F237971A80014B8A9 /* RestManager.swift */; };
 		10A8CB8423798C480014B8A9 /* HengSengModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8CB8323798C470014B8A9 /* HengSengModel.swift */; };
 		10E531E3237AB0560028F094 /* HKMAModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E531E2237AB0560028F094 /* HKMAModel.swift */; };
+		10E531E5237ADA410028F094 /* HSBCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E531E4237ADA410028F094 /* HSBCModel.swift */; };
 		423D5ED2427DE993261AB5A6 /* Pods_Group01Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3422988C2CF1D2D615518A12 /* Pods_Group01Project.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		10A8CB7F237971A80014B8A9 /* RestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestManager.swift; sourceTree = "<group>"; };
 		10A8CB8323798C470014B8A9 /* HengSengModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HengSengModel.swift; sourceTree = "<group>"; };
 		10E531E2237AB0560028F094 /* HKMAModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKMAModel.swift; sourceTree = "<group>"; };
+		10E531E4237ADA410028F094 /* HSBCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSBCModel.swift; sourceTree = "<group>"; };
 		3422988C2CF1D2D615518A12 /* Pods_Group01Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Group01Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A40A16F86EDCCB9CAB7B05E /* Pods-Group01Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Group01Project.release.xcconfig"; path = "Target Support Files/Pods-Group01Project/Pods-Group01Project.release.xcconfig"; sourceTree = "<group>"; };
 		72FE25FBE31C2E5411B9FF49 /* Pods-Group01Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Group01Project.debug.xcconfig"; path = "Target Support Files/Pods-Group01Project/Pods-Group01Project.debug.xcconfig"; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 			children = (
 				10A8CB8323798C470014B8A9 /* HengSengModel.swift */,
 				10E531E2237AB0560028F094 /* HKMAModel.swift */,
+				10E531E4237ADA410028F094 /* HSBCModel.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				0000F60F23754B42003B2AF2 /* InsightsItemViewController.swift in Sources */,
 				00FD97182374096500294281 /* TestViewController.swift in Sources */,
 				00FD971A23740FCA00294281 /* HomeViewController.swift in Sources */,
+				10E531E5237ADA410028F094 /* HSBCModel.swift in Sources */,
 				00FD97142374049800294281 /* UIViewRoundCorner.swift in Sources */,
 				10A8CB80237971A80014B8A9 /* RestManager.swift in Sources */,
 				0000F608237547C1003B2AF2 /* TabBarItemContent.swift in Sources */,
