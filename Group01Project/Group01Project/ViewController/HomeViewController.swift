@@ -16,6 +16,14 @@ class HomeViewController: BaseViewController, UITabBarDelegate {
         super.viewWillAppear(false)
         
         navigationItem.leftItemsSupplementBackButton = false
+        while(RestManager.jsonHengSeng == nil || RestManager.jsonHKMA == nil ){
+            if(!isLoading()){
+                startLoading()
+            }
+        }
+        if(isLoading()){
+            stopLoading()
+        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
