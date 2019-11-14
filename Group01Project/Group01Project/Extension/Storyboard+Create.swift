@@ -11,6 +11,7 @@ extension UIStoryboard {
     enum Storyboard: String {
         case main = "Main"
         case insights = "Insights"
+        case calculator = "Calculator"
     }
 
  static func storyboard(_ storyboard: Storyboard) -> UIStoryboard {
