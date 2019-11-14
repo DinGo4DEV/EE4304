@@ -13,9 +13,10 @@ class RestManager{
     var httpBodyParameters = RestEntity()
     var responseHandler: ((Any)->Void)?
     
-    static var jsonHengSeng:HengSeng.FxRateJson!
-    static var jsonHSBC:HSBC.FxRateJson!
-    static var jsonHKMA:HKMA.FxRateJson!
+    static var HengSengRateJson:HengSeng.FxRateJson!
+    static var HSBCRateJson:HSBC.FxRateJson!
+    static var HKMARateJson:HKMA.FxRateJson!
+    static var HengSengBranchJson:HengSeng.branchJson!
     
     init() {
         requestHttpHeader.add(value: "application/json", forKey: "content-type")
@@ -37,10 +38,18 @@ class RestManager{
         }
     }
     
+    func request_Branch_HengSeng(handler:@escaping ((Codable) -> Void)){
+        let url = URL(string: HengSeng.URL.BranchURL.rawValue)!
+        request(url: url, model: HengSeng.branchJson.self){
+            [weak self](result) in
+            handler(result)
+        }
+    }
+    
     func request_fxChange_HKMA(params:HKMA.params, handler:@escaping((Codable) -> Void)){
         let baseURL:String = HKMA.URL.FxChangeURL.rawValue
         let fullURL:String = "\(baseURL)?\(params.offset)&\(params.form)&\(params.to)&\(params.sortOrder)"
-//        let url = URL(string: fullURL)
+        //        let url = URL(string: fullURL)
         let url = URL(string: baseURL)!
         request(url: url, model: HKMA.FxRateJson.self){
             [weak self](result) in
@@ -57,7 +66,7 @@ class RestManager{
             let decoder = JSONDecoder()
             if let result = try? decoder.decode(model,from:data){
                 completion(result)
-            
+                
             } else {
                 print("error")
             }

@@ -23,18 +23,25 @@ class BaseViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        if(RestManager.jsonHengSeng==nil){
+        if(RestManager.HengSengRateJson==nil){
             apiManager.request_fxnoteExchangeRates_HengSeng(){
                 [weak self] (result) in
-                RestManager.jsonHengSeng = result as? HengSeng.FxRateJson
+                RestManager.HengSengRateJson = result as? HengSeng.FxRateJson
             }
         }
         
-        if(RestManager.jsonHKMA == nil){
+        if(RestManager.HKMARateJson == nil){
             var parma:HKMA.params = HKMA.params()
             apiManager.request_fxChange_HKMA(params: parma){
                 [weak self](result) in
-                RestManager.jsonHKMA = result as? HKMA.FxRateJson
+                RestManager.HKMARateJson = result as? HKMA.FxRateJson
+            }
+        }
+        
+        if(RestManager.HengSengBranchJson == nil){
+            apiManager.request_Branch_HengSeng(){
+                [weak self] (result) in
+                RestManager.HengSengBranchJson = result as? HengSeng.branchJson
             }
         }
     }
