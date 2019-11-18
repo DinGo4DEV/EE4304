@@ -12,19 +12,34 @@ class HomeViewController: BaseViewController, UITabBarDelegate {
     var rootRouter: RootRouter? {
        return router as? RootRouter
      }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
-        
         navigationItem.leftItemsSupplementBackButton = false
-        while(RestManager.HengSengRateJson == nil || RestManager.HKMARateJson == nil || RestManager.HengSengBranchJson == nil){
-            if(!isLoading()){
-                startLoading()
+        DispatchQueue.main.async {
+            self.checkJsonData(){
+                print("*** api is not nil")
+                if(self.isLoading()){
+                    self.stopLoading()
+                }
             }
         }
-        if(isLoading()){
-            stopLoading()
-        }
+        
+        
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(false)
+//        while(true){
+//            if(RestManager.HengSengRateJson != nil && RestManager.HKMARateJson != nil && RestManager.HengSengBranchJson != nil){
+//
+//                    stopLoading()
+//                    self.view.layoutIfNeeded()
+//                    break
+//                }
+//        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mainTabBar?.delegate = self
