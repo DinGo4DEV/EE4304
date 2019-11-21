@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: BaseViewController, UITabBarDelegate {
+class HomeViewController: BaseViewController {
     var rootRouter: RootRouter? {
        return router as? RootRouter
      }
@@ -27,27 +27,14 @@ class HomeViewController: BaseViewController, UITabBarDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.mainTabBar?.delegate = self
+      
         // Do any additional setup after loading the view.
     }
     
     @IBAction func buttonClicked(_ sender: Any) {
         rootRouter?.showTest()
     }
-    
-    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-           switch(tabBar.selectedItem?.title){
-           case "Insights":
-            self.dismiss(animated: false, completion: nil)
-            rootRouter?.showInsights()
-               break
-          
-           case .none:
-                break
-           case .some(_):
-            break
-        }
-    }
+
 
 }
 // Make your own VC inherit the BaseViewController
