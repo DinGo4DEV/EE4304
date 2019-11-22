@@ -57,6 +57,7 @@ class CalculatorViewController: BaseViewController, UITabBarDelegate, UIPickerVi
     let cur2 = ["USD","GBP","JPY","CNY","CAD","AUD","SGD","TWD","CHF","THB","MYR","FRF"]
     @IBOutlet var select: UIButton!
     @IBOutlet var selectout: UIButton!
+    @IBOutlet var output: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,8 +71,10 @@ class CalculatorViewController: BaseViewController, UITabBarDelegate, UIPickerVi
         select.disclosureButton(baseColor: view.tintColor)
         selectout.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
         selectout.disclosureButton(baseColor: view.tintColor)
+
         // Do any additional setup after loading the view.
     }
+    
     override func viewDidLayoutSubviews() {
         view.layoutIfNeeded()
     }
@@ -106,6 +109,7 @@ class CalculatorViewController: BaseViewController, UITabBarDelegate, UIPickerVi
         outtoolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
         outtoolBar.barStyle = UIBarStyle.default
         outtoolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
+        
         self.view.addSubview(outtoolBar)
     }
     
@@ -161,7 +165,6 @@ class CalculatorViewController: BaseViewController, UITabBarDelegate, UIPickerVi
         case "Calculator":
             self.dismiss(animated: false, completion: nil)
             rootRouter?.showCalculators()
-            break
         case .none:
             break
         case .some(_):

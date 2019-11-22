@@ -41,7 +41,10 @@ class HomeViewController: BaseViewController, UITabBarDelegate {
             self.dismiss(animated: false, completion: nil)
             rootRouter?.showInsights()
                break
-          
+           case "Calculator":
+            self.dismiss(animated: false, completion: nil)
+            rootRouter?.showCalculators()
+            break
            case .none:
                 break
            case .some(_):
