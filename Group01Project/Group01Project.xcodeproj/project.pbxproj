@@ -84,13 +84,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0000F60923754A72003B2AF2 /* Rate */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Rate;
-			sourceTree = "<group>";
-		};
 		0000F60A23754A7A003B2AF2 /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,7 +127,6 @@
 				00389FE823867598003F737C /* NavigationController */,
 				0000F60B23754AAD003B2AF2 /* Insights */,
 				0000F60A23754A7A003B2AF2 /* Calculator */,
-				0000F60923754A72003B2AF2 /* Rate */,
 				108B976A23279678000C09F5 /* BaseViewController.swift */,
 				00FD97172374096500294281 /* TestViewController.swift */,
 				00FD971923740FCA00294281 /* HomeViewController.swift */,
