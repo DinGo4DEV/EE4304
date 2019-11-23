@@ -7,7 +7,11 @@
 //
 
 import Foundation
+import Realm
+import RealmSwift
+
 class RestManager{
+    static var timer: Timer?
     var requestHttpHeader = RestEntity()
     var urlQueryParameters = RestEntity()
     var httpBodyParameters = RestEntity()
@@ -20,6 +24,13 @@ class RestManager{
     
     init() {
         requestHttpHeader.add(value: "application/json", forKey: "content-type")
+        RestManager.timer = Timer.scheduledTimer(withTimeInterval: 600, repeats:true){
+            (Timer) in
+            RestManager.HengSengBranchJson = nil
+            RestManager.HengSengRateJson = nil
+            RestManager.HKMARateJson = nil
+            RestManager.HSBCRateJson = nil
+        }
     }
     
     func request_fxttChange_HengSeng(handler:@escaping ((Codable) -> Void)){
@@ -57,6 +68,12 @@ class RestManager{
         }
     }
     
+//    func storedData(data:Codable){
+//        do{
+//            let decoder = JSONDecoder()
+//
+//    }
+    
     func request<T:Codable>(url:URL, model:T.Type, completion: @escaping ((Codable) -> Void)){
         let task = URLSession.shared.dataTask(with: url){
             (data,response,error) in
@@ -64,7 +81,21 @@ class RestManager{
                 return
             }
             let decoder = JSONDecoder()
+            if let result = try? decoder.decode(HengSengData.self,from:data){
+                do{
+                    let realm = try Realm()
+                    print(realm.configuration.fileURL?.absoluteString ?? "")
+                    
+                    try realm.write {
+                        realm.add(result)
+                    }
+                } catch{
+                    
+                }
+            }
             if let result = try? decoder.decode(model,from:data){
+                
+                
                 completion(result)
                 
             } else {

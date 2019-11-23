@@ -23,25 +23,43 @@ class BaseViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        if(RestManager.HengSengRateJson==nil){
-            apiManager.request_fxnoteExchangeRates_HengSeng(){
-                [weak self] (result) in
-                RestManager.HengSengRateJson = result as? HengSeng.FxRateJson
+        DispatchQueue.main.async {
+            if(RestManager.HengSengRateJson==nil){
+                self.apiManager.request_fxnoteExchangeRates_HengSeng(){
+                    [weak self] (result) in
+                    RestManager.HengSengRateJson = result as? HengSeng.FxRateJson
+                    if(self!.isLoading()){
+                        if(self!.checkJsonData() { () in}){
+                            self!.stopLoading()
+                        }
+                    }
+                        
+                }
             }
-        }
-        
-        if(RestManager.HKMARateJson == nil){
-            var parma:HKMA.params = HKMA.params()
-            apiManager.request_fxChange_HKMA(params: parma){
-                [weak self](result) in
-                RestManager.HKMARateJson = result as? HKMA.FxRateJson
+            
+            if(RestManager.HKMARateJson == nil){
+                var parma:HKMA.params = HKMA.params()
+                self.apiManager.request_fxChange_HKMA(params: parma){
+                    [weak self](result) in
+                    RestManager.HKMARateJson = result as? HKMA.FxRateJson
+                    if(self!.isLoading()){
+                        if(self!.checkJsonData() { () in}){
+                            self!.stopLoading()
+                        }
+                    }
+                }
             }
-        }
-        
-        if(RestManager.HengSengBranchJson == nil){
-            apiManager.request_Branch_HengSeng(){
-                [weak self] (result) in
-                RestManager.HengSengBranchJson = result as? HengSeng.branchJson
+            
+            if(RestManager.HengSengBranchJson == nil){
+                self.apiManager.request_Branch_HengSeng(){
+                    [weak self] (result) in
+                    RestManager.HengSengBranchJson = result as? HengSeng.branchJson
+                    if(self!.isLoading()){
+                        if(self!.checkJsonData() { () in}){
+                            self!.stopLoading()
+                        }
+                    }
+                }
             }
         }
     }
@@ -59,21 +77,21 @@ class BaseViewController: UIViewController {
     
     fileprivate var aView: UIView?
     
-    func checkJsonData(Valied:@escaping(() -> Void) ){
-        if(!isLoading()){
-            startLoading()
-            self.view.layoutIfNeeded()
+    func checkJsonData(Valied:@escaping(() -> Void) ) -> Bool{
+        var valied:Bool = true
+        if(RestManager.HengSengRateJson == nil){
+            valied = false
         }
-        while(RestManager.HengSengRateJson == nil || RestManager.HKMARateJson == nil || RestManager.HengSengBranchJson == nil){
-//            if(!isLoading()){
-//                startLoading()
-//                self.view.layoutIfNeeded()
-            print("Api is nil")
-            }
-//        }
-            Valied()
+        if(RestManager.HKMARateJson == nil){
+            valied = false
+        }
+        if(RestManager.HengSengBranchJson == nil){
+            valied = false
+        }
+        return valied
     }
-
+    static var loaded = false
+    
     func startLoading() {
         aView = UIView(frame: self.view.bounds)
         // Auto Layout Config
@@ -92,16 +110,28 @@ class BaseViewController: UIViewController {
         NSLayoutConstraint.activate([leading, trailing, top, bottom])
        loadingIndicator?.startAnimating()
        loadingIndicator?.isHidden = false
+        BaseViewController.loaded = true
      }
 
+
      func stopLoading() {
-       loadingIndicator?.isHidden = true
-        aView?.removeFromSuperview()
+//        UI View need to be called on Main thread
+        DispatchQueue.main.async {
+            self.loadingIndicator?.isHidden = true
+            self.aView?.removeFromSuperview()
+            BaseViewController.loaded = false
+        }
+        
      }
 
     
+    
      func isLoading() -> Bool {
-       return !(loadingIndicator?.isHidden ?? true)
+        //        UI View need to be called on Main thread
+//        DispatchQueue.main.async {
+//            bool = !(self.loadingIndicator?.isHidden ?? true)
+//        }
+        return BaseViewController.loaded
      }
     
     func setUpTabBar(){
