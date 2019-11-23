@@ -44,7 +44,7 @@ extension UIButton
         
     }
 }
-class CalculatorViewController: BaseViewController, UITabBarDelegate, UIPickerViewDataSource,UIPickerViewDelegate  {
+class CalculatorViewController: BaseViewController, UIPickerViewDataSource,UIPickerViewDelegate  {
     var rootRouter: RootRouter? {
         return router as? RootRouter
     }
@@ -60,7 +60,6 @@ class CalculatorViewController: BaseViewController, UITabBarDelegate, UIPickerVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.mainTabBar?.delegate = self
         picker.delegate = self
         picker.dataSource = self
         outpicker.delegate = self
@@ -147,25 +146,5 @@ class CalculatorViewController: BaseViewController, UITabBarDelegate, UIPickerVi
         }
         
     }
-    
 
-    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        switch(tabBar.selectedItem?.title){
-        case "Insights":
-            self.dismiss(animated: false, completion: nil)
-            rootRouter?.showInsights()
-            break
-        case "Home":
-            self.dismiss(animated: false, completion: nil)
-            rootRouter?.showHome()
-        case "Calculator":
-            self.dismiss(animated: false, completion: nil)
-            rootRouter?.showCalculators()
-            break
-        case .none:
-            break
-        case .some(_):
-            break
-        }
-    }
 }

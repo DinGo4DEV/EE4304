@@ -1,20 +1,23 @@
 //
-//  TestViewController.swift
+//  RootCalculatorNavigationController.swift
 //  Group01Project
 //
-//  Created by Zensis on 7/11/2019.
+//  Created by Zensis on 21/11/2019.
 //  Copyright © 2019 Stanley. All rights reserved.
 //
 
 import UIKit
 
-class TestViewController: BaseViewController {
+class RootCalculatorNavigationController: UINavigationController {
 
-    override func viewDidLoad() {
+    var router: RootRouter?
+     
+     override func viewDidLoad() {
         super.viewDidLoad()
-        print("testing")
-        // Do any additional setup after loading the view.
-    }
+        router = RootRouter(self)
+        router?.showCalculators()
+         // Do any additional setup after loading the view.
+     }
     
 
     /*

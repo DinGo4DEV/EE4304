@@ -1,18 +1,21 @@
 //
-//  TestViewController.swift
+//  RootInsightNavigationController.swift
 //  Group01Project
 //
-//  Created by Zensis on 7/11/2019.
+//  Created by Zensis on 21/11/2019.
 //  Copyright © 2019 Stanley. All rights reserved.
 //
 
 import UIKit
 
-class TestViewController: BaseViewController {
+class RootInsightNavigationController: UINavigationController {
 
+    var router: RootRouter?
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
-        print("testing")
+       super.viewDidLoad()
+       router = RootRouter(self)
+       router?.showInsights()
         // Do any additional setup after loading the view.
     }
     

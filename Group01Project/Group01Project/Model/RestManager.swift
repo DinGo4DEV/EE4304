@@ -81,18 +81,18 @@ class RestManager{
                 return
             }
             let decoder = JSONDecoder()
-            if let result = try? decoder.decode(HengSengData.self,from:data){
-                do{
-                    let realm = try Realm()
-                    print(realm.configuration.fileURL?.absoluteString ?? "")
-                    
-                    try realm.write {
-                        realm.add(result)
-                    }
-                } catch{
-                    
-                }
-            }
+//            if let result = try? decoder.decode(HengSengData.self,from:data){
+//                do{
+//                    let realm = try Realm()
+//                    print(realm.configuration.fileURL?.absoluteString ?? "")
+//
+//                    try realm.write {
+//                        realm.add(result)
+//                    }
+//                } catch{
+//
+//                }
+//            }
             if let result = try? decoder.decode(model,from:data){
                 
                 

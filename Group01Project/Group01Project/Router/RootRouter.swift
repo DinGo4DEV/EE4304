@@ -34,16 +34,16 @@ class RootRouter: Router{
           
           navigationController?.pushViewController(testViewController, animated: true)
     }
-    func showHome(){
-           guard
-               let homeViewController = UIStoryboard.storyboard(.main).instantiateViewController(HomeViewController.self) else {
-                 return
-             }
-//             homeViewController.modalPresentationStyle = .fullScreen
-             homeViewController.router = self
-             
-        navigationController?.popViewController(animated: true)
-       }
+//    func showHome(){
+//           guard
+//               let homeViewController = UIStoryboard.storyboard(.main).instantiateViewController(HomeViewController.self) else {
+//                 return
+//             }
+////             homeViewController.modalPresentationStyle = .fullScreen
+//             homeViewController.router = self
+//
+//        navigationController?.popViewController(animated: true)
+//       }
     
     func showInsights(){
         guard
@@ -51,12 +51,12 @@ class RootRouter: Router{
               return
           }
    
-//          insightViewController.modalPresentationStyle = .fullScreen
+
           insightViewController.router = self
-        navigationController?.pushViewController(insightViewController, animated: true)
-            
-//          navigationController?.present(insightViewController, animated: true, completion: nil)
+        navigationController?.pushViewController(insightViewController, animated: false)
+
     }
+    
     func showCalculators(){
         guard
             let CalculatorViewController = UIStoryboard.storyboard(.calculator).instantiateViewController(CalculatorViewController.self) else {

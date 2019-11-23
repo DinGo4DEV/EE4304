@@ -1,3 +1,4 @@
+
 //
 //  RootNavigationController.swift
 //  Group01Project
@@ -15,7 +16,7 @@ var router: RootRouter?
     override func viewDidLoad() {
        super.viewDidLoad()
        router = RootRouter(self)
-        router?.showStart(animated: false)
+       router?.showStart(animated: false)
         // Do any additional setup after loading the view.
     }
     
