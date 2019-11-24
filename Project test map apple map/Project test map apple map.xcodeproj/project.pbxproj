@@ -13,6 +13,8 @@
 		65124C7723774B1100F921F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65124C7523774B1100F921F6 /* Main.storyboard */; };
 		65124C7923774B1600F921F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65124C7823774B1600F921F6 /* Assets.xcassets */; };
 		65124C7C23774B1600F921F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65124C7A23774B1600F921F6 /* LaunchScreen.storyboard */; };
+		6551F3DD238849E500B9F4E2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6551F3DC238849E500B9F4E2 /* MapKit.framework */; };
+		6551F3DF2389201200B9F4E2 /* Bank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6551F3DE2389201200B9F4E2 /* Bank.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		65124C7823774B1600F921F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65124C7B23774B1600F921F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		65124C7D23774B1600F921F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6551F3DC238849E500B9F4E2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		6551F3DE2389201200B9F4E2 /* Bank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bank.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6551F3DD238849E500B9F4E2 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,7 @@
 			children = (
 				65124C6E23774B1100F921F6 /* Project test map apple map */,
 				65124C6D23774B1100F921F6 /* Products */,
+				6551F3DB238849E500B9F4E2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,12 +65,21 @@
 				65124C6F23774B1100F921F6 /* AppDelegate.swift */,
 				65124C7123774B1100F921F6 /* SceneDelegate.swift */,
 				65124C7323774B1100F921F6 /* ViewController.swift */,
+				6551F3DE2389201200B9F4E2 /* Bank.swift */,
 				65124C7523774B1100F921F6 /* Main.storyboard */,
 				65124C7823774B1600F921F6 /* Assets.xcassets */,
 				65124C7A23774B1600F921F6 /* LaunchScreen.storyboard */,
 				65124C7D23774B1600F921F6 /* Info.plist */,
 			);
 			path = "Project test map apple map";
+			sourceTree = "<group>";
+		};
+		6551F3DB238849E500B9F4E2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6551F3DC238849E500B9F4E2 /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65124C7423774B1100F921F6 /* ViewController.swift in Sources */,
+				6551F3DF2389201200B9F4E2 /* Bank.swift in Sources */,
 				65124C7023774B1100F921F6 /* AppDelegate.swift in Sources */,
 				65124C7223774B1100F921F6 /* SceneDelegate.swift in Sources */,
 			);
