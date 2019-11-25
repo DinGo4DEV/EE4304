@@ -32,7 +32,6 @@
 		10A8CB8423798C480014B8A9 /* HengSengModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8CB8323798C470014B8A9 /* HengSengModel.swift */; };
 		10E531E3237AB0560028F094 /* HKMAModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E531E2237AB0560028F094 /* HKMAModel.swift */; };
 		10E531E5237ADA410028F094 /* HSBCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E531E4237ADA410028F094 /* HSBCModel.swift */; };
-		246B3C29237D429C00A10B00 /* icons8-chevron-down-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 246B3C28237D429C00A10B00 /* icons8-chevron-down-50.png */; };
 		2489E78F2375880B004DB596 /* Calculator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2489E78E2375880B004DB596 /* Calculator.storyboard */; };
 		2489E79123758B5C004DB596 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2489E79023758B5C004DB596 /* CalculatorViewController.swift */; };
 		423D5ED2427DE993261AB5A6 /* Pods_Group01Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3422988C2CF1D2D615518A12 /* Pods_Group01Project.framework */; };
@@ -66,7 +65,6 @@
 		10A8CB8323798C470014B8A9 /* HengSengModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HengSengModel.swift; sourceTree = "<group>"; };
 		10E531E2237AB0560028F094 /* HKMAModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKMAModel.swift; sourceTree = "<group>"; };
 		10E531E4237ADA410028F094 /* HSBCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSBCModel.swift; sourceTree = "<group>"; };
-		246B3C28237D429C00A10B00 /* icons8-chevron-down-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icons8-chevron-down-50.png"; path = "../../../../../Downloads/icons8-chevron-down-50.png"; sourceTree = "<group>"; };
 		2489E78E2375880B004DB596 /* Calculator.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calculator.storyboard; sourceTree = "<group>"; };
 		2489E79023758B5C004DB596 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalculatorViewController.swift; path = Group01Project/Storyboard/CalculatorViewController.swift; sourceTree = SOURCE_ROOT; };
 		3422988C2CF1D2D615518A12 /* Pods_Group01Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Group01Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,7 +200,6 @@
 				00FD970F237402C300294281 /* Storyboard */,
 				00FD9710237402D900294281 /* Extension */,
 				108B976F2327967B000C09F5 /* Assets.xcassets */,
-				246B3C28237D429C00A10B00 /* icons8-chevron-down-50.png */,
 				108B976823279678000C09F5 /* AppDelegate.swift */,
 				108B97712327967B000C09F5 /* LaunchScreen.storyboard */,
 				108B97742327967B000C09F5 /* Info.plist */,
@@ -301,7 +298,6 @@
 				108B97702327967B000C09F5 /* Assets.xcassets in Resources */,
 				108B976E23279678000C09F5 /* Main.storyboard in Resources */,
 				2489E78F2375880B004DB596 /* Calculator.storyboard in Resources */,
-				246B3C29237D429C00A10B00 /* icons8-chevron-down-50.png in Resources */,
 				0000F60D23754AD3003B2AF2 /* Insights.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
