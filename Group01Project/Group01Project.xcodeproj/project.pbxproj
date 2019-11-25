@@ -13,6 +13,7 @@
 		003782E923864B03003D3667 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003782E823864B03003D3667 /* TabBarController.swift */; };
 		00389FE523866F79003F737C /* RootInsightNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00389FE423866F79003F737C /* RootInsightNavigationController.swift */; };
 		00389FE723867109003F737C /* RootCalculatorNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00389FE623867109003F737C /* RootCalculatorNavigationController.swift */; };
+		00FBE7B2238B8D60002E3B92 /* Insight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FBE7B1238B8D60002E3B92 /* Insight.swift */; };
 		00FD97042373F79300294281 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FD97032373F79300294281 /* Router.swift */; };
 		00FD97082373F96A00294281 /* Storyboard+Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FD97072373F96A00294281 /* Storyboard+Create.swift */; };
 		00FD970A2373F9D000294281 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FD97092373F9D000294281 /* RootRouter.swift */; };
@@ -44,6 +45,7 @@
 		003782E823864B03003D3667 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		00389FE423866F79003F737C /* RootInsightNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootInsightNavigationController.swift; sourceTree = "<group>"; };
 		00389FE623867109003F737C /* RootCalculatorNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCalculatorNavigationController.swift; sourceTree = "<group>"; };
+		00FBE7B1238B8D60002E3B92 /* Insight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Insight.swift; sourceTree = "<group>"; };
 		00FD97032373F79300294281 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		00FD97072373F96A00294281 /* Storyboard+Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard+Create.swift"; sourceTree = "<group>"; };
 		00FD97092373F9D000294281 /* RootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				10A8CB8223798C2D0014B8A9 /* API */,
 				0000F607237547C1003B2AF2 /* TabBarItemContent.swift */,
 				10A8CB7F237971A80014B8A9 /* RestManager.swift */,
+				00FBE7B1238B8D60002E3B92 /* Insight.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				00FD971C2374120B00294281 /* RootNavigationController.swift in Sources */,
 				10E531E3237AB0560028F094 /* HKMAModel.swift in Sources */,
 				00FD970C2373FBDF00294281 /* BaseNavigationController.swift in Sources */,
+				00FBE7B2238B8D60002E3B92 /* Insight.swift in Sources */,
 				00FD97042373F79300294281 /* Router.swift in Sources */,
 				003782E923864B03003D3667 /* TabBarController.swift in Sources */,
 				2489E79123758B5C004DB596 /* CalculatorViewController.swift in Sources */,
