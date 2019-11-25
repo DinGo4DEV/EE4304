@@ -14,7 +14,7 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
     var selectedDollar: String?
     var toolbar = UIToolbar()
     var picker  = UIPickerView()
-    
+    var selectedIndex = 15
     //var dollarList = ["USD","","","","",""]
     
     
@@ -25,11 +25,14 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return tableData[0].currency.count
     }
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {return tableData[0].currency[row].name}
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return tableData[0].currency[row].name
+        
+    }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedDollar = tableData[0].currency[row].name// selected item
-        currecylabel.text = selectedDollar
+        //selectedDollar = tableData[0].currency[row].name // selected item
+        //currecylabel.text = selectedDollar
     }
     
     
@@ -47,6 +50,7 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
         
         toolbar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
         toolbar.barStyle = .default
+        currencypicker.isEnabled = false
         toolbar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
         self.view.addSubview(toolbar)
         
@@ -55,8 +59,15 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
     
     
     @objc func onDoneButtonTapped() {
+        selectedIndex = picker.selectedRow(inComponent: 0)
+        currecylabel.text =  tableData[0].currency[selectedIndex].name
+        tableData[0].currency.swapAt(15, selectedIndex)
+        tableData[1].currency.swapAt(15, selectedIndex)
+        ratetable.reloadData()
         toolbar.removeFromSuperview()
         picker.removeFromSuperview()
+        currencypicker.isEnabled = true
+        
     }
     
     
@@ -88,10 +99,15 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
         //        }
         
         cell.currency.text = tableData[0].currency[indexPath.row].name
-        cell.rate.text = String(format:"%.3f",tableData[0].currency[indexPath.row].rate!)
+        cell.rate.text = String(format:"%.3f",(tableData[0].currency[indexPath.row].rate!/tableData[0].currency[15].rate!))
         if (tableData[0].currency[indexPath.row].rate! > tableData[1].currency[indexPath.row].rate!){
             cell.arrow.image = UIImage(systemName: "arrowtriangle.up.fill")
             cell.arrow.tintColor = UIColor.green
+            
+        }
+        else if (tableData[0].currency[indexPath.row].rate! == tableData[1].currency[indexPath.row].rate!){
+            cell.arrow.image = UIImage(systemName: "minus")
+            cell.arrow.tintColor = UIColor.gray
             
         }
         else {
@@ -124,10 +140,10 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        selectedDollar = "HKD"
         
         
-        //  ratetable.reloadData()
+        
+        // ratetable.reloadData()
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -140,7 +156,10 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
         LoadDaily()
         LoadAverage()
         LoadEop()
+        
         tableData = temp.dailyrate
+        currecylabel.text =  tableData[0].currency[selectedIndex].name
+        
         ratetable.reloadData()
         
         // Do any additional setup after loading the view.
@@ -185,56 +204,58 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
     }
     
     func LoadAverage(){
-        let count = RestManager.HKMAMonthJson.result?.datasize as! Int
-        for i in 0...count-1 {
-            var dict1 = [Currency]()
-            dict1.append(Currency(name:"USD" ,rate: RestManager.HKMAMonthJson
-                .result?.records![i].usd ?? 0.0))
-            dict1.append(Currency(name:"GBP" ,rate: RestManager.HKMAMonthJson.result?.records![i].gbp ?? 0.0))
-            dict1.append(Currency(name:"JPY" , rate:RestManager.HKMAMonthJson.result?.records![i].jpy ?? 0.0))
-            dict1.append(Currency(name:"CAD" , rate:RestManager.HKMAMonthJson.result?.records![i].cad ?? 0.0))
-            dict1.append(Currency(name:"AUD" , rate:RestManager.HKMAMonthJson.result?.records![i].aud ?? 0.0))
-            dict1.append(Currency(name:"SGD", rate:RestManager.HKMAMonthJson.result?.records![i].sgd ?? 0.0))
-            dict1.append(Currency(name:"TWD" , rate:RestManager.HKMAMonthJson.result?.records![i].twd ?? 0.0))
-            dict1.append(Currency(name:"CHF" , rate:RestManager.HKMAMonthJson.result?.records![i].chf ?? 0.0))
-            dict1.append(Currency(name:"CNY" , rate:RestManager.HKMAMonthJson.result?.records![i].cny ?? 0.0))
-            dict1.append(Currency(name:"KRW" , rate:RestManager.HKMAMonthJson.result?.records![i].krw ?? 0.0))
-            dict1.append(Currency(name:"THB" , rate:RestManager.HKMAMonthJson.result?.records![i].thb ?? 0.0))
-            dict1.append(Currency(name:"MYR" , rate:RestManager.HKMAMonthJson.result?.records![i].myr ?? 0.0))
-            dict1.append(Currency(name:"EUR" , rate:RestManager.HKMAMonthJson.result?.records![i].eur ?? 0.0))
-            dict1.append(Currency(name:"PHP" , rate:RestManager.HKMAMonthJson.result?.records![i].php ?? 0.0))
-            dict1.append(Currency(name:"INR" , rate:RestManager.HKMAMonthJson.result?.records![i].inr ?? 0.0))
-            dict1.append(Currency(name:"HKD" , rate:1))
-            temp.monthrate.append(Date(date:RestManager.HKMAMonthJson.result?.records![i].end_of_month ?? "" , currency: dict1))
+        if (RestManager.HKMAMonthJson != nil) {
+            let count = RestManager.HKMAMonthJson.result?.datasize as! Int ?? 0
+            for i in 0...count-1 {
+                var dict1 = [Currency]()
+                dict1.append(Currency(name:"USD" ,rate: RestManager.HKMAMonthJson
+                    .result?.records![i].usd ?? 0.0))
+                dict1.append(Currency(name:"GBP" ,rate: RestManager.HKMAMonthJson.result?.records![i].gbp ?? 0.0))
+                dict1.append(Currency(name:"JPY" , rate:RestManager.HKMAMonthJson.result?.records![i].jpy ?? 0.0))
+                dict1.append(Currency(name:"CAD" , rate:RestManager.HKMAMonthJson.result?.records![i].cad ?? 0.0))
+                dict1.append(Currency(name:"AUD" , rate:RestManager.HKMAMonthJson.result?.records![i].aud ?? 0.0))
+                dict1.append(Currency(name:"SGD", rate:RestManager.HKMAMonthJson.result?.records![i].sgd ?? 0.0))
+                dict1.append(Currency(name:"TWD" , rate:RestManager.HKMAMonthJson.result?.records![i].twd ?? 0.0))
+                dict1.append(Currency(name:"CHF" , rate:RestManager.HKMAMonthJson.result?.records![i].chf ?? 0.0))
+                dict1.append(Currency(name:"CNY" , rate:RestManager.HKMAMonthJson.result?.records![i].cny ?? 0.0))
+                dict1.append(Currency(name:"KRW" , rate:RestManager.HKMAMonthJson.result?.records![i].krw ?? 0.0))
+                dict1.append(Currency(name:"THB" , rate:RestManager.HKMAMonthJson.result?.records![i].thb ?? 0.0))
+                dict1.append(Currency(name:"MYR" , rate:RestManager.HKMAMonthJson.result?.records![i].myr ?? 0.0))
+                dict1.append(Currency(name:"EUR" , rate:RestManager.HKMAMonthJson.result?.records![i].eur ?? 0.0))
+                dict1.append(Currency(name:"PHP" , rate:RestManager.HKMAMonthJson.result?.records![i].php ?? 0.0))
+                dict1.append(Currency(name:"INR" , rate:RestManager.HKMAMonthJson.result?.records![i].inr ?? 0.0))
+                dict1.append(Currency(name:"HKD" , rate:1))//
+                temp.monthrate.append(Date(date:RestManager.HKMAMonthJson.result?.records![i].end_of_month ?? "" , currency: dict1))
+            }
         }
-        
         
         
     }
     func LoadEop(){
-        let count = RestManager.HKMAEopJson.result?.datasize as! Int
-        for i in 0...count-1 {
-            var dict1 = [Currency]()
-            dict1.append(Currency(name:"USD" ,rate: RestManager.HKMAEopJson
-                .result?.records![i].usd ?? 0.0))
-            dict1.append(Currency(name:"GBP" ,rate: RestManager.HKMAEopJson.result?.records![i].gbp ?? 0.0))
-            dict1.append(Currency(name:"JPY" , rate:RestManager.HKMAEopJson.result?.records![i].jpy ?? 0.0))
-            dict1.append(Currency(name:"CAD" , rate:RestManager.HKMAEopJson.result?.records![i].cad ?? 0.0))
-            dict1.append(Currency(name:"AUD" , rate:RestManager.HKMAEopJson.result?.records![i].aud ?? 0.0))
-            dict1.append(Currency(name:"SGD", rate:RestManager.HKMAEopJson.result?.records![i].sgd ?? 0.0))
-            dict1.append(Currency(name:"TWD" , rate:RestManager.HKMAEopJson.result?.records![i].twd ?? 0.0))
-            dict1.append(Currency(name:"CHF" , rate:RestManager.HKMAEopJson.result?.records![i].chf ?? 0.0))
-            dict1.append(Currency(name:"CNY" , rate:RestManager.HKMAEopJson.result?.records![i].cny ?? 0.0))
-            dict1.append(Currency(name:"KRW" , rate:RestManager.HKMAEopJson.result?.records![i].krw ?? 0.0))
-            dict1.append(Currency(name:"THB" , rate:RestManager.HKMAEopJson.result?.records![i].thb ?? 0.0))
-            dict1.append(Currency(name:"MYR" , rate:RestManager.HKMAEopJson.result?.records![i].myr ?? 0.0))
-            dict1.append(Currency(name:"EUR" , rate:RestManager.HKMAEopJson.result?.records![i].eur ?? 0.0))
-            dict1.append(Currency(name:"PHP" , rate:RestManager.HKMAEopJson.result?.records![i].php ?? 0.0))
-            dict1.append(Currency(name:"INR" , rate:RestManager.HKMAEopJson.result?.records![i].inr ?? 0.0))
-            dict1.append(Currency(name:"HKD" , rate:1))
-            temp.eoprate.append(Date(date:RestManager.HKMAEopJson.result?.records![i].end_of_month ?? "" , currency: dict1))
+        if (RestManager.HKMAEopJson != nil) {
+            let count = RestManager.HKMAEopJson.result?.datasize as! Int ?? 0
+            for i in 0...count-1 {
+                var dict1 = [Currency]()
+                dict1.append(Currency(name:"USD" ,rate: RestManager.HKMAEopJson
+                    .result?.records![i].usd ?? 0.0))
+                dict1.append(Currency(name:"GBP" ,rate: RestManager.HKMAEopJson.result?.records![i].gbp ?? 0.0))
+                dict1.append(Currency(name:"JPY" , rate:RestManager.HKMAEopJson.result?.records![i].jpy ?? 0.0))
+                dict1.append(Currency(name:"CAD" , rate:RestManager.HKMAEopJson.result?.records![i].cad ?? 0.0))
+                dict1.append(Currency(name:"AUD" , rate:RestManager.HKMAEopJson.result?.records![i].aud ?? 0.0))
+                dict1.append(Currency(name:"SGD", rate:RestManager.HKMAEopJson.result?.records![i].sgd ?? 0.0))
+                dict1.append(Currency(name:"TWD" , rate:RestManager.HKMAEopJson.result?.records![i].twd ?? 0.0))
+                dict1.append(Currency(name:"CHF" , rate:RestManager.HKMAEopJson.result?.records![i].chf ?? 0.0))
+                dict1.append(Currency(name:"CNY" , rate:RestManager.HKMAEopJson.result?.records![i].cny ?? 0.0))
+                dict1.append(Currency(name:"KRW" , rate:RestManager.HKMAEopJson.result?.records![i].krw ?? 0.0))
+                dict1.append(Currency(name:"THB" , rate:RestManager.HKMAEopJson.result?.records![i].thb ?? 0.0))
+                dict1.append(Currency(name:"MYR" , rate:RestManager.HKMAEopJson.result?.records![i].myr ?? 0.0))
+                dict1.append(Currency(name:"EUR" , rate:RestManager.HKMAEopJson.result?.records![i].eur ?? 0.0))
+                dict1.append(Currency(name:"PHP" , rate:RestManager.HKMAEopJson.result?.records![i].php ?? 0.0))
+                dict1.append(Currency(name:"INR" , rate:RestManager.HKMAEopJson.result?.records![i].inr ?? 0.0))
+                dict1.append(Currency(name:"HKD" , rate:1))
+                temp.eoprate.append(Date(date:RestManager.HKMAEopJson.result?.records![i].end_of_month ?? "" , currency: dict1))
+            }
         }
-        
         
     }
     
@@ -256,7 +277,7 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
         switch sender.tag {
         case 1:
             //temp = UserProfileCache.get("rate")
-            print(RestManager.HKMARateJson.result?.datasize as! Int)
+            //print(RestManager.HKMARateJson.result?.datasize as! Int)
             tableData = temp.dailyrate
             ratetable.reloadData()
             

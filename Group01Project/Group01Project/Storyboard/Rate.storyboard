@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Rate View Controller-->
+        <!--Exchange Rate-->
         <scene sceneID="cHo-LZ-QGQ">
             <objects>
-                <viewController storyboardIdentifier="RateViewController" id="eCl-ib-vKZ" customClass="RateViewController" customModule="Group01Project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RateViewController" title="Exchange Rate" id="eCl-ib-vKZ" customClass="RateViewController" customModule="Group01Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1jH-3V-IEl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,8 +32,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fht-j0-dbH">
-                                                    <rect key="frame" x="226" y="20" width="62" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fht-j0-dbH">
+                                                    <rect key="frame" x="182" y="20" width="106" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="62" id="Wfg-PY-opI"/>
                                                     </constraints>
@@ -41,8 +41,9 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dJT-ta-xLM">
-                                                    <rect key="frame" x="296" y="0.0" width="61" height="60"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="minus" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dJT-ta-xLM">
+                                                    <rect key="frame" x="311" y="9" width="46" height="44"/>
+                                                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="61" id="I9Z-y9-95E"/>
                                                     </constraints>
@@ -214,5 +215,6 @@
     </scenes>
     <resources>
         <image name="arrowtriangle.down.fill" catalog="system" width="64" height="62"/>
+        <image name="minus" catalog="system" width="64" height="12"/>
     </resources>
 </document>
