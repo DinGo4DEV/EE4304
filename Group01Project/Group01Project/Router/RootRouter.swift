@@ -15,10 +15,10 @@ class RootRouter: Router{
     
     func showStart(animated: Bool, complete: (() -> Void)? = nil ){
         guard
-          let homeViewController = UIStoryboard.storyboard(.main).instantiateViewController(HomeViewController.self) else {
-            return
+            let homeViewController = UIStoryboard.storyboard(.main).instantiateViewController(HomeViewController.self) else {
+                return
         }
-//        let homeNavigationController = BaseNavigationController.init(rootViewController: homeViewController)
+        //        let homeNavigationController = BaseNavigationController.init(rootViewController: homeViewController)
         homeViewController.router = self
         homeViewController.modalPresentationStyle = .fullScreen
         navigationController?.pushViewController(homeViewController, animated: false)
@@ -27,34 +27,34 @@ class RootRouter: Router{
     func showTest(){
         guard
             let testViewController = UIStoryboard.storyboard(.main).instantiateViewController(TestViewController.self) else {
-              return
-          }
-          
-          testViewController.router = self
-          
-          navigationController?.pushViewController(testViewController, animated: true)
+                return
+        }
+        
+        testViewController.router = self
+        
+        navigationController?.pushViewController(testViewController, animated: true)
     }
-//    func showHome(){
-//           guard
-//               let homeViewController = UIStoryboard.storyboard(.main).instantiateViewController(HomeViewController.self) else {
-//                 return
-//             }
-////             homeViewController.modalPresentationStyle = .fullScreen
-//             homeViewController.router = self
-//
-//        navigationController?.popViewController(animated: true)
-//       }
+    //    func showHome(){
+    //           guard
+    //               let homeViewController = UIStoryboard.storyboard(.main).instantiateViewController(HomeViewController.self) else {
+    //                 return
+    //             }
+    ////             homeViewController.modalPresentationStyle = .fullScreen
+    //             homeViewController.router = self
+    //
+    //        navigationController?.popViewController(animated: true)
+    //       }
     
     func showInsights(){
         guard
             let insightViewController = UIStoryboard.storyboard(.insights).instantiateViewController(InsightsItemViewController.self) else {
-              return
-          }
-   
-
-          insightViewController.router = self
+                return
+        }
+        
+        
+        insightViewController.router = self
         navigationController?.pushViewController(insightViewController, animated: false)
-
+        
     }
     
     func showCalculators(){
@@ -62,7 +62,9 @@ class RootRouter: Router{
             let CalculatorViewController = UIStoryboard.storyboard(.calculator).instantiateViewController(CalculatorViewController.self) else {
                 return
         }
+        
         CalculatorViewController.router = self
+        
         navigationController?.pushViewController(CalculatorViewController, animated: true)
     }
     
@@ -75,4 +77,3 @@ class RootRouter: Router{
         navigationController?.pushViewController(StoreViewController, animated: true)
     }
 }
-

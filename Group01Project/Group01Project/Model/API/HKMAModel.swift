@@ -40,15 +40,15 @@ struct HKMA{
     
     struct fxRecords:Codable {
         var end_of_day: String
-        var usd: Double
-        var gbp: Double
-        var jpy: Double
-        var cad: Double
-        var aud: Double
+        var usd: Double?
+        var gbp: Double?
+        var jpy: Double?
+        var cad: Double?
+        var aud: Double?
         var sgd: Double?
-        var twd: Double
+        var twd: Double?
         var chf: Double?
-        var cny: Double
+        var cny: Double?
         var krw: Double?
         var thb: Double?
         var myr: Double?
