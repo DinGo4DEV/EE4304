@@ -192,6 +192,7 @@
 				00FBE7B1238B8D60002E3B92 /* Insight.swift */,
 				00FBE7B3238B96FA002E3B92 /* SyncData.swift */,
 				109A1C3B238BD0B1009E5DC4 /* store.swift */,
+				89255E40238C2A9B00B325BD /* Rate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -245,7 +246,6 @@
 				10A8CB8323798C470014B8A9 /* HengSengModel.swift */,
 				10E531E2237AB0560028F094 /* HKMAModel.swift */,
 				10E531E4237ADA410028F094 /* HSBCModel.swift */,
-				89255E40238C2A9B00B325BD /* Rate.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";

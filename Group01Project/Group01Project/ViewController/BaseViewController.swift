@@ -12,13 +12,13 @@ class BaseViewController: UIViewController {
     var clearColorNavigationBar: Bool = false
     var hideNavigationBarShadow: Bool = false
     var router: Router?
-
+    
     var apiManager = RestManager.init()
     
     
-
+    
     @IBOutlet var loadingIndicator: UIActivityIndicatorView?
-
+    
     
     override func loadView() {
         super.loadView()
@@ -32,7 +32,7 @@ class BaseViewController: UIViewController {
                             self!.stopLoading()
                         }
                     }
-                        
+                    
                 }
             }
             
@@ -66,9 +66,20 @@ class BaseViewController: UIViewController {
                 }
             }
             if(RestManager.HKMAEopJson == nil){
+                self.apiManager.request_month_HKMA(){
+                    [weak self] (result) in
+                    RestManager.HKMAMonthJson = result as? HKMA.MonthJson
+                    if(self!.isLoading()){
+                        if(self!.checkJsonData() { () in}){
+                            self!.stopLoading()
+                        }
+                    }
+                }
+            }
+            if(RestManager.HKMAEopJson == nil){
                 self.apiManager.request_eop_HKMA(){
                     [weak self] (result) in
-                    RestManager.HKMAEopJson = result as? HKMA.EopJson
+                    RestManager.HKMAEopJson = result as? HKMA.MonthJson
                     if(self!.isLoading()){
                         if(self!.checkJsonData() { () in}){
                             self!.stopLoading()
@@ -82,7 +93,7 @@ class BaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         navigationItem.leftItemsSupplementBackButton = true
         // Do any additional setup after loading the view.
         loadingIndicator = UIActivityIndicatorView(style: .whiteLarge)
@@ -92,7 +103,7 @@ class BaseViewController: UIViewController {
                 startLoading()
             }
         }
-//        self.view.addSubview(loadingIndicator!)
+        //        self.view.addSubview(loadingIndicator!)
     }
     
     
@@ -129,32 +140,32 @@ class BaseViewController: UIViewController {
         aView?.center = self.view.center
         //Add AutoLayoutConfig to self
         NSLayoutConstraint.activate([leading, trailing, top, bottom])
-       loadingIndicator?.startAnimating()
-       loadingIndicator?.isHidden = false
+        loadingIndicator?.startAnimating()
+        loadingIndicator?.isHidden = false
         BaseViewController.loaded = true
-     }
-
-
-     func stopLoading() {
-//        UI View need to be called on Main thread
+    }
+    
+    
+    func stopLoading() {
+        //        UI View need to be called on Main thread
         DispatchQueue.main.async {
             self.loadingIndicator?.isHidden = true
             self.aView?.removeFromSuperview()
             BaseViewController.loaded = false
         }
         
-     }
-
+    }
     
     
-     func isLoading() -> Bool {
+    
+    func isLoading() -> Bool {
         //        UI View need to be called on Main thread
-//        DispatchQueue.main.async {
-//            bool = !(self.loadingIndicator?.isHidden ?? true)
-//        }
+        //        DispatchQueue.main.async {
+        //            bool = !(self.loadingIndicator?.isHidden ?? true)
+        //        }
         return BaseViewController.loaded
-     }
+    }
     
-   
+    
 }
 

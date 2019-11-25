@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -153,20 +152,55 @@
                                     <constraint firstItem="TKk-On-OTD" firstAttribute="leading" secondItem="wWP-uD-6hn" secondAttribute="trailing" constant="8" id="z1l-dK-0qy"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are using" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tjo-jI-E2r">
+                                <rect key="frame" x="79" y="123" width="105" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="105" id="e51-K5-5kb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLR-0m-m11">
+                                <rect key="frame" x="192" y="123" width="42" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VNM-3f-ei5">
+                                <rect key="frame" x="192" y="123" width="67" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="67" id="RbN-cq-UAX"/>
+                                </constraints>
+                                <state key="normal" image="arrowtriangle.down.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="currecyonlclick:" destination="eCl-ib-vKZ" eventType="touchUpInside" id="bJl-ZX-6XH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="HLR-0m-m11" firstAttribute="top" secondItem="ztA-pj-t9H" secondAttribute="bottom" constant="20" id="5YD-hU-RXn"/>
+                            <constraint firstItem="VNM-3f-ei5" firstAttribute="top" secondItem="ztA-pj-t9H" secondAttribute="bottom" constant="20" id="6bG-AD-q70"/>
+                            <constraint firstItem="Tjo-jI-E2r" firstAttribute="baseline" secondItem="HLR-0m-m11" secondAttribute="baseline" id="71o-Br-2L0"/>
                             <constraint firstItem="ztA-pj-t9H" firstAttribute="leading" secondItem="Bw9-hs-bON" secondAttribute="leading" id="ALc-zQ-CBR"/>
+                            <constraint firstItem="Tjo-jI-E2r" firstAttribute="leading" secondItem="1jH-3V-IEl" secondAttribute="leadingMargin" constant="63" id="BqP-YG-DgV"/>
+                            <constraint firstItem="VNM-3f-ei5" firstAttribute="leading" secondItem="HLR-0m-m11" secondAttribute="leading" id="CQD-MH-4Ku"/>
                             <constraint firstItem="ztA-pj-t9H" firstAttribute="trailing" secondItem="Bw9-hs-bON" secondAttribute="trailing" id="Omi-bl-ECk"/>
                             <constraint firstItem="ztA-pj-t9H" firstAttribute="leading" secondItem="jSU-MF-Bhl" secondAttribute="leading" id="WIN-aJ-7vx"/>
+                            <constraint firstItem="VNM-3f-ei5" firstAttribute="centerY" secondItem="HLR-0m-m11" secondAttribute="centerY" id="dsJ-k4-Zlx"/>
                             <constraint firstItem="ztA-pj-t9H" firstAttribute="top" secondItem="jSU-MF-Bhl" secondAttribute="top" constant="43" id="gPN-5e-ZNH"/>
                             <constraint firstItem="ztA-pj-t9H" firstAttribute="centerX" secondItem="1jH-3V-IEl" secondAttribute="centerX" id="jbM-RW-O0L"/>
+                            <constraint firstItem="VNM-3f-ei5" firstAttribute="leading" secondItem="Tjo-jI-E2r" secondAttribute="trailing" constant="8" id="nrS-PY-MrA"/>
                             <constraint firstItem="Bw9-hs-bON" firstAttribute="bottom" secondItem="jSU-MF-Bhl" secondAttribute="bottom" id="pUS-Dv-gr7"/>
                             <constraint firstItem="Bw9-hs-bON" firstAttribute="top" secondItem="ztA-pj-t9H" secondAttribute="bottom" constant="54" id="sEi-cA-DKQ"/>
+                            <constraint firstItem="Tjo-jI-E2r" firstAttribute="top" secondItem="ztA-pj-t9H" secondAttribute="bottom" constant="20" id="srO-WC-OyE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jSU-MF-Bhl"/>
                     </view>
                     <connections>
+                        <outlet property="currecylabel" destination="HLR-0m-m11" id="1BI-ai-U2z"/>
+                        <outlet property="currencypicker" destination="VNM-3f-ei5" id="VFG-aB-brZ"/>
                         <outlet property="daybutton" destination="wWP-uD-6hn" id="lkt-sT-6bQ"/>
                         <outlet property="eopbutton" destination="42J-BO-q3B" id="51i-EP-awh"/>
                         <outlet property="monthbutton" destination="TKk-On-OTD" id="rUd-G1-oZp"/>
@@ -178,4 +212,7 @@
             <point key="canvasLocation" x="21.600000000000001" y="-31.03448275862069"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="arrowtriangle.down.fill" catalog="system" width="64" height="62"/>
+    </resources>
 </document>

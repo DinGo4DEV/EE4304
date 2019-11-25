@@ -12,7 +12,8 @@ struct HKMA{
     
     enum URL:String {
         case FxChangeURL = "https://api.hkma.gov.hk/public/market-data-and-statistics/monthly-statistical-bulletin/er-ir/er-eeri-daily"
-        case EopURL = "https://api.hkma.gov.hk/public/market-data-and-statistics/monthly-statistical-bulletin/er-ir/hkd-fer-endperiod"
+        case EopURL = "https://api.hkma.gov.hk/public/market-data-and-statistics/monthly-statistical-bulletin/er-ir/er-eeri-periodaverage"
+        case MonthURL = "https://api.hkma.gov.hk/public/market-data-and-statistics/monthly-statistical-bulletin/er-ir/er-eeri-endperiod"
     }
     
     //Params: use += to add the value to parmas
@@ -28,9 +29,9 @@ struct HKMA{
         var result:fxRateResult?
     }
     
-    struct EopJson:Codable{
+    struct MonthJson:Codable{
         var header : header
-        var result : eopResult?
+        var result : monthResult?
     }
     
     struct header:Codable{
@@ -44,20 +45,33 @@ struct HKMA{
         var records: [fxRecords]?
     }
     
-    struct eopResult:Codable{
+    struct monthResult:Codable{
         var datasize:Int
-        var records: [eopRecords]?
+        var records: [monthRecords]?
     }
     
-    struct eopRecords:Codable{
-        var end_of_day: String
-        var hkd_fer_spot: Double?
-        var hkd_fer_1w: Double?
-        var hkd_fer_1m: Double?
-        var hkd_fer_3m: Double?
-        var hkd_fer_6m: Double?
-        var hkd_fer_9m: Double?
-        var hkd_fer_12m: Double?
+    struct monthRecords:Codable{
+        var end_of_month: String
+        var usd: Double?
+        var gbp: Double?
+        var jpy: Double?
+        var cad: Double?
+        var aud: Double?
+        var sgd: Double?
+        var twd: Double?
+        var chf: Double?
+        var cny: Double?
+        var krw: Double?
+        var thb: Double?
+        var myr: Double?
+        var dem: Double?
+        var nlg: Double?
+        var bef: Double?
+        var frf: Double?
+        var itl: Double?
+        var eur: Double?
+        var php: Double?
+        var inr: Double?
     }
     
     struct fxRecords:Codable {
@@ -82,16 +96,16 @@ struct HKMA{
         var eur: Double?
         var php: Double?
         var inr: Double?
-//        var special_drawing_rights: Double?
-//        var neeri_1983_trade_wgt: Double?
-//        var neeri_1983_import_wgt: Double?
-//        var neeri_1983_export_wgt: Double?
-//        var neeri_2000_trade_wgt: Double?
-//        var neeri_2000_import_wgt: Double?
-//        var neeri_2000_export_wgt: Double?
-//        var neeri_2010_trade_wgt: Double?
-//        var neeri_2010_import_wgt: Double?
-//        var neeri_2010_export_wgt: Double?
+        //        var special_drawing_rights: Double?
+        //        var neeri_1983_trade_wgt: Double?
+        //        var neeri_1983_import_wgt: Double?
+        //        var neeri_1983_export_wgt: Double?
+        //        var neeri_2000_trade_wgt: Double?
+        //        var neeri_2000_import_wgt: Double?
+        //        var neeri_2000_export_wgt: Double?
+        //        var neeri_2010_trade_wgt: Double?
+        //        var neeri_2010_import_wgt: Double?
+        //        var neeri_2010_export_wgt: Double?
     }
     
     enum FxRateJsonKeys: String, CodingKey{

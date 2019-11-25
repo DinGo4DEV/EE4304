@@ -2,7 +2,7 @@
 //  RateViewController.swift
 //  Group01Project
 //
-//  Created by AnimaeTech-MacMini2018 on 25/11/2019.
+//  Created by Vincent on 25/11/2019.
 //  Copyright © 2019 Stanley. All rights reserved.
 //
 
@@ -14,6 +14,7 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
     var selectedDollar: String?
     var toolbar = UIToolbar()
     var picker  = UIPickerView()
+    
     //var dollarList = ["USD","","","","",""]
     
     
@@ -109,13 +110,6 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
-        print(RestManager.HKMARateJson.result?.datasize as! Int)
-        
-        
-        
-        
-        
-        
         daybutton.backgroundColor = UIColor.gray
         monthbutton.backgroundColor = UIColor.white
         eopbutton.backgroundColor = UIColor.white
@@ -130,7 +124,7 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        selectedDollar = "HKD"
         
         
         //  ratetable.reloadData()
@@ -143,7 +137,10 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
         //tableData = temp.dailyrate
         //  print(temp.dailyrate.count)
         
-        
+        LoadDaily()
+        LoadAverage()
+        LoadEop()
+        tableData = temp.dailyrate
         ratetable.reloadData()
         
         // Do any additional setup after loading the view.
@@ -184,10 +181,62 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
             dict1.append(Currency(name:"HKD" , rate:1))
             temp.dailyrate.append(Date(date:RestManager.HKMARateJson.result?.records![i].end_of_day ?? "" , currency: dict1))
         }
-        tableData = temp.dailyrate
+        
     }
     
-    
+    func LoadAverage(){
+        let count = RestManager.HKMAMonthJson.result?.datasize as! Int
+        for i in 0...count-1 {
+            var dict1 = [Currency]()
+            dict1.append(Currency(name:"USD" ,rate: RestManager.HKMAMonthJson
+                .result?.records![i].usd ?? 0.0))
+            dict1.append(Currency(name:"GBP" ,rate: RestManager.HKMAMonthJson.result?.records![i].gbp ?? 0.0))
+            dict1.append(Currency(name:"JPY" , rate:RestManager.HKMAMonthJson.result?.records![i].jpy ?? 0.0))
+            dict1.append(Currency(name:"CAD" , rate:RestManager.HKMAMonthJson.result?.records![i].cad ?? 0.0))
+            dict1.append(Currency(name:"AUD" , rate:RestManager.HKMAMonthJson.result?.records![i].aud ?? 0.0))
+            dict1.append(Currency(name:"SGD", rate:RestManager.HKMAMonthJson.result?.records![i].sgd ?? 0.0))
+            dict1.append(Currency(name:"TWD" , rate:RestManager.HKMAMonthJson.result?.records![i].twd ?? 0.0))
+            dict1.append(Currency(name:"CHF" , rate:RestManager.HKMAMonthJson.result?.records![i].chf ?? 0.0))
+            dict1.append(Currency(name:"CNY" , rate:RestManager.HKMAMonthJson.result?.records![i].cny ?? 0.0))
+            dict1.append(Currency(name:"KRW" , rate:RestManager.HKMAMonthJson.result?.records![i].krw ?? 0.0))
+            dict1.append(Currency(name:"THB" , rate:RestManager.HKMAMonthJson.result?.records![i].thb ?? 0.0))
+            dict1.append(Currency(name:"MYR" , rate:RestManager.HKMAMonthJson.result?.records![i].myr ?? 0.0))
+            dict1.append(Currency(name:"EUR" , rate:RestManager.HKMAMonthJson.result?.records![i].eur ?? 0.0))
+            dict1.append(Currency(name:"PHP" , rate:RestManager.HKMAMonthJson.result?.records![i].php ?? 0.0))
+            dict1.append(Currency(name:"INR" , rate:RestManager.HKMAMonthJson.result?.records![i].inr ?? 0.0))
+            dict1.append(Currency(name:"HKD" , rate:1))
+            temp.monthrate.append(Date(date:RestManager.HKMAMonthJson.result?.records![i].end_of_month ?? "" , currency: dict1))
+        }
+        
+        
+        
+    }
+    func LoadEop(){
+        let count = RestManager.HKMAEopJson.result?.datasize as! Int
+        for i in 0...count-1 {
+            var dict1 = [Currency]()
+            dict1.append(Currency(name:"USD" ,rate: RestManager.HKMAEopJson
+                .result?.records![i].usd ?? 0.0))
+            dict1.append(Currency(name:"GBP" ,rate: RestManager.HKMAEopJson.result?.records![i].gbp ?? 0.0))
+            dict1.append(Currency(name:"JPY" , rate:RestManager.HKMAEopJson.result?.records![i].jpy ?? 0.0))
+            dict1.append(Currency(name:"CAD" , rate:RestManager.HKMAEopJson.result?.records![i].cad ?? 0.0))
+            dict1.append(Currency(name:"AUD" , rate:RestManager.HKMAEopJson.result?.records![i].aud ?? 0.0))
+            dict1.append(Currency(name:"SGD", rate:RestManager.HKMAEopJson.result?.records![i].sgd ?? 0.0))
+            dict1.append(Currency(name:"TWD" , rate:RestManager.HKMAEopJson.result?.records![i].twd ?? 0.0))
+            dict1.append(Currency(name:"CHF" , rate:RestManager.HKMAEopJson.result?.records![i].chf ?? 0.0))
+            dict1.append(Currency(name:"CNY" , rate:RestManager.HKMAEopJson.result?.records![i].cny ?? 0.0))
+            dict1.append(Currency(name:"KRW" , rate:RestManager.HKMAEopJson.result?.records![i].krw ?? 0.0))
+            dict1.append(Currency(name:"THB" , rate:RestManager.HKMAEopJson.result?.records![i].thb ?? 0.0))
+            dict1.append(Currency(name:"MYR" , rate:RestManager.HKMAEopJson.result?.records![i].myr ?? 0.0))
+            dict1.append(Currency(name:"EUR" , rate:RestManager.HKMAEopJson.result?.records![i].eur ?? 0.0))
+            dict1.append(Currency(name:"PHP" , rate:RestManager.HKMAEopJson.result?.records![i].php ?? 0.0))
+            dict1.append(Currency(name:"INR" , rate:RestManager.HKMAEopJson.result?.records![i].inr ?? 0.0))
+            dict1.append(Currency(name:"HKD" , rate:1))
+            temp.eoprate.append(Date(date:RestManager.HKMAEopJson.result?.records![i].end_of_month ?? "" , currency: dict1))
+        }
+        
+        
+    }
     
     
     // UI
