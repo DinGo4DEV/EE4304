@@ -14,6 +14,8 @@ import CoreLocation
 class StoreViewController: BaseViewController,CLLocationManagerDelegate {
     
     @IBOutlet weak var viewForMap: UIView!
+    @IBOutlet weak var viewForButton: UIView!
+    @IBOutlet weak var place: UITableView!
     
     let locationManager = CLLocationManager()
     var rootRouter: RootRouter? {
@@ -23,6 +25,7 @@ class StoreViewController: BaseViewController,CLLocationManagerDelegate {
     var mapView:GMSMapView!
     var currentLocation: CLLocation?
     var placesClient: GMSPlacesClient!
+    var PlaceList = ["Central and Western","Eastern","Southern","Wan Chai","Sham Shui Po","Kowloon City","Kwun Tong","Wong Tai Sin","Yau Tsim Mong","Kwai Tsing","North","Sai Kung","Sha Tin","Tai Po","Tsuen Wan","Tuen Mun","Yuen Long","Islands"]
     
     
     override func viewDidLoad() {
@@ -50,11 +53,36 @@ class StoreViewController: BaseViewController,CLLocationManagerDelegate {
         
         // Do any additional setup after loading the view.
     }
+    @IBAction func buttonTapped(_ sender: UIButton){
+        print("button tapped")
+    }
     
     override func loadView() {
         // Create a GMSCameraPosition that tells the map to display the
         // coordinate 22.3700556, 114.1535941 at zoom level 6.
         super.loadView()
+        //for button
+        let button = UIButton()
+        button.frame = self.viewForButton.frame
+
+        // Set the font of the button text
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18.0)
+
+        // The default text of the button
+        button.setTitle("Places", for: .normal)
+
+        // The text that will appear when the button is tapped
+        button.setTitle("I am being tapped", for: .highlighted)
+        
+        // The default color of the button text
+        button.setTitleColor(UIColor.black, for: .normal)
+
+        // The color of the button text when the button is tapped
+        button.setTitleColor(UIColor.black, for: .highlighted)
+        
+        self.view.addSubview(button)
+    
+        //for map
         let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
         mapView = GMSMapView.map(withFrame: self.viewForMap.frame/*CGRect.zero*/, camera: camera)
         mapView.isMyLocationEnabled = true
@@ -81,7 +109,18 @@ class StoreViewController: BaseViewController,CLLocationManagerDelegate {
     
 }
 
-extension StoreViewController {
+
+extension StoreViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return PlaceList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell" , for: indexPath)
+        cell.textLabel?.text = PlaceList[indexPath.row]
+        return cell
+    }
+    
     
     // Handle incoming location events.
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
