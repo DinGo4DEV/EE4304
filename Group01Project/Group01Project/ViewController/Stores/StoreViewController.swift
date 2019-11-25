@@ -55,13 +55,12 @@ class StoreViewController: BaseViewController,CLLocationManagerDelegate {
         super.loadView()
         let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        //        mapView.isMyLocationEnabled = true
-        //        if let mylocation = mapView.myLocation {
-        //          print("User's location: \(mylocation)")
-        //        } else {
-        //          print("User's location is unknown")
-        //        }
+        mapView.isMyLocationEnabled = true
+        mapView.settings.myLocationButton = true
+
+//        mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 50)
         view = mapView
+        
         
         // Creates a marker in the center of the map.
         let marker = GMSMarker()
