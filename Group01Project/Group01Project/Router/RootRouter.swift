@@ -62,7 +62,8 @@ class RootRouter: Router{
             let CalculatorViewController = UIStoryboard.storyboard(.calculator).instantiateViewController(CalculatorViewController.self) else {
                 return
         }
+        
         CalculatorViewController.router = self
+        
         navigationController?.pushViewController(CalculatorViewController, animated: true)
-    }
-}
+    }}

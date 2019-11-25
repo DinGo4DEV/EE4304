@@ -44,7 +44,7 @@ extension UIButton
         
     }
 }
-class CalculatorViewController: BaseViewController, UIPickerViewDataSource,UIPickerViewDelegate  {
+class CalculatorViewController: BaseViewController, UITabBarDelegate, UIPickerViewDataSource,UIPickerViewDelegate,UITextViewDelegate  {
     var rootRouter: RootRouter? {
         return router as? RootRouter
     }
@@ -52,14 +52,125 @@ class CalculatorViewController: BaseViewController, UIPickerViewDataSource,UIPic
     var picker  = UIPickerView()
     var outtoolBar = UIToolbar()
     var outpicker  = UIPickerView()
-    
-    let cur : [String] = ["USD","GBP","JPY","CNY","CAD","AUD","SGD","TWD","CHF","THB","MYR","FRF"]
-    let cur2 = ["USD","GBP","JPY","CNY","CAD","AUD","SGD","TWD","CHF","THB","MYR","FRF"]
+    var firstUnit : String = ""
+    var secondUnit : String = ""
+    var inputrate : Double = 0.0
+    var outputrate : Double = 0.0
+    let cur : [String] = ["USD","GBP","JPY","CAD","AUD","SGD","TWD","CHF","CNY","KRW","THB","MYR","EUR","PHP","INR","HKD"]
+    let cur2 = ["USD","GBP","JPY","CAD","AUD","SGD","TWD","CHF","CNY","KRW","THB","MYR","EUR","PHP","INR","HKD"]
     @IBOutlet var select: UIButton!
     @IBOutlet var selectout: UIButton!
-
+    @IBOutlet var output: UILabel!
+    @IBOutlet var input: UITextField!
+    
+    override func loadView() {
+        super.loadView()
+        if(RestManager.HKMARateJson == nil){
+            var parma:HKMA.params = HKMA.params()
+            apiManager.request_fxChange_HKMA(params: parma){
+                [weak self](result) in
+                RestManager.HKMARateJson = result as? HKMA.FxRateJson
+            }
+        }
+    }
+    
+    @IBAction func calculate(_sender: UIButton){
+        print(RestManager.HKMARateJson.result!.records![0])
+        if var amount = Double(input.text!) {
+            var rate : Double = 0
+        if firstUnit != "" && secondUnit != ""{
+            switch firstUnit{
+            case "USD":
+                 amount = amount * RestManager.HKMARateJson.result!.records![0].usd!
+            case "GBP":
+                amount = amount * RestManager.HKMARateJson.result!.records![0].gbp!
+            case "JPY":
+                amount = amount * RestManager.HKMARateJson.result!.records![0].jpy!
+            case "SGD":
+                amount = amount * RestManager.HKMARateJson.result!.records![0].sgd!
+            case "AUD":
+                amount = amount * RestManager.HKMARateJson.result!.records![0].aud!
+            case "TWD":
+                amount = amount * RestManager.HKMARateJson.result!.records![0].twd!
+            case "CAD":
+                amount = amount * RestManager.HKMARateJson.result!.records![0].cad!
+            case "CHF":
+                amount = amount * RestManager.HKMARateJson.result!.records![0].chf!
+            case "CNY":
+                amount = amount * RestManager.HKMARateJson.result!.records![0].cny!
+            case "KRW":
+                amount = amount * RestManager.HKMARateJson.result!.records![0].krw!
+            case "THB":
+                amount = amount * RestManager.HKMARateJson.result!.records![0].thb!
+            case "MYR":
+                amount = amount * RestManager.HKMARateJson.result!.records![0].myr!
+            case "EUR":
+                amount = amount * RestManager.HKMARateJson.result!.records![0].eur!
+            case "PHP":
+                amount = amount * RestManager.HKMARateJson.result!.records![0].php!
+            case "INR":
+                amount = amount * RestManager.HKMARateJson.result!.records![0].inr!
+            case "HKD":
+                amount = amount * 1
+            default:
+                amount = 0
+            }
+            switch secondUnit{
+            case "USD":
+                amount = amount / RestManager.HKMARateJson.result!.records![0].usd!
+            case "GBP":
+                amount = amount / RestManager.HKMARateJson.result!.records![0].gbp!
+            case "JPY":
+                amount = amount / RestManager.HKMARateJson.result!.records![0].jpy!
+            case "SGD":
+                amount = amount / RestManager.HKMARateJson.result!.records![0].sgd!
+            case "AUD":
+                amount = amount / RestManager.HKMARateJson.result!.records![0].aud!
+            case "TWD":
+                amount = amount / RestManager.HKMARateJson.result!.records![0].twd!
+            case "CAD":
+                amount = amount / RestManager.HKMARateJson.result!.records![0].cad!
+            case "CHF":
+                amount = amount / RestManager.HKMARateJson.result!.records![0].chf!
+            case "CNY":
+                amount = amount / RestManager.HKMARateJson.result!.records![0].cny!
+            case "KRW":
+                amount = amount / RestManager.HKMARateJson.result!.records![0].krw!
+            case "THB":
+                amount = amount / RestManager.HKMARateJson.result!.records![0].thb!
+            case "MYR":
+                amount = amount / RestManager.HKMARateJson.result!.records![0].myr!
+            case "EUR":
+                amount = amount / RestManager.HKMARateJson.result!.records![0].eur!
+            case "PHP":
+                amount = amount / RestManager.HKMARateJson.result!.records![0].php!
+            case "INR":
+                amount = amount / RestManager.HKMARateJson.result!.records![0].inr!
+            case "HKD":
+                amount = amount * 1
+            default:
+                amount = 0
+            }
+            print(amount)
+        }
+            let new = Double( round(1000 * amount)/1000 )
+            var b: String = String(new)
+            output.text! = b
+    }
+        else {
+            let alert = UIAlertController(title: "Data Validation Error", message: "Input cannot empty", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Close", style: .default, handler: { (action: UIAlertAction!) in
+            }))
+            present(alert, animated: true , completion: nil)
+        }
+        input.resignFirstResponder()
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.mainTabBar?.delegate = self
         picker.delegate = self
         picker.dataSource = self
         outpicker.delegate = self
@@ -105,6 +216,7 @@ class CalculatorViewController: BaseViewController, UIPickerViewDataSource,UIPic
         outtoolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
         outtoolBar.barStyle = UIBarStyle.default
         outtoolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
+        
         self.view.addSubview(outtoolBar)
     }
     
@@ -139,12 +251,33 @@ class CalculatorViewController: BaseViewController, UIPickerViewDataSource,UIPic
         if pickerView == picker{
             select.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
             select.setTitle(cur[row], for: .normal)
+            firstUnit = cur[row]
         }
         else{
             selectout.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
             selectout.setTitle(cur2[row], for: .normal)
+            secondUnit = cur2[row]
         }
         
     }
+    
 
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        switch(tabBar.selectedItem?.title){
+        case "Insights":
+            self.dismiss(animated: false, completion: nil)
+            rootRouter?.showInsights()
+            break
+        case "Home":
+            self.dismiss(animated: false, completion: nil)
+            rootRouter?.showHome()
+        case "Calculator":
+            self.dismiss(animated: false, completion: nil)
+            rootRouter?.showCalculators()
+        case .none:
+            break
+        case .some(_):
+            break
+        }
+    }
 }
