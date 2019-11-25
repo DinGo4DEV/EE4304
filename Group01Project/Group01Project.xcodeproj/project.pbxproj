@@ -33,6 +33,7 @@
 		109A1C36238B906C009E5DC4 /* Stores.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 109A1C35238B906C009E5DC4 /* Stores.storyboard */; };
 		109A1C38238B9166009E5DC4 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109A1C37238B9166009E5DC4 /* StoreViewController.swift */; };
 		109A1C3A238B92BA009E5DC4 /* RootStoreNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109A1C39238B92BA009E5DC4 /* RootStoreNavigationController.swift */; };
+		109A1C3C238BD0B1009E5DC4 /* store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109A1C3B238BD0B1009E5DC4 /* store.swift */; };
 		10A8CB80237971A80014B8A9 /* RestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8CB7F237971A80014B8A9 /* RestManager.swift */; };
 		10A8CB8423798C480014B8A9 /* HengSengModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8CB8323798C470014B8A9 /* HengSengModel.swift */; };
 		10E531E3237AB0560028F094 /* HKMAModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E531E2237AB0560028F094 /* HKMAModel.swift */; };
@@ -71,6 +72,7 @@
 		109A1C35238B906C009E5DC4 /* Stores.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Stores.storyboard; sourceTree = "<group>"; };
 		109A1C37238B9166009E5DC4 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StoreViewController.swift; path = Group01Project/ViewController/Stores/StoreViewController.swift; sourceTree = SOURCE_ROOT; };
 		109A1C39238B92BA009E5DC4 /* RootStoreNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootStoreNavigationController.swift; sourceTree = "<group>"; };
+		109A1C3B238BD0B1009E5DC4 /* store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = store.swift; sourceTree = "<group>"; };
 		10A8CB7F237971A80014B8A9 /* RestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestManager.swift; sourceTree = "<group>"; };
 		10A8CB8323798C470014B8A9 /* HengSengModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HengSengModel.swift; sourceTree = "<group>"; };
 		10E531E2237AB0560028F094 /* HKMAModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKMAModel.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				10A8CB7F237971A80014B8A9 /* RestManager.swift */,
 				00FBE7B1238B8D60002E3B92 /* Insight.swift */,
 				00FBE7B3238B96FA002E3B92 /* SyncData.swift */,
+				109A1C3B238BD0B1009E5DC4 /* store.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				00389FE523866F79003F737C /* RootInsightNavigationController.swift in Sources */,
 				108B976923279678000C09F5 /* AppDelegate.swift in Sources */,
 				00389FE723867109003F737C /* RootCalculatorNavigationController.swift in Sources */,
+				109A1C3C238BD0B1009E5DC4 /* store.swift in Sources */,
 				00FD97082373F96A00294281 /* Storyboard+Create.swift in Sources */,
 				00FD9716237404DE00294281 /* UIColorInitExtension.swift in Sources */,
 				109A1C38238B9166009E5DC4 /* StoreViewController.swift in Sources */,
