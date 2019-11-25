@@ -65,6 +65,18 @@ class BaseViewController: UIViewController {
                     }
                 }
             }
+            if(RestManager.HKMAEopJson == nil){
+                self.apiManager.request_eop_HKMA(){
+                    [weak self] (result) in
+                    RestManager.HKMAEopJson = result as? HKMA.EopJson
+                    if(self!.isLoading()){
+                        if(self!.checkJsonData() { () in}){
+                            self!.stopLoading()
+                        }
+                    }
+                }
+            }
+            
         }
     }
     

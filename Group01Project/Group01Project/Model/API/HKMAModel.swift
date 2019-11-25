@@ -12,6 +12,7 @@ struct HKMA{
     
     enum URL:String {
         case FxChangeURL = "https://api.hkma.gov.hk/public/market-data-and-statistics/monthly-statistical-bulletin/er-ir/er-eeri-daily"
+        case EopURL = "https://api.hkma.gov.hk/public/market-data-and-statistics/monthly-statistical-bulletin/er-ir/hkd-fer-endperiod"
     }
     
     //Params: use += to add the value to parmas
@@ -27,6 +28,11 @@ struct HKMA{
         var result:fxRateResult?
     }
     
+    struct EopJson:Codable{
+        var header : header
+        var result : eopResult?
+    }
+    
     struct header:Codable{
         var success:Bool
         var err_code:String
@@ -36,6 +42,22 @@ struct HKMA{
     struct fxRateResult:Codable{
         var datasize: Int
         var records: [fxRecords]?
+    }
+    
+    struct eopResult:Codable{
+        var datasize:Int
+        var records: [eopRecords]?
+    }
+    
+    struct eopRecords:Codable{
+        var end_of_day: String
+        var hkd_fer_spot: Double?
+        var hkd_fer_1w: Double?
+        var hkd_fer_1m: Double?
+        var hkd_fer_3m: Double?
+        var hkd_fer_6m: Double?
+        var hkd_fer_9m: Double?
+        var hkd_fer_12m: Double?
     }
     
     struct fxRecords:Codable {
@@ -87,4 +109,7 @@ struct HKMA{
         case end_of_day, usd, gbp, jpy, cad, aud, sgd, twd, chf, cny, krw, thb, myr, dem, nlg, bef, frf, itl, eur, php, inr
     }
     
+    enum eopRecordsKeys: String,CodingKey{
+        case end_of_day,hkd_fer_spot, hkd_fer_1w,hkd_fer_1m,hkd_fer_3m,hkd_fer_6m,hkd_fer_9m,hkd_fer_12m
+    }
 }

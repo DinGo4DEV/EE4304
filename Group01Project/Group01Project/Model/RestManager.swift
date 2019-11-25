@@ -21,6 +21,7 @@ class RestManager{
     static var HSBCRateJson:HSBC.FxRateJson!
     static var HKMARateJson:HKMA.FxRateJson!
     static var HengSengBranchJson:HengSeng.branchJson!
+    static var HKMAEopJson:HKMA.EopJson!
     
     init() {
         requestHttpHeader.add(value: "application/json", forKey: "content-type")
@@ -67,6 +68,15 @@ class RestManager{
             handler(result)
         }
     }
+    
+    func request_eop_HKMA(handler:@escaping((Codable) -> Void)){
+        let url = URL(string: HKMA.URL.EopURL.rawValue)!
+        request(url: url, model: HKMA.FxRateJson.self){
+            [weak self](result) in
+            handler(result)
+        }
+    }
+    
     
 //    func storedData(data:Codable){
 //        do{
