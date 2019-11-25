@@ -13,6 +13,7 @@ extension UIStoryboard {
         case insights = "Insights"
         case calculator = "Calculator"
         case stores = "Stores"
+        case rate = "Rate"
     }
 
  static func storyboard(_ storyboard: Storyboard) -> UIStoryboard {

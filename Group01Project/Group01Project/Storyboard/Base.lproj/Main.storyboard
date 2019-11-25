@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EG9-es-fg9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EG9-es-fg9">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -53,7 +52,7 @@
         <!--RATE-->
         <scene sceneID="4ws-9t-4vs">
             <objects>
-                <navigationController id="2cP-1h-qEm" sceneMemberID="viewController">
+                <navigationController id="2cP-1h-qEm" customClass="RootRateNavigationController" customModule="Group01Project" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="RATE" image="money-black" id="sJc-db-3rR"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="N12-Om-xB1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -90,9 +89,6 @@
                                 <rect key="frame" x="219" y="286" width="175" height="254"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="buttonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pCQ-oK-b9D"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -140,9 +136,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="2cP-1h-qEm" kind="relationship" relationship="viewControllers" id="Khc-Zl-Dl9"/>
                         <segue destination="Gz7-lv-Aet" kind="relationship" relationship="viewControllers" id="qAg-ac-9y9"/>
                         <segue destination="Ujv-q9-c02" kind="relationship" relationship="viewControllers" id="QX8-ko-P0v"/>
+                        <segue destination="2cP-1h-qEm" kind="relationship" relationship="viewControllers" id="Khc-Zl-Dl9"/>
                         <segue destination="7Kt-kc-P0f" kind="relationship" relationship="viewControllers" id="ZY8-av-n3Q"/>
                         <segue destination="exK-Iy-q9x" kind="relationship" relationship="viewControllers" id="z6P-rV-kKX"/>
                     </connections>

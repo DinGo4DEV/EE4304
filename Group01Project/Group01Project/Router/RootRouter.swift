@@ -76,4 +76,12 @@ class RootRouter: Router{
         StoreViewController.router = self
         navigationController?.pushViewController(StoreViewController, animated: true)
     }
+    func showRate(){
+        guard
+            let rateViewController = UIStoryboard.storyboard(.rate).instantiateViewController(RateViewController.self) else {
+                return
+        }
+        rateViewController.router = self
+        navigationController?.pushViewController(rateViewController, animated: true)
+    }
 }

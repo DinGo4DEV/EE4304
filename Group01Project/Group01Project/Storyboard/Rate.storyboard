@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Rate View Controller-->
+        <scene sceneID="cHo-LZ-QGQ">
+            <objects>
+                <viewController storyboardIdentifier="RateViewController" id="eCl-ib-vKZ" customClass="RateViewController" customModule="Group01Project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1jH-3V-IEl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bw9-hs-bON">
+                                <rect key="frame" x="0.0" y="157" width="375" height="510"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="rate" rowHeight="60" id="oS1-Fm-4MN" customClass="RateTableViewCell" customModule="Group01Project" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oS1-Fm-4MN" id="lXc-7y-ZVu">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4d8-qG-Wi4">
+                                                    <rect key="frame" x="27" y="20" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fht-j0-dbH">
+                                                    <rect key="frame" x="226" y="20" width="62" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="62" id="Wfg-PY-opI"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dJT-ta-xLM">
+                                                    <rect key="frame" x="296" y="0.0" width="61" height="60"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="61" id="I9Z-y9-95E"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="4d8-qG-Wi4" firstAttribute="baseline" secondItem="Fht-j0-dbH" secondAttribute="baseline" id="G76-jf-nxJ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="dJT-ta-xLM" secondAttribute="trailing" constant="3" id="GeA-Mf-gPV"/>
+                                                <constraint firstItem="4d8-qG-Wi4" firstAttribute="leading" secondItem="lXc-7y-ZVu" secondAttribute="leadingMargin" constant="12" id="LFh-F8-Tic"/>
+                                                <constraint firstItem="Fht-j0-dbH" firstAttribute="centerY" secondItem="dJT-ta-xLM" secondAttribute="centerY" id="VHW-AR-Coi"/>
+                                                <constraint firstItem="4d8-qG-Wi4" firstAttribute="top" secondItem="lXc-7y-ZVu" secondAttribute="topMargin" constant="9" id="XyC-zG-thA"/>
+                                                <constraint firstItem="dJT-ta-xLM" firstAttribute="leading" secondItem="Fht-j0-dbH" secondAttribute="trailing" constant="8" id="cAV-xT-2Zn"/>
+                                                <constraint firstItem="4d8-qG-Wi4" firstAttribute="centerY" secondItem="lXc-7y-ZVu" secondAttribute="centerY" id="dfH-y3-hi5"/>
+                                                <constraint firstItem="dJT-ta-xLM" firstAttribute="top" secondItem="lXc-7y-ZVu" secondAttribute="topMargin" constant="-11" id="h9q-38-0E3"/>
+                                                <constraint firstItem="4d8-qG-Wi4" firstAttribute="firstBaseline" secondItem="Fht-j0-dbH" secondAttribute="firstBaseline" id="z1c-UK-VAr"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="arrow" destination="dJT-ta-xLM" id="kvu-Xq-xCg"/>
+                                            <outlet property="currency" destination="4d8-qG-Wi4" id="4bR-hV-HSN"/>
+                                            <outlet property="rate" destination="Fht-j0-dbH" id="UrE-TT-euR"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="eCl-ib-vKZ" id="Krl-fv-q6d"/>
+                                    <outlet property="delegate" destination="eCl-ib-vKZ" id="fbd-jW-OpA"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ztA-pj-t9H">
+                                <rect key="frame" x="0.0" y="43" width="375" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42J-BO-q3B">
+                                        <rect key="frame" x="255" y="15" width="120" height="30"/>
+                                        <state key="normal" title="End of Period">
+                                            <color key="titleColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="buttonClicked:" destination="eCl-ib-vKZ" eventType="touchUpInside" id="2qq-cc-sly"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wWP-uD-6hn">
+                                        <rect key="frame" x="0.0" y="15" width="120" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="nYm-VN-D2q"/>
+                                        </constraints>
+                                        <state key="normal" title="Daily">
+                                            <color key="titleColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="buttonClicked:" destination="eCl-ib-vKZ" eventType="touchUpInside" id="c0W-HD-Wun"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKk-On-OTD">
+                                        <rect key="frame" x="128" y="15" width="120" height="30"/>
+                                        <state key="normal" title="Average">
+                                            <color key="titleColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="buttonClicked:" destination="eCl-ib-vKZ" eventType="touchUpInside" id="Or3-Nb-fax"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="wWP-uD-6hn" firstAttribute="centerY" secondItem="ztA-pj-t9H" secondAttribute="centerY" id="JTQ-4B-d8B"/>
+                                    <constraint firstItem="TKk-On-OTD" firstAttribute="centerX" secondItem="ztA-pj-t9H" secondAttribute="centerX" id="K5K-RQ-jha"/>
+                                    <constraint firstItem="wWP-uD-6hn" firstAttribute="top" secondItem="ztA-pj-t9H" secondAttribute="top" constant="15" id="LjJ-Df-EUF"/>
+                                    <constraint firstItem="TKk-On-OTD" firstAttribute="baseline" secondItem="42J-BO-q3B" secondAttribute="baseline" id="UKo-yD-dB4"/>
+                                    <constraint firstItem="wWP-uD-6hn" firstAttribute="leading" secondItem="ztA-pj-t9H" secondAttribute="leading" id="YnU-QJ-pku"/>
+                                    <constraint firstItem="42J-BO-q3B" firstAttribute="leading" secondItem="TKk-On-OTD" secondAttribute="trailing" constant="7" id="xdY-V5-6nI"/>
+                                    <constraint firstItem="wWP-uD-6hn" firstAttribute="baseline" secondItem="TKk-On-OTD" secondAttribute="baseline" id="y2n-6G-IwO"/>
+                                    <constraint firstAttribute="trailing" secondItem="42J-BO-q3B" secondAttribute="trailing" id="ygp-aR-DBZ"/>
+                                    <constraint firstItem="TKk-On-OTD" firstAttribute="leading" secondItem="wWP-uD-6hn" secondAttribute="trailing" constant="8" id="z1l-dK-0qy"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ztA-pj-t9H" firstAttribute="leading" secondItem="Bw9-hs-bON" secondAttribute="leading" id="ALc-zQ-CBR"/>
+                            <constraint firstItem="ztA-pj-t9H" firstAttribute="trailing" secondItem="Bw9-hs-bON" secondAttribute="trailing" id="Omi-bl-ECk"/>
+                            <constraint firstItem="ztA-pj-t9H" firstAttribute="leading" secondItem="jSU-MF-Bhl" secondAttribute="leading" id="WIN-aJ-7vx"/>
+                            <constraint firstItem="ztA-pj-t9H" firstAttribute="top" secondItem="jSU-MF-Bhl" secondAttribute="top" constant="43" id="gPN-5e-ZNH"/>
+                            <constraint firstItem="ztA-pj-t9H" firstAttribute="centerX" secondItem="1jH-3V-IEl" secondAttribute="centerX" id="jbM-RW-O0L"/>
+                            <constraint firstItem="Bw9-hs-bON" firstAttribute="bottom" secondItem="jSU-MF-Bhl" secondAttribute="bottom" id="pUS-Dv-gr7"/>
+                            <constraint firstItem="Bw9-hs-bON" firstAttribute="top" secondItem="ztA-pj-t9H" secondAttribute="bottom" constant="54" id="sEi-cA-DKQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jSU-MF-Bhl"/>
+                    </view>
+                    <connections>
+                        <outlet property="daybutton" destination="wWP-uD-6hn" id="lkt-sT-6bQ"/>
+                        <outlet property="eopbutton" destination="42J-BO-q3B" id="51i-EP-awh"/>
+                        <outlet property="monthbutton" destination="TKk-On-OTD" id="rUd-G1-oZp"/>
+                        <outlet property="ratetable" destination="Bw9-hs-bON" id="UfX-VD-Qo5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dup-oU-NvC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="21.600000000000001" y="-31.03448275862069"/>
+        </scene>
+    </scenes>
+</document>

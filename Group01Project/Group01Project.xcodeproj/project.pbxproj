@@ -41,6 +41,11 @@
 		2489E78F2375880B004DB596 /* Calculator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2489E78E2375880B004DB596 /* Calculator.storyboard */; };
 		2489E79123758B5C004DB596 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2489E79023758B5C004DB596 /* CalculatorViewController.swift */; };
 		423D5ED2427DE993261AB5A6 /* Pods_Group01Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3422988C2CF1D2D615518A12 /* Pods_Group01Project.framework */; };
+		89255E41238C2A9B00B325BD /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89255E40238C2A9B00B325BD /* Rate.swift */; };
+		89255E43238C2BDB00B325BD /* Rate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89255E42238C2BDB00B325BD /* Rate.storyboard */; };
+		89255E45238C2C4000B325BD /* RateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89255E44238C2C4000B325BD /* RateTableViewCell.swift */; };
+		89255E48238C2D1A00B325BD /* RateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89255E47238C2D1A00B325BD /* RateViewController.swift */; };
+		89255E4A238C31A600B325BD /* RootRateNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89255E49238C31A600B325BD /* RootRateNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +87,11 @@
 		3422988C2CF1D2D615518A12 /* Pods_Group01Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Group01Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A40A16F86EDCCB9CAB7B05E /* Pods-Group01Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Group01Project.release.xcconfig"; path = "Target Support Files/Pods-Group01Project/Pods-Group01Project.release.xcconfig"; sourceTree = "<group>"; };
 		72FE25FBE31C2E5411B9FF49 /* Pods-Group01Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Group01Project.debug.xcconfig"; path = "Target Support Files/Pods-Group01Project/Pods-Group01Project.debug.xcconfig"; sourceTree = "<group>"; };
+		89255E40238C2A9B00B325BD /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
+		89255E42238C2BDB00B325BD /* Rate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Rate.storyboard; sourceTree = "<group>"; };
+		89255E44238C2C4000B325BD /* RateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RateTableViewCell.swift; path = Group01Project/Storyboard/RateTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		89255E47238C2D1A00B325BD /* RateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateViewController.swift; sourceTree = "<group>"; };
+		89255E49238C31A600B325BD /* RootRateNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRateNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +131,7 @@
 				00389FE423866F79003F737C /* RootInsightNavigationController.swift */,
 				00389FE623867109003F737C /* RootCalculatorNavigationController.swift */,
 				109A1C39238B92BA009E5DC4 /* RootStoreNavigationController.swift */,
+				89255E49238C31A600B325BD /* RootRateNavigationController.swift */,
 			);
 			path = NavigationController;
 			sourceTree = "<group>";
@@ -138,6 +149,7 @@
 		00FD970E2374029700294281 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				89255E46238C2CF300B325BD /* Rate */,
 				00389FE823867598003F737C /* NavigationController */,
 				0000F60B23754AAD003B2AF2 /* Insights */,
 				0000F60A23754A7A003B2AF2 /* Calculator */,
@@ -155,6 +167,7 @@
 				0000F60C23754AD3003B2AF2 /* Insights.storyboard */,
 				2489E78E2375880B004DB596 /* Calculator.storyboard */,
 				109A1C35238B906C009E5DC4 /* Stores.storyboard */,
+				89255E42238C2BDB00B325BD /* Rate.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -186,6 +199,7 @@
 		00FD971E23741D4300294281 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				89255E44238C2C4000B325BD /* RateTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -231,6 +245,7 @@
 				10A8CB8323798C470014B8A9 /* HengSengModel.swift */,
 				10E531E2237AB0560028F094 /* HKMAModel.swift */,
 				10E531E4237ADA410028F094 /* HSBCModel.swift */,
+				89255E40238C2A9B00B325BD /* Rate.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -242,6 +257,14 @@
 				5A40A16F86EDCCB9CAB7B05E /* Pods-Group01Project.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		89255E46238C2CF300B325BD /* Rate */ = {
+			isa = PBXGroup;
+			children = (
+				89255E47238C2D1A00B325BD /* RateViewController.swift */,
+			);
+			path = Rate;
 			sourceTree = "<group>";
 		};
 		9D58C7BFB6F71057733B98FD /* Frameworks */ = {
@@ -315,6 +338,7 @@
 			files = (
 				108B97732327967B000C09F5 /* LaunchScreen.storyboard in Resources */,
 				108B97702327967B000C09F5 /* Assets.xcassets in Resources */,
+				89255E43238C2BDB00B325BD /* Rate.storyboard in Resources */,
 				109A1C36238B906C009E5DC4 /* Stores.storyboard in Resources */,
 				108B976E23279678000C09F5 /* Main.storyboard in Resources */,
 				2489E78F2375880B004DB596 /* Calculator.storyboard in Resources */,
@@ -396,6 +420,7 @@
 				10E531E5237ADA410028F094 /* HSBCModel.swift in Sources */,
 				00FD97142374049800294281 /* UIViewRoundCorner.swift in Sources */,
 				10A8CB80237971A80014B8A9 /* RestManager.swift in Sources */,
+				89255E45238C2C4000B325BD /* RateTableViewCell.swift in Sources */,
 				00FBE7B4238B96FA002E3B92 /* SyncData.swift in Sources */,
 				0000F608237547C1003B2AF2 /* TabBarItemContent.swift in Sources */,
 				00FD971C2374120B00294281 /* RootNavigationController.swift in Sources */,
@@ -405,9 +430,12 @@
 				00FBE7B2238B8D60002E3B92 /* Insight.swift in Sources */,
 				00FD97042373F79300294281 /* Router.swift in Sources */,
 				003782E923864B03003D3667 /* TabBarController.swift in Sources */,
+				89255E48238C2D1A00B325BD /* RateViewController.swift in Sources */,
+				89255E41238C2A9B00B325BD /* Rate.swift in Sources */,
 				2489E79123758B5C004DB596 /* CalculatorViewController.swift in Sources */,
 				00389FE523866F79003F737C /* RootInsightNavigationController.swift in Sources */,
 				108B976923279678000C09F5 /* AppDelegate.swift in Sources */,
+				89255E4A238C31A600B325BD /* RootRateNavigationController.swift in Sources */,
 				00389FE723867109003F737C /* RootCalculatorNavigationController.swift in Sources */,
 				109A1C3C238BD0B1009E5DC4 /* store.swift in Sources */,
 				00FD97082373F96A00294281 /* Storyboard+Create.swift in Sources */,
@@ -564,6 +592,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R7XD4U2558;
 				INFOPLIST_FILE = Group01Project/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -583,6 +612,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R7XD4U2558;
 				INFOPLIST_FILE = Group01Project/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
