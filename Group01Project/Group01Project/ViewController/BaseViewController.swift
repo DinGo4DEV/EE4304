@@ -41,6 +41,11 @@ class BaseViewController: UIViewController {
                 self.apiManager.request_fxChange_HKMA(params: parma){
                     [weak self](result) in
                     RestManager.HKMARateJson = result as? HKMA.FxRateJson
+                    do{
+                        
+                    } catch {
+                        print("Can't to JSON")
+                    }
                     if(self!.isLoading()){
                         if(self!.checkJsonData() { () in}){
                             self!.stopLoading()

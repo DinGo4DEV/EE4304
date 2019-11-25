@@ -65,4 +65,14 @@ class RootRouter: Router{
         CalculatorViewController.router = self
         navigationController?.pushViewController(CalculatorViewController, animated: true)
     }
+    
+    func showStores(){
+        guard
+            let StoreViewController = UIStoryboard.storyboard(.stores).instantiateViewController(StoreViewController.self) else {
+                return
+        }
+        StoreViewController.router = self
+        navigationController?.pushViewController(StoreViewController, animated: true)
+    }
 }
+

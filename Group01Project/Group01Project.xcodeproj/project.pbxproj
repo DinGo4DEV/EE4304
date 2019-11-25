@@ -28,6 +28,9 @@
 		108B976E23279678000C09F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 108B976C23279678000C09F5 /* Main.storyboard */; };
 		108B97702327967B000C09F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 108B976F2327967B000C09F5 /* Assets.xcassets */; };
 		108B97732327967B000C09F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 108B97712327967B000C09F5 /* LaunchScreen.storyboard */; };
+		109A1C36238B906C009E5DC4 /* Stores.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 109A1C35238B906C009E5DC4 /* Stores.storyboard */; };
+		109A1C38238B9166009E5DC4 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109A1C37238B9166009E5DC4 /* StoreViewController.swift */; };
+		109A1C3A238B92BA009E5DC4 /* RootStoreNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109A1C39238B92BA009E5DC4 /* RootStoreNavigationController.swift */; };
 		10A8CB80237971A80014B8A9 /* RestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8CB7F237971A80014B8A9 /* RestManager.swift */; };
 		10A8CB8423798C480014B8A9 /* HengSengModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8CB8323798C470014B8A9 /* HengSengModel.swift */; };
 		10E531E3237AB0560028F094 /* HKMAModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E531E2237AB0560028F094 /* HKMAModel.swift */; };
@@ -61,6 +64,9 @@
 		108B976F2327967B000C09F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		108B97722327967B000C09F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		108B97742327967B000C09F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		109A1C35238B906C009E5DC4 /* Stores.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Stores.storyboard; sourceTree = "<group>"; };
+		109A1C37238B9166009E5DC4 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StoreViewController.swift; path = Group01Project/ViewController/Stores/StoreViewController.swift; sourceTree = SOURCE_ROOT; };
+		109A1C39238B92BA009E5DC4 /* RootStoreNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootStoreNavigationController.swift; sourceTree = "<group>"; };
 		10A8CB7F237971A80014B8A9 /* RestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestManager.swift; sourceTree = "<group>"; };
 		10A8CB8323798C470014B8A9 /* HengSengModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HengSengModel.swift; sourceTree = "<group>"; };
 		10E531E2237AB0560028F094 /* HKMAModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKMAModel.swift; sourceTree = "<group>"; };
@@ -88,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				2489E79023758B5C004DB596 /* CalculatorViewController.swift */,
+				109A1C37238B9166009E5DC4 /* StoreViewController.swift */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";
@@ -107,6 +114,7 @@
 				00FD971B2374120B00294281 /* RootNavigationController.swift */,
 				00389FE423866F79003F737C /* RootInsightNavigationController.swift */,
 				00389FE623867109003F737C /* RootCalculatorNavigationController.swift */,
+				109A1C39238B92BA009E5DC4 /* RootStoreNavigationController.swift */,
 			);
 			path = NavigationController;
 			sourceTree = "<group>";
@@ -140,6 +148,7 @@
 				108B976C23279678000C09F5 /* Main.storyboard */,
 				0000F60C23754AD3003B2AF2 /* Insights.storyboard */,
 				2489E78E2375880B004DB596 /* Calculator.storyboard */,
+				109A1C35238B906C009E5DC4 /* Stores.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -246,6 +255,7 @@
 				108B976223279678000C09F5 /* Frameworks */,
 				108B976323279678000C09F5 /* Resources */,
 				D4AB6C9CBBF0A68DB1076735 /* [CP] Embed Pods Frameworks */,
+				3D9C5C23EC036277F4EE84FF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -296,6 +306,7 @@
 			files = (
 				108B97732327967B000C09F5 /* LaunchScreen.storyboard in Resources */,
 				108B97702327967B000C09F5 /* Assets.xcassets in Resources */,
+				109A1C36238B906C009E5DC4 /* Stores.storyboard in Resources */,
 				108B976E23279678000C09F5 /* Main.storyboard in Resources */,
 				2489E78F2375880B004DB596 /* Calculator.storyboard in Resources */,
 				0000F60D23754AD3003B2AF2 /* Insights.storyboard in Resources */,
@@ -305,6 +316,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3D9C5C23EC036277F4EE84FF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Group01Project/Pods-Group01Project-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Group01Project/Pods-Group01Project-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Group01Project/Pods-Group01Project-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BBDB9A5A97DE26786BC16564 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -362,6 +390,7 @@
 				0000F608237547C1003B2AF2 /* TabBarItemContent.swift in Sources */,
 				00FD971C2374120B00294281 /* RootNavigationController.swift in Sources */,
 				10E531E3237AB0560028F094 /* HKMAModel.swift in Sources */,
+				109A1C3A238B92BA009E5DC4 /* RootStoreNavigationController.swift in Sources */,
 				00FD970C2373FBDF00294281 /* BaseNavigationController.swift in Sources */,
 				00FD97042373F79300294281 /* Router.swift in Sources */,
 				003782E923864B03003D3667 /* TabBarController.swift in Sources */,
@@ -371,6 +400,7 @@
 				00389FE723867109003F737C /* RootCalculatorNavigationController.swift in Sources */,
 				00FD97082373F96A00294281 /* Storyboard+Create.swift in Sources */,
 				00FD9716237404DE00294281 /* UIColorInitExtension.swift in Sources */,
+				109A1C38238B9166009E5DC4 /* StoreViewController.swift in Sources */,
 				10A8CB8423798C480014B8A9 /* HengSengModel.swift in Sources */,
 				00FD970A2373F9D000294281 /* RootRouter.swift in Sources */,
 			);

@@ -3,7 +3,7 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -39,7 +39,7 @@
         <!--STORE-->
         <scene sceneID="lMW-fh-NTt">
             <objects>
-                <navigationController id="exK-Iy-q9x" sceneMemberID="viewController">
+                <navigationController id="exK-Iy-q9x" customClass="RootStoreNavigationController" customModule="Group01Project" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="STORE" image="stores-black" id="MaS-KO-OGK"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="R7z-9v-thl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -67,7 +67,6 @@
         <!--INSIGHT-->
         <scene sceneID="d5b-XC-dlV">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="v2D-e6-dBc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="7Kt-kc-P0f" customClass="RootInsightNavigationController" customModule="Group01Project" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="INSIGHT" image="search-black" id="OnP-Is-YKb"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yVq-0J-Zkl">
@@ -75,6 +74,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v2D-e6-dBc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3020" y="-1007"/>
         </scene>
@@ -96,7 +96,6 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="JUV-Sx-XDL"/>
@@ -136,6 +135,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="EG9-es-fg9" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="d9i-IH-Yze">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
