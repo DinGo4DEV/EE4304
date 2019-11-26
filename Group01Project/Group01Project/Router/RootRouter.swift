@@ -10,8 +10,6 @@ import UIKit
 
 class RootRouter: Router{
     
-    //Root router is the router showing the 5 core viewController
-    // Open the 5 other routers for routing in those 5 tabs
     
     func showStart(animated: Bool, complete: (() -> Void)? = nil ){
         guard
@@ -76,6 +74,7 @@ class RootRouter: Router{
         StoreViewController.router = self
         navigationController?.pushViewController(StoreViewController, animated: true)
     }
+    
     func showRate(){
         guard
             let rateViewController = UIStoryboard.storyboard(.rate).instantiateViewController(RateViewController.self) else {
