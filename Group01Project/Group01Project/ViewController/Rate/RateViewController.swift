@@ -89,12 +89,12 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
         cell.currency.text = tableData[0].currency[indexPath.row].name
         cell.rate.text = String(format:"%.3f",tableData[0].currency[indexPath.row].rate!)
         if (tableData[0].currency[indexPath.row].rate! > tableData[1].currency[indexPath.row].rate!){
-            cell.arrow.image = UIImage(systemName: "arrowtriangle.up.fill")
+            cell.arrow.image = UIImage(contentsOfFile: "arrowtriangle.up.fill")
             cell.arrow.tintColor = UIColor.green
             
         }
         else {
-            cell.arrow.image = UIImage(systemName: "arrowtriangle.down.fill")
+            cell.arrow.image = UIImage(contentsOfFile: "arrowtriangle.down.fill")
             cell.arrow.tintColor = UIColor.red
         }
         

@@ -147,8 +147,8 @@
                         <viewLayoutGuide key="safeArea" id="6Zu-yA-aT3"/>
                     </view>
                     <connections>
-                        <outlet property="image1" destination="C1w-sx-yRj" id="3eh-1W-cxp"/>
-                        <outlet property="image2" destination="iul-yp-Q3z" id="RUE-Tx-k6y"/>
+                        <outlet property="image" destination="C1w-sx-yRj" id="TB4-wO-2Jw"/>
+                        <outlet property="image2" destination="iul-yp-Q3z" id="NG6-FM-7ub"/>
                         <outlet property="input" destination="6tp-j9-eZk" id="SUW-Rt-BLr"/>
                         <outlet property="output" destination="Zr9-P3-6g2" id="Qdg-Ny-HGo"/>
                         <outlet property="select" destination="RxQ-6g-7fa" id="Sao-Ek-QTA"/>
