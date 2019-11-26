@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,13 +14,43 @@
                     <view key="view" contentMode="scaleToFill" id="dfK-0G-pJn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="bankBtn" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elq-EC-osh" userLabel="bankBtn">
+                                <rect key="frame" x="20" y="75" width="338" height="47"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Bank">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="btg-dU-WsV" firstAttribute="bottom" secondItem="elq-EC-osh" secondAttribute="bottom" constant="740" id="Jbh-fo-cjq"/>
+                            <constraint firstItem="btg-dU-WsV" firstAttribute="trailing" secondItem="elq-EC-osh" secondAttribute="trailing" constant="56" id="K90-2Q-quB"/>
+                            <constraint firstItem="elq-EC-osh" firstAttribute="top" secondItem="btg-dU-WsV" secondAttribute="top" constant="31" id="Y4T-Of-AT2"/>
+                            <constraint firstItem="elq-EC-osh" firstAttribute="leading" secondItem="dfK-0G-pJn" secondAttribute="leadingMargin" id="tg6-NI-3cZ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="btg-dU-WsV"/>
                     </view>
+                    <connections>
+                        <outlet property="bankBtn" destination="elq-EC-osh" id="ioQ-Lg-Brq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Sa-6R-aMa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="270" y="60"/>
+            <point key="canvasLocation" x="269.56521739130437" y="59.598214285714285"/>
         </scene>
     </scenes>
 </document>

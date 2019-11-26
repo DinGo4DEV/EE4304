@@ -13,6 +13,7 @@ import CoreLocation
 
 class StoreViewController: BaseViewController,CLLocationManagerDelegate {
     
+    @IBOutlet var bankBtn: UIButton!
     let locationManager = CLLocationManager()
     var rootRouter: RootRouter? {
         return router as? RootRouter
@@ -54,12 +55,15 @@ class StoreViewController: BaseViewController,CLLocationManagerDelegate {
         // coordinate 22.3700556, 114.1535941 at zoom level 6.
         super.loadView()
         let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
-        mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        mapView = GMSMapView.map(withFrame:CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height), camera: camera)
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
-
+        mapView.center = self.view.center
 //        mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 50)
-        view = mapView
+//        view = mapView
+        bankBtn.layer.zPosition = 100
+        view.bringSubviewToFront(bankBtn)
+        view.addSubview(mapView)
         
         
         // Creates a marker in the center of the map.
