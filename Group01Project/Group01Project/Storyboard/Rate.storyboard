@@ -206,14 +206,59 @@
                         <outlet property="eopbutton" destination="42J-BO-q3B" id="51i-EP-awh"/>
                         <outlet property="monthbutton" destination="TKk-On-OTD" id="rUd-G1-oZp"/>
                         <outlet property="ratetable" destination="Bw9-hs-bON" id="UfX-VD-Qo5"/>
+                        <segue destination="iOC-I5-zXx" kind="show" id="yu5-xa-zg8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dup-oU-NvC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="21.600000000000001" y="-31.03448275862069"/>
         </scene>
+        <!--Chart View Controller-->
+        <scene sceneID="IyH-Mu-S89">
+            <objects>
+                <viewController id="iOC-I5-zXx" customClass="ChartViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="F31-gT-jAn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wyr-tJ-VEL">
+                                <rect key="frame" x="46" y="26" width="283" height="63.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxP-wE-EVA">
+                                        <rect key="frame" x="198" y="22" width="50" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="arrow.left.and.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UEG-0i-Hcx">
+                                        <rect key="frame" x="105" y="23" width="73" height="27.5"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kyv-2t-iGs">
+                                        <rect key="frame" x="30" y="22" width="50" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="acJ-eu-NuT"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="shZ-AL-nko"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cdp-qF-l91" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="741.60000000000002" y="-30.134932533733135"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="arrow.left.and.right" catalog="system" width="64" height="42"/>
         <image name="arrowtriangle.down.fill" catalog="system" width="64" height="62"/>
         <image name="minus" catalog="system" width="64" height="12"/>
     </resources>

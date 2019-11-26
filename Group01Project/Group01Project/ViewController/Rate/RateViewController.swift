@@ -16,7 +16,7 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
     var picker  = UIPickerView()
     var selectedIndex = 15
     //var dollarList = ["USD","","","","",""]
-    
+    var selectedTap = 1
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -60,9 +60,21 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
     
     @objc func onDoneButtonTapped() {
         selectedIndex = picker.selectedRow(inComponent: 0)
+        
+        
+        
         currecylabel.text =  tableData[0].currency[selectedIndex].name
-        tableData[0].currency.swapAt(15, selectedIndex)
-        tableData[1].currency.swapAt(15, selectedIndex)
+        swap()
+        if (selectedTap == 1){
+            tableData = temp.dailyrate
+        }
+        else if (selectedTap == 2)
+        {
+             tableData = temp.monthrate
+        }
+        else {
+            tableData = temp.eoprate
+        }
         ratetable.reloadData()
         toolbar.removeFromSuperview()
         picker.removeFromSuperview()
@@ -118,7 +130,18 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
         return cell
         
     }
+    func swap(){
+        for i in temp.dailyrate{
+            i.currency.swapAt(selectedIndex, 15)
+        }
+        for i in temp.monthrate{
+            i.currency.swapAt(selectedIndex, 15)
+        }
+        for i in temp.eoprate{
+            i.currency.swapAt(selectedIndex, 15)
+        }
     
+    }
     
     var rootRouter: RootRouter? {
         return router as? RootRouter
@@ -178,8 +201,8 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
     
     
     func LoadDaily(){
-        let count = RestManager.HKMARateJson.result?.datasize as! Int
-        for i in 0...count-1 {
+       // let count = RestManager.HKMARateJson.result?.datasize as! Int
+        for i in 0...6 {
             var dict1 = [Currency]()
             dict1.append(Currency(name:"USD" ,rate: RestManager.HKMARateJson
                 .result?.records![i].usd ?? 0.0))
@@ -200,13 +223,34 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
             dict1.append(Currency(name:"HKD" , rate:1))
             temp.dailyrate.append(Date(date:RestManager.HKMARateJson.result?.records![i].end_of_day ?? "" , currency: dict1))
         }
+        for i in 2...3 {
+                  var dict1 = [Currency]()
+                  dict1.append(Currency(name:"USD" ,rate: RestManager.HKMARateJson
+                      .result?.records![i].usd ?? 0.0))
+                  dict1.append(Currency(name:"GBP" ,rate: RestManager.HKMARateJson.result?.records![i*7-1].gbp ?? 0.0))
+                  dict1.append(Currency(name:"JPY" , rate:RestManager.HKMARateJson.result?.records![i*7-1].jpy ?? 0.0))
+                  dict1.append(Currency(name:"CAD" , rate:RestManager.HKMARateJson.result?.records![i*7-1].cad ?? 0.0))
+                  dict1.append(Currency(name:"AUD" , rate:RestManager.HKMARateJson.result?.records![i*7-1].aud ?? 0.0))
+                  dict1.append(Currency(name:"SGD", rate:RestManager.HKMARateJson.result?.records![i*7-1].sgd ?? 0.0))
+                  dict1.append(Currency(name:"TWD" , rate:RestManager.HKMARateJson.result?.records![i*7-1].twd ?? 0.0))
+                  dict1.append(Currency(name:"CHF" , rate:RestManager.HKMARateJson.result?.records![i*7-1].chf ?? 0.0))
+                  dict1.append(Currency(name:"CNY" , rate:RestManager.HKMARateJson.result?.records![i*7-1].cny ?? 0.0))
+                  dict1.append(Currency(name:"KRW" , rate:RestManager.HKMARateJson.result?.records![i*7-1].krw ?? 0.0))
+                  dict1.append(Currency(name:"THB" , rate:RestManager.HKMARateJson.result?.records![i*7-1].thb ?? 0.0))
+                  dict1.append(Currency(name:"MYR" , rate:RestManager.HKMARateJson.result?.records![i*7-1].myr ?? 0.0))
+                  dict1.append(Currency(name:"EUR" , rate:RestManager.HKMARateJson.result?.records![i*7-1].eur ?? 0.0))
+                  dict1.append(Currency(name:"PHP" , rate:RestManager.HKMARateJson.result?.records![i*7-1].php ?? 0.0))
+                  dict1.append(Currency(name:"INR" , rate:RestManager.HKMARateJson.result?.records![i*7-1].inr ?? 0.0))
+                  dict1.append(Currency(name:"HKD" , rate:1))
+                  temp.dailyrate.append(Date(date:RestManager.HKMARateJson.result?.records![i*7-1].end_of_day ?? "" , currency: dict1))
+              }
         
     }
     
     func LoadAverage(){
         if (RestManager.HKMAMonthJson != nil) {
             let count = RestManager.HKMAMonthJson.result?.datasize as! Int ?? 0
-            for i in 0...count-1 {
+            for i in 0...5 {
                 var dict1 = [Currency]()
                 dict1.append(Currency(name:"USD" ,rate: RestManager.HKMAMonthJson
                     .result?.records![i].usd ?? 0.0))
@@ -233,8 +277,8 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
     }
     func LoadEop(){
         if (RestManager.HKMAEopJson != nil) {
-            let count = RestManager.HKMAEopJson.result?.datasize as! Int ?? 0
-            for i in 0...count-1 {
+           // let count = RestManager.HKMAEopJson.result?.datasize as! Int ?? 0
+            for i in 0...1 {
                 var dict1 = [Currency]()
                 dict1.append(Currency(name:"USD" ,rate: RestManager.HKMAEopJson
                     .result?.records![i].usd ?? 0.0))
@@ -279,6 +323,7 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
             //temp = UserProfileCache.get("rate")
             //print(RestManager.HKMARateJson.result?.datasize as! Int)
             tableData = temp.dailyrate
+            selectedTap = 1
             ratetable.reloadData()
             
             daybutton.setTitleColor(UIColor.white, for: UIControl.State.normal)
@@ -288,6 +333,7 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
             monthbutton.backgroundColor = UIColor.white
             eopbutton.backgroundColor = UIColor.white
         case 2:
+            selectedTap = 2
             //temp = UserProfileCache.get("rate")
             tableData = temp.monthrate
             ratetable.reloadData()
@@ -300,7 +346,7 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
         case 3:
             //temp = UserProfileCache.get("rate")
             tableData = temp.eoprate
-            
+            selectedTap = 3
             ratetable.reloadData()
             daybutton.setTitleColor(UIColor.gray, for: UIControl.State.normal)
             monthbutton.setTitleColor(UIColor.gray, for: UIControl.State.normal)
