@@ -155,10 +155,16 @@ class CalculatorViewController: BaseViewController, UITabBarDelegate, UIPickerVi
                 amount = 0
             }
             print(amount)
-        }
             let new = Double( round(1000 * amount)/1000 )
             var b: String = String(new)
             output.text! = b
+        }
+        else {
+            let alert = UIAlertController(title: "Data Validation Error", message: "You haven't selected both currency", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Close", style: .default, handler: { (action: UIAlertAction!) in
+            }))
+            present(alert, animated: true , completion: nil)
+            }
     }
         else {
             let alert = UIAlertController(title: "Data Validation Error", message: "Input cannot empty", preferredStyle: UIAlertController.Style.alert)
