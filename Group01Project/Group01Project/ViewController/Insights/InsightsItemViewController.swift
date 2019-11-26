@@ -36,8 +36,10 @@ class InsightsItemViewController: BaseViewController, UITableViewDelegate, UITab
                       }
                     }
 
-                    self?.tableView.reloadData()
+                    
                 }
+        viewModel?.updateData()
+        self.tableView.reloadData()
         
     }
     override func viewDidLoad() {
@@ -60,7 +62,8 @@ class InsightsItemViewController: BaseViewController, UITableViewDelegate, UITab
         tableView.dataSource = self
         stopLoading()
         uiBind()
-        
+        viewModel?.updateData()
+        self.tableView.reloadData()
         //print(viewModel.insightList)
         // Do any additional setup after loading the view.
     }
@@ -137,8 +140,24 @@ class InsightViewModel{
         pressList = pressRecord?.first?.records
     }
     
+    func updateData(){
+        
+        insightRecord = try? Realm().objects(InsightResponse.self)
+        
+        insightList = insightRecord?.first?.records
+        
+        pressRecord = try? Realm().objects(PressResponse.self)
+        
+        pressList = pressRecord?.first?.records
+    }
+    
     func syncData(completed: ((SyncDataFailReason?) -> Void)?) {
-        SyncData().syncInsight(completed: completed)
-        SyncData().syncPress(completed: completed)
+        if SyncData.firstSync{
+            SyncData().syncInsight(completed: completed)
+            SyncData().syncPress(completed: completed)
+        }else{
+            SyncData().firstSync(completed: completed)
+            SyncData.firstSync = true
+        }
     }
 }
