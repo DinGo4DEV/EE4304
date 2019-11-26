@@ -9,46 +9,62 @@
 import UIKit
 import RealmSwift
 
-class InsightsItemViewController: BaseViewController  {
+class InsightsItemViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource  {
     
     @IBOutlet weak var insightButton: UIButton!
     @IBOutlet weak var pressButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
     
     var rootRouter: RootRouter? {
       return router as? RootRouter
     }
     
-    var viewModel = InsightViewModel()
+    var viewModel : InsightViewModel?
     var tabStatus : Bool = true
     
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        viewModel.syncData { [weak self] (failReason) in
         
-            if failReason != nil {
-              self?.showErrorAlert(reason: failReason, showCache: true) { _ in
-                // Fix AlertController conflict withRefresh Controll
-    //                self?.viewModel.workspaceActivityList.value.removeAll()
-    //                self?.tableView.setContentOffset(CGPoint.zero, animated: true)
-              }
-            }
-          }
+        super.viewWillAppear(true)
+        viewModel?.syncData { [weak self] (failReason) in
+
+                    if failReason != nil {
+                      self?.showErrorAlert(reason: failReason, showCache: true) { _ in
+                        // Fix AlertController conflict withRefresh Controll
+        //                self?.viewModel.workspaceActivityList.value.removeAll()
+                        self?.tableView.setContentOffset(CGPoint.zero, animated: true)
+                      }
+                    }
+
+                    
+                }
+        viewModel?.updateData()
+        self.tableView.reloadData()
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-//        viewModel.syncData { [weak self] (failReason) in
-//
-//            if failReason != nil {
-//              self?.showErrorAlert(reason: failReason, showCache: true) { _ in
-//                // Fix AlertController conflict withRefresh Controll
-////                self?.viewModel.workspaceActivityList.value.removeAll()
-////                self?.tableView.setContentOffset(CGPoint.zero, animated: true)
-//              }
-//            }
-//          }
+        viewModel = InsightViewModel()
+        startLoading()
+        viewModel?.syncData { [weak self] (failReason) in
+
+                    if failReason != nil {
+                      self?.showErrorAlert(reason: failReason, showCache: true) { _ in
+                        // Fix AlertController conflict withRefresh Controll
+        //                self?.viewModel.workspaceActivityList.value.removeAll()
+                        self?.tableView.setContentOffset(CGPoint.zero, animated: true)
+                      }
+                    }
+
+                    self?.tableView.reloadData()
+                }
+        tableView.delegate = self
+        tableView.dataSource = self
+        stopLoading()
         uiBind()
-        print(viewModel.insightList)
+        viewModel?.updateData()
+        self.tableView.reloadData()
+        //print(viewModel.insightList)
         // Do any additional setup after loading the view.
     }
     
@@ -71,25 +87,77 @@ class InsightsItemViewController: BaseViewController  {
         
         tabStatus.toggle()
         uiBind()
+        self.tableView.reloadData()
     }
+    
     
     @IBAction func pressClicked(_ sender: Any) {
         
         tabStatus.toggle()
         uiBind()
+        self.tableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tabStatus{
+            return viewModel?.insightList?.count ?? 0
+        }else{
+            return viewModel?.pressList?.count ?? 0
+        }
+        
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "InsightPressTableViewCell", for: indexPath) as? InsightPressTableViewCell else {
+            return UITableViewCell()
+        }
+        if tabStatus{
+            let tempInsightPress = viewModel?.insightList?[indexPath.row]
+            cell.uiBind(insight: tempInsightPress!)
+        }else{
+            let tempInsightPress = viewModel?.pressList?[indexPath.row]
+            cell.uiBind(press: tempInsightPress!)
+        }
+        return cell
     }
 }
 
 class InsightViewModel{
     var insightRecord : Results<InsightResponse>?
     var insightList : List<Insight>?
+    
+    var pressRecord : Results<PressResponse>?
+    var pressList : List<Press>?
+    
     init(){
         insightRecord = try? Realm().objects(InsightResponse.self)
+        insightList?.removeAll()
         insightList = insightRecord?.first?.records
-        print(insightRecord)
+        
+        pressRecord = try? Realm().objects(PressResponse.self)
+        pressList?.removeAll()
+        pressList = pressRecord?.first?.records
+    }
+    
+    func updateData(){
+        
+        insightRecord = try? Realm().objects(InsightResponse.self)
+        
+        insightList = insightRecord?.first?.records
+        
+        pressRecord = try? Realm().objects(PressResponse.self)
+        
+        pressList = pressRecord?.first?.records
     }
     
     func syncData(completed: ((SyncDataFailReason?) -> Void)?) {
-        SyncData().syncInsight(completed: completed)
+        if SyncData.firstSync{
+            SyncData().syncInsight(completed: completed)
+            SyncData().syncPress(completed: completed)
+        }else{
+            SyncData().firstSync(completed: completed)
+            SyncData.firstSync = true
+        }
     }
 }

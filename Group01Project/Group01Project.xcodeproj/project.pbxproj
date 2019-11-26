@@ -40,6 +40,7 @@
 		10E531E5237ADA410028F094 /* HSBCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E531E4237ADA410028F094 /* HSBCModel.swift */; };
 		2489E78F2375880B004DB596 /* Calculator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2489E78E2375880B004DB596 /* Calculator.storyboard */; };
 		2489E79123758B5C004DB596 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2489E79023758B5C004DB596 /* CalculatorViewController.swift */; };
+		3AE9BF04238D817000363582 /* InsightPressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE9BF03238D817000363582 /* InsightPressTableViewCell.swift */; };
 		423D5ED2427DE993261AB5A6 /* Pods_Group01Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3422988C2CF1D2D615518A12 /* Pods_Group01Project.framework */; };
 		89255E41238C2A9B00B325BD /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89255E40238C2A9B00B325BD /* Rate.swift */; };
 		89255E43238C2BDB00B325BD /* Rate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89255E42238C2BDB00B325BD /* Rate.storyboard */; };
@@ -85,11 +86,12 @@
 		2489E78E2375880B004DB596 /* Calculator.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calculator.storyboard; sourceTree = "<group>"; };
 		2489E79023758B5C004DB596 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalculatorViewController.swift; path = Group01Project/Storyboard/CalculatorViewController.swift; sourceTree = SOURCE_ROOT; };
 		3422988C2CF1D2D615518A12 /* Pods_Group01Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Group01Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AE9BF03238D817000363582 /* InsightPressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightPressTableViewCell.swift; sourceTree = "<group>"; };
 		5A40A16F86EDCCB9CAB7B05E /* Pods-Group01Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Group01Project.release.xcconfig"; path = "Target Support Files/Pods-Group01Project/Pods-Group01Project.release.xcconfig"; sourceTree = "<group>"; };
 		72FE25FBE31C2E5411B9FF49 /* Pods-Group01Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Group01Project.debug.xcconfig"; path = "Target Support Files/Pods-Group01Project/Pods-Group01Project.debug.xcconfig"; sourceTree = "<group>"; };
 		89255E40238C2A9B00B325BD /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
 		89255E42238C2BDB00B325BD /* Rate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Rate.storyboard; sourceTree = "<group>"; };
-		89255E44238C2C4000B325BD /* RateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RateTableViewCell.swift; path = Group01Project/Storyboard/RateTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		89255E44238C2C4000B325BD /* RateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RateTableViewCell.swift; path = Group01Project/View/Group01Project/View/View/RateTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		89255E47238C2D1A00B325BD /* RateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateViewController.swift; sourceTree = "<group>"; };
 		89255E49238C31A600B325BD /* RootRateNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRateNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -196,14 +198,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		00FD971E23741D4300294281 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				89255E44238C2C4000B325BD /* RateTableViewCell.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		108B975C23279678000C09F5 = {
 			isa = PBXGroup;
 			children = (
@@ -226,7 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				00FD971D23741D1300294281 /* Model */,
-				00FD971E23741D4300294281 /* View */,
+				3AE9BF02238D810A00363582 /* View */,
 				00FD970E2374029700294281 /* ViewController */,
 				00FD970D2374028000294281 /* Router */,
 				00FD970F237402C300294281 /* Storyboard */,
@@ -248,6 +242,16 @@
 				89255E40238C2A9B00B325BD /* Rate.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		3AE9BF02238D810A00363582 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				89255E44238C2C4000B325BD /* RateTableViewCell.swift */,
+				3AE9BF03238D817000363582 /* InsightPressTableViewCell.swift */,
+			);
+			name = View;
+			path = View/Group01Project/View/View;
 			sourceTree = "<group>";
 		};
 		5E04D3877CCCAA1872C4EB85 /* Pods */ = {
@@ -412,6 +416,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AE9BF04238D817000363582 /* InsightPressTableViewCell.swift in Sources */,
 				108B976B23279678000C09F5 /* BaseViewController.swift in Sources */,
 				00FD9712237403F300294281 /* UIButtonDesignExtension.swift in Sources */,
 				0000F60F23754B42003B2AF2 /* InsightsItemViewController.swift in Sources */,
