@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import Charts
 class ChartViewController {
     
 }

@@ -171,7 +171,7 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
     }
     override func viewDidAppear(_ animated: Bool) {
         
-        
+        print("loaddata")
         //temp = UserProfileCache.get("rate")
         //tableData = temp.dailyrate
         //  print(temp.dailyrate.count)
@@ -190,7 +190,7 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let controller = segue.destination as? TestViewController
+        let controller = segue.destination as? ChartViewController
         let indexPath = self.ratetable.indexPathForSelectedRow
         //        controller?.storeName = food[indexPath!.row].name
         //        controller?.information  = food[indexPath!.row].information
