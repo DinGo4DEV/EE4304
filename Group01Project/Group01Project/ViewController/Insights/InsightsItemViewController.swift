@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class InsightsItemViewController: BaseViewController  {
     
@@ -17,11 +18,37 @@ class InsightsItemViewController: BaseViewController  {
       return router as? RootRouter
     }
     
+    var viewModel = InsightViewModel()
     var tabStatus : Bool = true
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        viewModel.syncData { [weak self] (failReason) in
+        
+            if failReason != nil {
+              self?.showErrorAlert(reason: failReason, showCache: true) { _ in
+                // Fix AlertController conflict withRefresh Controll
+    //                self?.viewModel.workspaceActivityList.value.removeAll()
+    //                self?.tableView.setContentOffset(CGPoint.zero, animated: true)
+              }
+            }
+          }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+//        viewModel.syncData { [weak self] (failReason) in
+//
+//            if failReason != nil {
+//              self?.showErrorAlert(reason: failReason, showCache: true) { _ in
+//                // Fix AlertController conflict withRefresh Controll
+////                self?.viewModel.workspaceActivityList.value.removeAll()
+////                self?.tableView.setContentOffset(CGPoint.zero, animated: true)
+//              }
+//            }
+//          }
         uiBind()
+        print(viewModel.insightList)
         // Do any additional setup after loading the view.
     }
     
@@ -50,5 +77,19 @@ class InsightsItemViewController: BaseViewController  {
         
         tabStatus.toggle()
         uiBind()
+    }
+}
+
+class InsightViewModel{
+    var insightRecord : Results<InsightResponse>?
+    var insightList : List<Insight>?
+    init(){
+        insightRecord = try? Realm().objects(InsightResponse.self)
+        insightList = insightRecord?.first?.records
+        print(insightRecord)
+    }
+    
+    func syncData(completed: ((SyncDataFailReason?) -> Void)?) {
+        SyncData().syncInsight(completed: completed)
     }
 }

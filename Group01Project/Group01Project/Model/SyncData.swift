@@ -9,6 +9,7 @@
 import Foundation
 import RealmSwift
 import Alamofire
+import AlamofireObjectMapper
 
 enum SyncDataFailReason: Error {
   case network
@@ -19,6 +20,8 @@ enum SyncDataFailReason: Error {
 
 class SyncData {
   static var realmBackgroundQueue = DispatchQueue(label: ".realm", qos: .background)
+    
+//    public func responseObject<T: BaseMappable>(queue: DispatchQueue? = nil, keyPath: String? = nil, mapToObject object: T? = nil, context: MapContext? = nil, completionHandler: @escaping (DataResponse<T>) -> Void) -> Self
     
     static func writeRealmAsync(_ write: @escaping (_ realm: Realm) -> Void,
                                 completed: (() -> Void)? = nil) {
@@ -44,7 +47,27 @@ class SyncData {
       }
     }
     
-    
+    func syncInsight(completed: ((SyncDataFailReason?) -> Void)?) {
+        let insightURL = "https://api.hkma.gov.hk/public/insight-articles?lang=en"
+//        let pressURL = "https://api.hkma.gov.hk/public/press-releases?lang=en"
+//
+        Alamofire.request(insightURL).responseObject { (response: DataResponse<InsightResponse>) in
+            
+            guard let insightResponse = response.result.value else{
+                completed?(nil)
+                return
+            }
+            print(response.value)
+            print(insightResponse.records.first)
+            SyncData.writeRealmAsync({ (realm) in
+                realm.delete(realm.objects(InsightResponse.self))
+                realm.add(insightResponse)
+                print(insightResponse.records.first)
+              },completed:{
+                      completed?(nil)
+                    })
+        }
+    }
     
     
     
