@@ -113,7 +113,7 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
         cell.currency.text = tableData[0].currency[indexPath.row].name
         cell.rate.text = String(format:"%.3f",(tableData[0].currency[indexPath.row].rate!/tableData[0].currency[15].rate!))
         if (tableData[0].currency[indexPath.row].rate! > tableData[1].currency[indexPath.row].rate!){
-            cell.arrow.image = UIImage(contentsOfFile: "arrowtriangle.up.fill")
+            cell.arrow.image = UIImage(systemName: "arrowtriangle.up.fill")
             cell.arrow.tintColor = UIColor.green
             
         }
@@ -123,7 +123,7 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
             
         }
         else {
-            cell.arrow.image = UIImage(contentsOfFile: "arrowtriangle.down.fill")
+            cell.arrow.image = UIImage(systemName: "arrowtriangle.down.fill")
             cell.arrow.tintColor = UIColor.red
         }
         
@@ -173,7 +173,7 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
         LoadEop()
         
         tableData = temp.dailyrate
-        if(tableData[0].currency.count < selectedIndex){
+        if(RestManager.HKMARateJson == nil){
             currecylabel.text = "HKD"
         }
         else {currecylabel.text =  tableData[0].currency[selectedIndex].name}
@@ -293,6 +293,8 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
                 dict1.append(Currency(name:"INR" , rate:RestManager.HKMAMonthJson.result?.records![i].inr ?? 0.0))
                 dict1.append(Currency(name:"HKD" , rate:1))//
                 temp.monthrate.append(Date(date:RestManager.HKMAMonthJson.result?.records![i].end_of_month ?? "" , currency: dict1))
+                print("date: \(RestManager.HKMAMonthJson.result?.records![i].end_of_month) " + " rate:  \(temp.monthrate[i].currency[1].rate)")
+                
             }
         }
         
@@ -347,7 +349,10 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
         case 1:
             //temp = UserProfileCache.get("rate")
             //print(RestManager.HKMARateJson.result?.datasize as! Int)
+            
             tableData = temp.dailyrate
+             print("dAY:  \(tableData.count)")
+            print(tableData.count)
             selectedTap = 1
             ratetable.reloadData()
             
@@ -359,8 +364,11 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
             eopbutton.backgroundColor = UIColor.white
         case 2:
             selectedTap = 2
+           
             //temp = UserProfileCache.get("rate")
+             
             tableData = temp.monthrate
+             print("month:  \(tableData.count)")
             ratetable.reloadData()
             daybutton.setTitleColor(UIColor.gray, for: UIControl.State.normal)
             monthbutton.setTitleColor(UIColor.white, for: UIControl.State.normal)
@@ -371,6 +379,7 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
         case 3:
             //temp = UserProfileCache.get("rate")
             tableData = temp.eoprate
+             print("eop:  \(tableData.count)")
             selectedTap = 3
             ratetable.reloadData()
             daybutton.setTitleColor(UIColor.gray, for: UIControl.State.normal)

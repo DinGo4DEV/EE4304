@@ -32,6 +32,8 @@ class RestManager{
             RestManager.HengSengBranchJson = nil
             RestManager.HengSengRateJson = nil
             RestManager.HKMARateJson = nil
+            RestManager.HKMAEopJson = nil
+            RestManager.HKMAMonthJson = nil
             RestManager.HSBCRateJson = nil
         }
     }
