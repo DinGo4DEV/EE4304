@@ -21,7 +21,9 @@ class RestManager{
     static var HSBCRateJson:HSBC.FxRateJson!
     static var HKMARateJson:HKMA.FxRateJson!
     static var HengSengBranchJson:HengSeng.branchJson!
-    static var HKMAEopJson:HKMA.EopJson!
+    static var HKMAEopJson:HKMA.MonthJson!
+    static var HKMAMonthJson:HKMA.MonthJson!
+
     
     init() {
         requestHttpHeader.add(value: "application/json", forKey: "content-type")
@@ -71,11 +73,19 @@ class RestManager{
     
     func request_eop_HKMA(handler:@escaping((Codable) -> Void)){
         let url = URL(string: HKMA.URL.EopURL.rawValue)!
-        request(url: url, model: HKMA.FxRateJson.self){
+        request(url: url, model: HKMA.MonthJson.self){
             [weak self](result) in
             handler(result)
         }
     }
+    func request_month_HKMA(handler:@escaping((Codable) -> Void)){
+        let url = URL(string: HKMA.URL.MonthURL.rawValue)!
+        request(url: url, model: HKMA.MonthJson.self){
+            [weak self](result) in
+            handler(result)
+        }
+    }
+
     
     
 //    func storedData(data:Codable){
