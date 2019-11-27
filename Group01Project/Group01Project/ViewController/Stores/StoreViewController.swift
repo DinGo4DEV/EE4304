@@ -32,7 +32,7 @@ class StoreViewController: BaseViewController,CLLocationManagerDelegate {
         super.viewDidLoad()
         
         place.isHidden = true
-        
+        place.delegate = self
         DispatchQueue.main.async {
             if(BaseViewController.loaded){
                 self.stopLoading()
@@ -58,7 +58,17 @@ class StoreViewController: BaseViewController,CLLocationManagerDelegate {
     }
     @objc func buttonAction(sender: UIButton!){
         if place.isHidden {
+            place.layer.zPosition = 100
+            view.sendSubviewToBack(mapView)
             animate(toogle: true)
+            place.isUserInteractionEnabled = true
+            mapView.isUserInteractionEnabled = false
+//            self.view.bringSubviewToFront(viewForButton)
+            self.viewForButton.bringSubviewToFront(place)
+            
+            print("Place user interaction = \(place.isUserInteractionEnabled)")
+//            print("Place \(place.)")
+            
         }else{
             animate(toogle: false)
         }
@@ -151,7 +161,7 @@ extension StoreViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        loadView().button.setTitle("PlaceList[indexPath.row]", for: .normal)
-        button.setTitle("PlaceList[indexPath.row]", for: .normal)
+        button.setTitle("\(PlaceList[indexPath.row])", for: .normal)
         animate(toogle: false)
     }
     
