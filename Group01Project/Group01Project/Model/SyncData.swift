@@ -52,7 +52,7 @@ class SyncData {
             let insightURL = "https://api.hkma.gov.hk/public/insight-articles?lang=en"
             let pressURL = "https://api.hkma.gov.hk/public/press-releases?lang=en"
 
-            Alamofire.request(insightURL).responseObject(keyPath: "result"){ (response: DataResponse<InsightResponse>)  in
+            Alamofire.request(insightURL).responseObject { (response: DataResponse<InsightResponse>) in
 
                 guard let insightResponse = response.result.value else{
                     completed?(nil)

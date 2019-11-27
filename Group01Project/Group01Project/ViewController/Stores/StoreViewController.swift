@@ -15,6 +15,7 @@ class StoreViewController: BaseViewController,CLLocationManagerDelegate {
     
     @IBOutlet weak var viewForButton: UIView!
     @IBOutlet weak var place: UITableView!
+    var button = UIButton()
     
     let locationManager = CLLocationManager()
     var rootRouter: RootRouter? {
@@ -29,6 +30,9 @@ class StoreViewController: BaseViewController,CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        place.isHidden = true
+        place.delegate = self
         DispatchQueue.main.async {
             if(BaseViewController.loaded){
                 self.stopLoading()
@@ -52,8 +56,34 @@ class StoreViewController: BaseViewController,CLLocationManagerDelegate {
         
         // Do any additional setup after loading the view.
     }
-    @IBAction func buttonTapped(_ sender: UIButton){
-        print("button tapped")
+    @objc func buttonAction(sender: UIButton!){
+        if place.isHidden {
+            place.layer.zPosition = 100
+            view.sendSubviewToBack(mapView)
+            animate(toogle: true)
+            place.isUserInteractionEnabled = true
+            mapView.isUserInteractionEnabled = false
+//            self.view.bringSubviewToFront(viewForButton)
+            self.viewForButton.bringSubviewToFront(place)
+            
+            print("Place user interaction = \(place.isUserInteractionEnabled)")
+//            print("Place \(place.)")
+            
+        }else{
+            animate(toogle: false)
+        }
+    }
+    
+    func animate(toogle: Bool) {
+        if toogle{
+            UIView.animate(withDuration: 0.3) {
+                self.place.isHidden = false
+            }
+        }else{
+            UIView.animate(withDuration: 0.3) {
+                self.place.isHidden = true
+            }
+        }
     }
     
     override func loadView() {
@@ -61,39 +91,44 @@ class StoreViewController: BaseViewController,CLLocationManagerDelegate {
         // coordinate 22.3700556, 114.1535941 at zoom level 6.
         super.loadView()
         //for button
-        let button = UIButton()
+        
         button.frame = self.viewForButton.frame
-
+        
         // Set the font of the button text
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18.0)
-
+        
         // The default text of the button
         button.setTitle("Places", for: .normal)
-
+        
         // The text that will appear when the button is tapped
         button.setTitle("I am being tapped", for: .highlighted)
         
         // The default color of the button text
         button.setTitleColor(UIColor.black, for: .normal)
-
+        
         // The color of the button text when the button is tapped
         button.setTitleColor(UIColor.black, for: .highlighted)
         button.layer.zPosition = 100
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         
-        self.view.addSubview(button)
-    
+        
+        
+        
         //for map
         let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
-
+        
         mapView = GMSMapView.map(withFrame:CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height), camera: camera)
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
         mapView.center = self.view.center
-//        mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 50)
-//        view = mapView
+        //        mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 50)
+        //        view = mapView
         viewForButton.layer.zPosition = 100
+        mapView.layer.zPosition = 0
         
-        view.addSubview(mapView)
+        self.view.addSubview(mapView)
+        self.view.addSubview(button)
+        
         
         
         // Creates a marker in the center of the map.
@@ -124,6 +159,67 @@ extension StoreViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        button.setTitle("\(PlaceList[indexPath.row])", for: .normal)
+
+        animate(toogle: false)
+        if button.titleLabel?.text == "Central and Western" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "Eastern" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "Southern" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "Wan Chai" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "Sham Shui Po" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "Kowloon City" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "Kwun Tong" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "Wong Tai Sin" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "Yau Tsim Mong" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "Kwai Tsing" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "North" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "Sai Kung" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "Sha Tin" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "Tai Po" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "Tsuen Wan" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "Tuen Mun" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "Yuen Long" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "Islands" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }
+    }
+    
     
     // Handle incoming location events.
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -145,17 +241,17 @@ extension StoreViewController: UITableViewDelegate, UITableViewDataSource {
     // Handle authorization for the location manager.
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
-            case .restricted:
-                print("Location access was restricted.")
-            case .denied:
-                print("User denied access to location.")
-                // Display the map using the default location.
-                mapView.isHidden = false
-            case .notDetermined:
-                print("Location status not determined.")
-            case .authorizedAlways: fallthrough
-            case .authorizedWhenInUse:
-                print("Location status is OK.")
+        case .restricted:
+            print("Location access was restricted.")
+        case .denied:
+            print("User denied access to location.")
+            // Display the map using the default location.
+            mapView.isHidden = false
+        case .notDetermined:
+            print("Location status not determined.")
+        case .authorizedAlways: fallthrough
+        case .authorizedWhenInUse:
+            print("Location status is OK.")
         }
     }
     
