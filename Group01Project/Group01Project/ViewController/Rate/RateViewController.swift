@@ -113,20 +113,47 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
         cell.currency.text = tableData[0].currency[indexPath.row].name
         cell.rate.text = String(format:"%.3f",(tableData[0].currency[indexPath.row].rate!/tableData[0].currency[15].rate!))
         if (tableData[0].currency[indexPath.row].rate! > tableData[1].currency[indexPath.row].rate!){
+<<<<<<< Updated upstream
             cell.arrow.image = UIImage(systemName: "arrowtriangle.up.fill")
+=======
+            if #available(iOS 13.0, *) {
+                cell.arrow.image = UIImage(named: "arrowtriangle.up.fill")
+            } else {
+                // Fallback on earlier versions
+            }
+>>>>>>> Stashed changes
             cell.arrow.tintColor = UIColor.green
             
         }
         else if (tableData[0].currency[indexPath.row].rate! == tableData[1].currency[indexPath.row].rate!){
+<<<<<<< Updated upstream
             cell.arrow.image = UIImage(systemName: "minus")
+=======
+            if #available(iOS 13.0, *) {
+                cell.arrow.image = UIImage(named: "minus")
+            } else {
+                // Fallback on earlier versions
+            }
+>>>>>>> Stashed changes
             cell.arrow.tintColor = UIColor.gray
             
         }
         else {
+<<<<<<< Updated upstream
             cell.arrow.image = UIImage(systemName: "arrowtriangle.down.fill")
+=======
+            if #available(iOS 13.0, *) {
+                cell.arrow.image = UIImage(named: "arrowtriangle.down.fill")
+            } else {
+                // Fallback on earlier versions
+            }
+>>>>>>> Stashed changes
             cell.arrow.tintColor = UIColor.red
         }
-        
+        if (indexPath.row % 2 == 0) {
+            cell.backgroundColor = UIColor.lightGray
+        }
+        else {cell.backgroundColor = UIColor.white}
         return cell
         
     }
