@@ -1,6 +1,6 @@
 # CheckOut
 
-CheckOut is an app that related to the exchange currency.
+CheckOut is an app that related to the exchange currency. To run this app the iso version must be ios 13 or above.
 
 ## Installation of CheckOut
 
