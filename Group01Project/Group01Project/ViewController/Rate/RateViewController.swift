@@ -118,7 +118,11 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
             } else {
                 // Fallback on earlier versions
             }
-            cell.arrow.image = UIImage(systemName: "arrowtriangle.up.fill")
+            if #available(iOS 13.0, *) {
+                cell.arrow.image = UIImage(systemName: "arrowtriangle.up.fill")
+            } else {
+                // Fallback on earlier versions
+            }
             if #available(iOS 13.0, *) {
                 cell.arrow.image = UIImage(named: "arrowtriangle.up.fill")
             } else {
@@ -133,7 +137,11 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
             } else {
                 // Fallback on earlier versions
             }
-            cell.arrow.image = UIImage(systemName: "minus")
+            if #available(iOS 13.0, *) {
+                cell.arrow.image = UIImage(systemName: "minus")
+            } else {
+                // Fallback on earlier versions
+            }
             if #available(iOS 13.0, *) {
                 cell.arrow.image = UIImage(named: "minus")
             } else {
@@ -148,7 +156,11 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
             } else {
                 // Fallback on earlier versions
             }
-            cell.arrow.image = UIImage(systemName: "arrowtriangle.down.fill")
+            if #available(iOS 13.0, *) {
+                cell.arrow.image = UIImage(systemName: "arrowtriangle.down.fill")
+            } else {
+                // Fallback on earlier versions
+            }
             if #available(iOS 13.0, *) {
                 cell.arrow.image = UIImage(named: "arrowtriangle.down.fill")
             } else {

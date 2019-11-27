@@ -127,3 +127,15 @@ struct HKMA{
         case end_of_day,hkd_fer_spot, hkd_fer_1w,hkd_fer_1m,hkd_fer_3m,hkd_fer_6m,hkd_fer_9m,hkd_fer_12m
     }
 }
+
+extension Encodable{
+    func hasKey(for path: String) -> Bool {
+        return dictionary?[path] != nil
+    }
+    func value(for path: String) -> Any? {
+        return dictionary?[path]
+    }
+    var dictionary: [String: Any]? {
+        return (try? JSONSerialization.jsonObject(with: JSONEncoder().encode(self))) as? [String: Any]
+    }
+}

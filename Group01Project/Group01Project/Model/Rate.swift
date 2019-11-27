@@ -41,4 +41,9 @@ class Date : Codable  {
          self.name = name
          self.rate = rate
      }
+    
  }
+
+// Name =
+//Rate = RestManager.HKMARateJson.result?.records![0].usd
+
