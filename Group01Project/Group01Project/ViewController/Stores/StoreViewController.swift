@@ -150,9 +150,64 @@ extension StoreViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        loadView().button.setTitle("PlaceList[indexPath.row]", for: .normal)
+        //        loadView().button.setTitle("PlaceList[indexPath.row]", for: .normal)
         button.setTitle("PlaceList[indexPath.row]", for: .normal)
         animate(toogle: false)
+        if button.titleLabel?.text == "Central and Western" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "Eastern" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "Southern" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "Wan Chai" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "Sham Shui Po" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "Kowloon City" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "Kwun Tong" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "Wong Tai Sin" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "Yau Tsim Mong" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "Kwai Tsing" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "North" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "Sai Kung" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "Sha Tin" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "Tai Po" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "Tsuen Wan" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "Tuen Mun" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "Yuen Long" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }else if button.titleLabel?.text == "Islands" {
+            let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
+            mapView.center = self.view.center
+        }
     }
     
     
