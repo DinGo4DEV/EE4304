@@ -118,12 +118,24 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
             } else {
                 // Fallback on earlier versions
             }
+            cell.arrow.image = UIImage(systemName: "arrowtriangle.up.fill")
+            if #available(iOS 13.0, *) {
+                cell.arrow.image = UIImage(named: "arrowtriangle.up.fill")
+            } else {
+                // Fallback on earlier versions
+            }
             cell.arrow.tintColor = UIColor.green
             
         }
         else if (tableData[0].currency[indexPath.row].rate! == tableData[1].currency[indexPath.row].rate!){
             if #available(iOS 13.0, *) {
                 cell.arrow.image = UIImage(systemName: "minus")
+            } else {
+                // Fallback on earlier versions
+            }
+            cell.arrow.image = UIImage(systemName: "minus")
+            if #available(iOS 13.0, *) {
+                cell.arrow.image = UIImage(named: "minus")
             } else {
                 // Fallback on earlier versions
             }
@@ -136,9 +148,18 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
             } else {
                 // Fallback on earlier versions
             }
+            cell.arrow.image = UIImage(systemName: "arrowtriangle.down.fill")
+            if #available(iOS 13.0, *) {
+                cell.arrow.image = UIImage(named: "arrowtriangle.down.fill")
+            } else {
+                // Fallback on earlier versions
+            }
             cell.arrow.tintColor = UIColor.red
         }
-        
+        if (indexPath.row % 2 == 0) {
+            cell.backgroundColor = UIColor.lightGray
+        }
+        else {cell.backgroundColor = UIColor.white}
         return cell
         
     }

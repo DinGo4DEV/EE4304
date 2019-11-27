@@ -191,6 +191,12 @@ class CalculatorViewController: BaseViewController, UITabBarDelegate, UIPickerVi
         selectout.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
         selectout.disclosureButton(baseColor: view.tintColor)
         // Do any additional setup after loading the view.
+        select.frame = CGRect(x: 160, y: 100, width: 50, height: 50)
+        select.layer.cornerRadius = 0.25 * select.bounds.size.width
+        select.clipsToBounds = true
+        selectout.frame = CGRect(x: 160, y: 100, width: 50, height: 50)
+        selectout.layer.cornerRadius = 0.25 * selectout.bounds.size.width
+        selectout.clipsToBounds = true
     }
     override func viewDidLayoutSubviews() {
         view.layoutIfNeeded()
