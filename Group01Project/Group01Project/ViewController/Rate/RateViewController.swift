@@ -113,17 +113,29 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
         cell.currency.text = tableData[0].currency[indexPath.row].name
         cell.rate.text = String(format:"%.3f",(tableData[0].currency[indexPath.row].rate!/tableData[0].currency[15].rate!))
         if (tableData[0].currency[indexPath.row].rate! > tableData[1].currency[indexPath.row].rate!){
-            cell.arrow.image = UIImage(systemName: "arrowtriangle.up.fill")
+            if #available(iOS 13.0, *) {
+                cell.arrow.image = UIImage(systemName: "arrowtriangle.up.fill")
+            } else {
+                // Fallback on earlier versions
+            }
             cell.arrow.tintColor = UIColor.green
             
         }
         else if (tableData[0].currency[indexPath.row].rate! == tableData[1].currency[indexPath.row].rate!){
-            cell.arrow.image = UIImage(systemName: "minus")
+            if #available(iOS 13.0, *) {
+                cell.arrow.image = UIImage(systemName: "minus")
+            } else {
+                // Fallback on earlier versions
+            }
             cell.arrow.tintColor = UIColor.gray
             
         }
         else {
-            cell.arrow.image = UIImage(systemName: "arrowtriangle.down.fill")
+            if #available(iOS 13.0, *) {
+                cell.arrow.image = UIImage(systemName: "arrowtriangle.down.fill")
+            } else {
+                // Fallback on earlier versions
+            }
             cell.arrow.tintColor = UIColor.red
         }
         
