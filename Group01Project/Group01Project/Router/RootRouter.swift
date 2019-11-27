@@ -55,6 +55,15 @@ class RootRouter: Router{
         
     }
     
+    func showInsightPressWeb(link: String){
+        guard let insightPressWebViewcontroller = UIStoryboard.storyboard(.insights).instantiateViewController(InsightPressWebViewController.self) else {
+                return
+        }
+        insightPressWebViewcontroller.router = self
+        insightPressWebViewcontroller.url = link
+               navigationController?.pushViewController(insightPressWebViewcontroller, animated: true)
+    }
+    
     func showCalculators(){
         guard
             let CalculatorViewController = UIStoryboard.storyboard(.calculator).instantiateViewController(CalculatorViewController.self) else {

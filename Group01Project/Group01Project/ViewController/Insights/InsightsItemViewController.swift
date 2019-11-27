@@ -55,14 +55,14 @@ class InsightsItemViewController: BaseViewController, UITableViewDelegate, UITab
                         self?.tableView.setContentOffset(CGPoint.zero, animated: true)
                       }
                     }
-
+            self?.viewModel?.updateData()
                     self?.tableView.reloadData()
                 }
         tableView.delegate = self
         tableView.dataSource = self
         stopLoading()
         uiBind()
-        viewModel?.updateData()
+        
         self.tableView.reloadData()
         //print(viewModel.insightList)
         // Do any additional setup after loading the view.
@@ -87,6 +87,7 @@ class InsightsItemViewController: BaseViewController, UITableViewDelegate, UITab
         
         tabStatus.toggle()
         uiBind()
+        viewModel?.updateData()
         self.tableView.reloadData()
     }
     
@@ -95,6 +96,7 @@ class InsightsItemViewController: BaseViewController, UITableViewDelegate, UITab
         
         tabStatus.toggle()
         uiBind()
+        viewModel?.updateData()
         self.tableView.reloadData()
     }
     
@@ -120,6 +122,12 @@ class InsightsItemViewController: BaseViewController, UITableViewDelegate, UITab
             cell.uiBind(press: tempInsightPress!)
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let temp = viewModel?.insightList?[indexPath.row].link ?? "https://www.hkma.gov.hk/chi/news-and-media/insight/"
+        rootRouter?.showInsightPressWeb(link: temp)
     }
 }
 
