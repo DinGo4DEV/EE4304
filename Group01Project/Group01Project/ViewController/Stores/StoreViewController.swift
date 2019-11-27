@@ -15,6 +15,7 @@ class StoreViewController: BaseViewController,CLLocationManagerDelegate {
     
     @IBOutlet weak var viewForButton: UIView!
     @IBOutlet weak var place: UITableView!
+    var button = UIButton()
     
     let locationManager = CLLocationManager()
     var rootRouter: RootRouter? {
@@ -80,7 +81,7 @@ class StoreViewController: BaseViewController,CLLocationManagerDelegate {
         // coordinate 22.3700556, 114.1535941 at zoom level 6.
         super.loadView()
         //for button
-        let button = UIButton()
+        
         button.frame = self.viewForButton.frame
         
         // Set the font of the button text
@@ -146,7 +147,8 @@ extension StoreViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        loadView().button.setTitle("PlaceList[indexPath.row]", for: .normal)
+//        loadView().button.setTitle("PlaceList[indexPath.row]", for: .normal)
+        button.setTitle("PlaceList[indexPath.row]", for: .normal)
         animate(toogle: false)
     }
     
