@@ -48,46 +48,6 @@ class Press: Object, Mappable{
     }
 }
 
-
-class result:Object, Mappable{
-    @objc dynamic var datasize : Int = 0
-//    var records = List<Insight>()
-    var records:[Insight] = []
-    
-    required convenience init?(map: Map) {
-      self.init()
-    }
-    
-    func mapping(map: Map) {
-        datasize <- map["datasize"]
-        records <- map["records"]
-       var records: [Insight]?
-    
-        if let records = records {
-            for record in records {
-                self.records.append(record)
-            }
-        }
-    }
-}
-
-class header:Object, Mappable{
-     var success: Bool?
-    @objc dynamic var err_code: String?
-    @objc dynamic var err_msg: String?
-    
-    required convenience init?(map: Map) {
-      self.init()
-    }
-    
-    func mapping(map: Map) {
-        success <- map["success"]
-        err_code <- map["err_code"]
-        err_msg <- map["err_msg"]
-        
-
-    }
-}
 class InsightResponse:  Object, Mappable {
     var datasize : Int = 0
     var records = List<Insight>()
@@ -109,8 +69,8 @@ class InsightResponse:  Object, Mappable {
     }
 }
 
-class PressResponse:  Object, Mappable {
-    var datasize : Int = 0
+class PressResponse: Object, Mappable {
+    var datasize : Int?
     var records = List<Press>()
     
     required convenience init?(map: Map) {
@@ -120,12 +80,12 @@ class PressResponse:  Object, Mappable {
     func mapping(map: Map) {
         datasize <- map["datasize"]
         
-       var records: [Press]?
-    records <- map["records"]
-        if let records = records {
-            for record in records {
-                self.records.append(record)
+           var records: [Press]?
+        records <- map["records"]
+            if let records = records {
+                for record in records {
+                    self.records.append(record)
+                }
             }
         }
-    }
 }

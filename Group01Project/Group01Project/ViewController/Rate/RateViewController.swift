@@ -118,7 +118,16 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
             } else {
                 // Fallback on earlier versions
             }
-        
+            if #available(iOS 13.0, *) {
+                cell.arrow.image = UIImage(systemName: "arrowtriangle.up.fill")
+            } else {
+                // Fallback on earlier versions
+            }
+            if #available(iOS 13.0, *) {
+                cell.arrow.image = UIImage(named: "arrowtriangle.up.fill")
+            } else {
+                // Fallback on earlier versions
+            }
             cell.arrow.tintColor = UIColor.green
             
         }
@@ -128,7 +137,16 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
             } else {
                 // Fallback on earlier versions
             }
-        
+            if #available(iOS 13.0, *) {
+                cell.arrow.image = UIImage(systemName: "minus")
+            } else {
+                // Fallback on earlier versions
+            }
+            if #available(iOS 13.0, *) {
+                cell.arrow.image = UIImage(named: "minus")
+            } else {
+                // Fallback on earlier versions
+            }
             cell.arrow.tintColor = UIColor.gray
             
         }
@@ -138,7 +156,16 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
             } else {
                 // Fallback on earlier versions
             }
-       
+            if #available(iOS 13.0, *) {
+                cell.arrow.image = UIImage(systemName: "arrowtriangle.down.fill")
+            } else {
+                // Fallback on earlier versions
+            }
+            if #available(iOS 13.0, *) {
+                cell.arrow.image = UIImage(named: "arrowtriangle.down.fill")
+            } else {
+                // Fallback on earlier versions
+            }
             cell.arrow.tintColor = UIColor.red
         }
         if (indexPath.row % 2 == 0) {
