@@ -48,7 +48,7 @@ class InsightsItemViewController: BaseViewController  {
 //            }
 //          }
         uiBind()
-        print(viewModel.insightList)
+        print(viewModel.insightList?.first as Any)
         // Do any additional setup after loading the view.
     }
     
@@ -82,10 +82,11 @@ class InsightsItemViewController: BaseViewController  {
 
 class InsightViewModel{
     var insightRecord : Results<InsightResponse>?
-    var insightList : List<Insight>?
+//    var insightList : List<Insight>?
+    var insightList: [Insight]?
     init(){
         insightRecord = try? Realm().objects(InsightResponse.self)
-        insightList = insightRecord?.first?.records
+        insightList = insightRecord?[0].result!.records
         print(insightRecord)
     }
     

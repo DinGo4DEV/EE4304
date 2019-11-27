@@ -58,11 +58,11 @@ class SyncData {
                 return
             }
             print(response.value)
-            print(insightResponse.records.first)
+            print(insightResponse.result!.records)
             SyncData.writeRealmAsync({ (realm) in
                 realm.delete(realm.objects(InsightResponse.self))
                 realm.add(insightResponse)
-                print(insightResponse.records.first)
+                print(insightResponse.result!.records.first)
               },completed:{
                       completed?(nil)
                     })
