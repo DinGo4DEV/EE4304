@@ -101,12 +101,14 @@ class SyncData {
                 completed?(nil)
                 return
             }
-            print(response.value)
-            print(insightResponse.result!.records)
+//            print(response.value)
+//            print(insightResponse.result.records)
             SyncData.writeRealmAsync({ (realm) in
-                realm.delete(realm.objects(InsightResponse.self))
-                realm.add(insightResponse)
-                print(insightResponse.result!.records.first)
+                
+                let record = realm.objects(InsightResponse.self)
+                
+                record.first?.datasize = insightResponse.datasize
+                record.first?.records = insightResponse.records
               },completed:{
                       completed?(nil)
                 return
@@ -125,7 +127,7 @@ class SyncData {
                     completed?(nil)
                     return
                 }
-                print((pressResponse).records)
+                //print((pressResponse).records)
 
                 SyncData.writeRealmAsync({ (realm) in
                     

@@ -88,31 +88,29 @@ class header:Object, Mappable{
 
     }
 }
-class InsightResponse: Object, Mappable {
+class InsightResponse:  Object, Mappable {
+    var datasize : Int = 0
+    var records = List<Insight>()
     
-    var header: header?
-    var result: result?
     required convenience init?(map: Map) {
       self.init()
     }
     
     func mapping(map: Map) {
-        header <- map["header"]
-        result <- map["result"]
-//        var resultList: [result]?
-//        if let result = resultList {
-//             for result in resultList {
-//               self.result.append(result)
-//             }
-//        }
-
+        datasize <- map["datasize"]
+        
+       var records: [Insight]?
+    records <- map["records"]
+        if let records = records {
+            for record in records {
+                self.records.append(record)
+            }
+        }
     }
 }
 
-
-
-class PressResponse: Object, Mappable {
-    var datasize : Int?
+class PressResponse:  Object, Mappable {
+    var datasize : Int = 0
     var records = List<Press>()
     
     required convenience init?(map: Map) {
@@ -122,12 +120,12 @@ class PressResponse: Object, Mappable {
     func mapping(map: Map) {
         datasize <- map["datasize"]
         
-           var records: [Press]?
-        records <- map["records"]
-            if let records = records {
-                for record in records {
-                    self.records.append(record)
-                }
+       var records: [Press]?
+    records <- map["records"]
+        if let records = records {
+            for record in records {
+                self.records.append(record)
             }
         }
+    }
 }
