@@ -65,10 +65,10 @@ class BaseViewController: UIViewController {
                     }
                 }
             }
-            if(RestManager.HKMAEopJson == nil){
-                self.apiManager.request_eop_HKMA(){
+            if(RestManager.HKMAMonthJson == nil){
+                self.apiManager.request_month_HKMA(){
                     [weak self] (result) in
-                    RestManager.HKMAEopJson = result as? HKMA.EopJson
+                    RestManager.HKMAMonthJson = result as? HKMA.MonthJson
                     if(self!.isLoading()){
                         if(self!.checkJsonData() { () in}){
                             self!.stopLoading()
@@ -76,6 +76,18 @@ class BaseViewController: UIViewController {
                     }
                 }
             }
+            if(RestManager.HKMAEopJson == nil){
+                self.apiManager.request_eop_HKMA(){
+                    [weak self] (result) in
+                    RestManager.HKMAEopJson = result as? HKMA.MonthJson
+                    if(self!.isLoading()){
+                        if(self!.checkJsonData() { () in}){
+                            self!.stopLoading()
+                        }
+                    }
+                }
+            }
+
             
         }
     }
@@ -106,6 +118,12 @@ class BaseViewController: UIViewController {
             valied = false
         }
         if(RestManager.HKMARateJson == nil){
+            valied = false
+        }
+        if(RestManager.HKMAEopJson == nil){
+            valied = false
+        }
+        if(RestManager.HKMAMonthJson == nil){
             valied = false
         }
         if(RestManager.HengSengBranchJson == nil){

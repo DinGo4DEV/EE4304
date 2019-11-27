@@ -27,10 +27,9 @@ class HomeViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if(!isLoading()){
-            startLoading()
-        }
-//        startLoading()
+//        if(!isLoading()){
+//            startLoading()
+//        }
 
         // Do any additional setup after loading the view.
         
