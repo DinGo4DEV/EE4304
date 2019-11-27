@@ -102,7 +102,7 @@ class StoreViewController: BaseViewController,CLLocationManagerDelegate {
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         
         
-        self.view.addSubview(button)
+        
         
         //for map
         let camera = GMSCameraPosition.camera(withLatitude: 22.3700556, longitude: 114.1535941, zoom: 11.0)
@@ -114,8 +114,11 @@ class StoreViewController: BaseViewController,CLLocationManagerDelegate {
         //        mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 50)
         //        view = mapView
         viewForButton.layer.zPosition = 100
+        mapView.layer.zPosition = 0
         
-        view.addSubview(mapView)
+        self.view.addSubview(mapView)
+        self.view.addSubview(button)
+        
         
         
         // Creates a marker in the center of the map.
