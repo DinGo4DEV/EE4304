@@ -56,6 +56,7 @@ class CalculatorViewController: BaseViewController, UITabBarDelegate, UIPickerVi
     var secondUnit : String = ""
     var inputrate : Double = 0.0
     var outputrate : Double = 0.0
+    var flag : Int = 0;
     let cur : [String] = ["USD","GBP","JPY","CAD","AUD","SGD","TWD","CHF","CNY","KRW","THB","MYR","EUR","PHP","INR","HKD"]
     let cur2 = ["USD","GBP","JPY","CAD","AUD","SGD","TWD","CHF","CNY","KRW","THB","MYR","EUR","PHP","INR","HKD"]
     @IBOutlet var select: UIButton!
@@ -196,6 +197,7 @@ class CalculatorViewController: BaseViewController, UITabBarDelegate, UIPickerVi
     }
     
     @IBAction func ShowPicker(_ sender: UIButton) {
+        if flag = 1 {
         picker = UIPickerView.init()
         picker.tag = 1
         picker.delegate = self
@@ -210,8 +212,12 @@ class CalculatorViewController: BaseViewController, UITabBarDelegate, UIPickerVi
         toolBar.barStyle = UIBarStyle.default
         toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
         self.view.addSubview(toolBar)
+        }
+        flag = 0
     }
     @IBAction func ShowPickerOut(_ sender: UIButton) {
+        if flag = 1 {
+
         outpicker = UIPickerView.init()
         outpicker.tag = 2
         outpicker.delegate = self
@@ -227,6 +233,8 @@ class CalculatorViewController: BaseViewController, UITabBarDelegate, UIPickerVi
         outtoolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
         
         self.view.addSubview(outtoolBar)
+        }
+        flag = 0
     }
     
     @objc func onDoneButtonTapped() {
@@ -234,6 +242,7 @@ class CalculatorViewController: BaseViewController, UITabBarDelegate, UIPickerVi
         picker.removeFromSuperview()
         outtoolBar.removeFromSuperview()
         outpicker.removeFromSuperview()
+        flag = 1
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
