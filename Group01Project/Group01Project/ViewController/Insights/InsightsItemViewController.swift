@@ -126,7 +126,12 @@ class InsightsItemViewController: BaseViewController, UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let temp = viewModel?.insightList?[indexPath.row].link ?? "https://www.hkma.gov.hk/chi/news-and-media/insight/"
+        var temp = ""
+        if tabStatus{
+            temp = viewModel?.insightList?[indexPath.row].link ?? "https://www.hkma.gov.hk/chi/news-and-media/insight/"
+        }else{
+            temp = viewModel?.pressList?[indexPath.row].link ?? "https://www.hkma.gov.hk/eng/news-and-media/press-releases/"
+        }
         rootRouter?.showInsightPressWeb(link: temp)
     }
 }
