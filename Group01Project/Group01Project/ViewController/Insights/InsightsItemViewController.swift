@@ -55,7 +55,7 @@ class InsightsItemViewController: BaseViewController, UITableViewDelegate, UITab
                         self?.tableView.setContentOffset(CGPoint.zero, animated: true)
                       }
                     }
-
+            self?.viewModel?.updateData()
                     self?.tableView.reloadData()
                 }
         tableView.delegate = self
@@ -63,9 +63,7 @@ class InsightsItemViewController: BaseViewController, UITableViewDelegate, UITab
         stopLoading()
         uiBind()
         
-        viewModel?.updateData()
         self.tableView.reloadData()
-        print(viewModel!.insightList?.first as Any)
         //print(viewModel.insightList)
         // Do any additional setup after loading the view.
     }
@@ -89,6 +87,7 @@ class InsightsItemViewController: BaseViewController, UITableViewDelegate, UITab
         
         tabStatus.toggle()
         uiBind()
+        viewModel?.updateData()
         self.tableView.reloadData()
     }
     
@@ -97,6 +96,7 @@ class InsightsItemViewController: BaseViewController, UITableViewDelegate, UITab
         
         tabStatus.toggle()
         uiBind()
+        viewModel?.updateData()
         self.tableView.reloadData()
     }
     
@@ -123,12 +123,22 @@ class InsightsItemViewController: BaseViewController, UITableViewDelegate, UITab
         }
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        var temp = ""
+        if tabStatus{
+            temp = viewModel?.insightList?[indexPath.row].link ?? "https://www.hkma.gov.hk/chi/news-and-media/insight/"
+        }else{
+            temp = viewModel?.pressList?[indexPath.row].link ?? "https://www.hkma.gov.hk/eng/news-and-media/press-releases/"
+        }
+        rootRouter?.showInsightPressWeb(link: temp)
+    }
 }
 
 class InsightViewModel{
     var insightRecord : Results<InsightResponse>?
-    //    var insightList : List<Insight>?
-    var insightList: [Insight]?
+    var insightList : List<Insight>?
     
     var pressRecord : Results<PressResponse>?
     var pressList : List<Press>?
@@ -136,7 +146,7 @@ class InsightViewModel{
     init(){
         insightRecord = try? Realm().objects(InsightResponse.self)
         insightList?.removeAll()
-        insightList = insightRecord?.first?.result?.records
+        insightList = insightRecord?.first?.records
         
         pressRecord = try? Realm().objects(PressResponse.self)
         pressList?.removeAll()
@@ -147,7 +157,7 @@ class InsightViewModel{
         
         insightRecord = try? Realm().objects(InsightResponse.self)
         
-        insightList = insightRecord?.first?.result!.records
+        insightList = insightRecord?.first?.records
         
         pressRecord = try? Realm().objects(PressResponse.self)
         

@@ -23,128 +23,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "336A0330-3DEE-4B86-A0B6-50E989651AED"
-            shouldBeEnabled = "Yes"
+            uuid = "A5E57DE6-CD5C-4434-8D77-956DC3FF47F4"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Group01Project/ViewController/Insights/InsightsItemViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "694DB49D-06C5-4ECA-BE68-371CF311AEDE"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Group01Project/Model/SyncData.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "syncInsight(completed:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "694DB49D-06C5-4ECA-BE68-371CF311AEDE - 33416624d812ba96"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (RealmSwift.Realm) -&gt; () in closure #1 (Alamofire.DataResponse&lt;Group01Project.InsightResponse&gt;) -&gt; () in Group01Project.SyncData.syncInsight(completed: Swift.Optional&lt;(Swift.Optional&lt;Group01Project.SyncDataFailReason&gt;) -&gt; ()&gt;) -&gt; ()"
-                  moduleName = "Group01Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zensis/Documents/Bowie/Document/EE4304/Group01Project/Group01Project/Model/SyncData.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66"
-                  offsetFromSymbolStart = "295">
-               </Location>
-               <Location
-                  uuid = "694DB49D-06C5-4ECA-BE68-371CF311AEDE - cf9034bba83f822e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 () -&gt; () in closure #1 (Alamofire.DataResponse&lt;Group01Project.InsightResponse&gt;) -&gt; () in Group01Project.SyncData.syncInsight(completed: Swift.Optional&lt;(Swift.Optional&lt;Group01Project.SyncDataFailReason&gt;) -&gt; ()&gt;) -&gt; ()"
-                  moduleName = "Group01Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zensis/Documents/Bowie/Document/EE4304/Group01Project/Group01Project/Model/SyncData.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "67"
-                  endingLineNumber = "67"
-                  offsetFromSymbolStart = "55">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FE7D5013-D686-4F3E-A94F-E87AE6922A3F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Group01Project/Model/SyncData.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "syncInsight(completed:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "FE7D5013-D686-4F3E-A94F-E87AE6922A3F - b5ef7f77db3e6772"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Group01Project.InsightResponse&gt;) -&gt; () in Group01Project.SyncData.syncInsight(completed: Swift.Optional&lt;(Swift.Optional&lt;Group01Project.SyncDataFailReason&gt;) -&gt; ()&gt;) -&gt; ()"
-                  moduleName = "Group01Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zensis/Documents/Bowie/Document/EE4304/Group01Project/Group01Project/Model/SyncData.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "62"
-                  endingLineNumber = "62"
-                  offsetFromSymbolStart = "928">
-               </Location>
-               <Location
-                  uuid = "FE7D5013-D686-4F3E-A94F-E87AE6922A3F - 33416624d812ba96"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (RealmSwift.Realm) -&gt; () in closure #1 (Alamofire.DataResponse&lt;Group01Project.InsightResponse&gt;) -&gt; () in Group01Project.SyncData.syncInsight(completed: Swift.Optional&lt;(Swift.Optional&lt;Group01Project.SyncDataFailReason&gt;) -&gt; ()&gt;) -&gt; ()"
-                  moduleName = "Group01Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zensis/Documents/Bowie/Document/EE4304/Group01Project/Group01Project/Model/SyncData.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "63"
-                  endingLineNumber = "63"
-                  offsetFromSymbolStart = "42">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0BA6DDA6-0B2E-46B2-A982-93FFFC438787"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Group01Project/Model/SyncData.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "syncInsight(completed:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

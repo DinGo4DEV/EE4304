@@ -96,6 +96,8 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
 
         navigationItem.leftItemsSupplementBackButton = true
+        navigationItem.title = "Check-OUT"
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Bradley Hand", size: 35)!, NSAttributedString.Key.foregroundColor: UIColor.init(red: 74, green: 144, blue: 226)]
         // Do any additional setup after loading the view.
         loadingIndicator = UIActivityIndicatorView(style: .whiteLarge)
         loadingIndicator!.center = self.view.center

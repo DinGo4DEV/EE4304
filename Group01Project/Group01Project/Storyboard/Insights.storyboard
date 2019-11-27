@@ -171,5 +171,40 @@
             </objects>
             <point key="canvasLocation" x="1015.2" y="144.3778110944528"/>
         </scene>
+        <!--Insight Press Web View Controller-->
+        <scene sceneID="ytB-yF-yp7">
+            <objects>
+                <viewController storyboardIdentifier="InsightPressWebViewController" id="58P-Ad-Ksa" customClass="InsightPressWebViewController" customModule="Group01Project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hLC-Od-8Hx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H5j-fD-KFb">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="H5j-fD-KFb" firstAttribute="top" secondItem="RQQ-EM-Df9" secondAttribute="top" id="2Q2-ot-tvO"/>
+                            <constraint firstItem="RQQ-EM-Df9" firstAttribute="trailing" secondItem="H5j-fD-KFb" secondAttribute="trailing" id="BUU-P6-2RR"/>
+                            <constraint firstItem="H5j-fD-KFb" firstAttribute="leading" secondItem="RQQ-EM-Df9" secondAttribute="leading" id="Y4b-6s-g02"/>
+                            <constraint firstItem="RQQ-EM-Df9" firstAttribute="bottom" secondItem="H5j-fD-KFb" secondAttribute="bottom" id="lc3-ug-ouB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="RQQ-EM-Df9"/>
+                    </view>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="webView" destination="H5j-fD-KFb" id="icL-qT-IBW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5FW-mx-l1W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1651" y="147"/>
+        </scene>
     </scenes>
 </document>

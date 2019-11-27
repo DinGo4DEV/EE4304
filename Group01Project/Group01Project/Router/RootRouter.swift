@@ -10,8 +10,6 @@ import UIKit
 
 class RootRouter: Router{
     
-    //Root router is the router showing the 5 core viewController
-    // Open the 5 other routers for routing in those 5 tabs
     
     func showStart(animated: Bool, complete: (() -> Void)? = nil ){
         guard
@@ -57,6 +55,15 @@ class RootRouter: Router{
         
     }
     
+    func showInsightPressWeb(link: String){
+        guard let insightPressWebViewcontroller = UIStoryboard.storyboard(.insights).instantiateViewController(InsightPressWebViewController.self) else {
+                return
+        }
+        insightPressWebViewcontroller.router = self
+        insightPressWebViewcontroller.url = link
+               navigationController?.pushViewController(insightPressWebViewcontroller, animated: true)
+    }
+    
     func showCalculators(){
         guard
             let CalculatorViewController = UIStoryboard.storyboard(.calculator).instantiateViewController(CalculatorViewController.self) else {
@@ -76,6 +83,7 @@ class RootRouter: Router{
         StoreViewController.router = self
         navigationController?.pushViewController(StoreViewController, animated: true)
     }
+    
     func showRate(){
         guard
             let rateViewController = UIStoryboard.storyboard(.rate).instantiateViewController(RateViewController.self) else {
