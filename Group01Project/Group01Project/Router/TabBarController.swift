@@ -9,13 +9,16 @@
 import UIKit
 
 class TabBarController: UITabBarController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
-    }
-    
+        let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
+        let tabBar = appDelegate.window!.rootViewController as! UITabBarController
+
+           tabBar.selectedIndex = 2
+  
+
+           }
 
     /*
     // MARK: - Navigation

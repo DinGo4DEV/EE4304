@@ -20,6 +20,7 @@ class RootRouter: Router{
         homeViewController.router = self
         homeViewController.modalPresentationStyle = .fullScreen
         navigationController?.pushViewController(homeViewController, animated: false)
+        
     }
     
     func showTest(){

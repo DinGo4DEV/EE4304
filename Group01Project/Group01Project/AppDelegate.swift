@@ -11,16 +11,19 @@ import GoogleMaps
 import GooglePlaces
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate {
 
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+        //let cal = CalculatorViewController()
+        let tabbar = TabBarController()
+
         GMSServices.provideAPIKey("AIzaSyDae4Sln1xBvUwOF1ChiX0zOPQAfysEBOc")
         GMSPlacesClient.provideAPIKey("AIzaSyDae4Sln1xBvUwOF1ChiX0zOPQAfysEBOc")
+
         return true
     }
 
