@@ -52,7 +52,7 @@ class SyncData {
             let insightURL = "https://api.hkma.gov.hk/public/insight-articles?lang=en"
             let pressURL = "https://api.hkma.gov.hk/public/press-releases?lang=en"
 
-            Alamofire.request(insightURL).responseObject { (response: DataResponse<InsightResponse>) in
+            Alamofire.request(insightURL).responseObject(keyPath: "result"){ (response: DataResponse<InsightResponse>)  in
 
                 guard let insightResponse = response.result.value else{
                     completed?(nil)
@@ -95,20 +95,22 @@ class SyncData {
         let insightURL = "https://api.hkma.gov.hk/public/insight-articles?lang=en"
 //        let pressURL = "https://api.hkma.gov.hk/public/press-releases?lang=en"
 
-        Alamofire.request(insightURL).responseObject { (response: DataResponse<InsightResponse>) in
+        Alamofire.request(insightURL).responseObject(keyPath: "result"){ (response: DataResponse<InsightResponse>)  in
 
             guard let insightResponse = response.result.value else{
                 completed?(nil)
                 return
             }
-//            print(response.value)
-//            print(insightResponse.result.records)
+            //print((insightResponse).records)
+
             SyncData.writeRealmAsync({ (realm) in
-                
                 let record = realm.objects(InsightResponse.self)
-                
                 record.first?.datasize = insightResponse.datasize
                 record.first?.records = insightResponse.records
+                
+//                realm.delete(realm.objects(InsightResponse.self))
+//                realm.add(insightResponse)
+//
               },completed:{
                       completed?(nil)
                 return
@@ -127,7 +129,7 @@ class SyncData {
                     completed?(nil)
                     return
                 }
-                //print((pressResponse).records)
+                print((pressResponse).records)
 
                 SyncData.writeRealmAsync({ (realm) in
                     
