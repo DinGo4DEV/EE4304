@@ -56,7 +56,7 @@ class CalculatorViewController: BaseViewController, UITabBarDelegate, UIPickerVi
     var secondUnit : String = ""
     var inputrate : Double = 0.0
     var outputrate : Double = 0.0
-    var flag : Int = 0;
+    var flag : Int = 1;
     let cur : [String] = ["USD","GBP","JPY","CAD","AUD","SGD","TWD","CHF","CNY","KRW","THB","MYR","EUR","PHP","INR","HKD"]
     let cur2 = ["USD","GBP","JPY","CAD","AUD","SGD","TWD","CHF","CNY","KRW","THB","MYR","EUR","PHP","INR","HKD"]
     @IBOutlet var select: UIButton!
@@ -197,7 +197,7 @@ class CalculatorViewController: BaseViewController, UITabBarDelegate, UIPickerVi
     }
     
     @IBAction func ShowPicker(_ sender: UIButton) {
-        if flag = 1 {
+        if flag == 1 {
         picker = UIPickerView.init()
         picker.tag = 1
         picker.delegate = self
@@ -216,7 +216,7 @@ class CalculatorViewController: BaseViewController, UITabBarDelegate, UIPickerVi
         flag = 0
     }
     @IBAction func ShowPickerOut(_ sender: UIButton) {
-        if flag = 1 {
+        if flag == 1 {
 
         outpicker = UIPickerView.init()
         outpicker.tag = 2
