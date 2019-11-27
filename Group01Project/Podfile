@@ -16,6 +16,7 @@ target 'Group01Project' do
 	pod 'Kingfisher', '~> 4.0'
   	pod 'GoogleMaps'
   	pod 'GooglePlaces'
+  pod 'Charts'
   # Pods for Group01Project
 
 end

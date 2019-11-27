@@ -2,7 +2,7 @@
 //  RateTableViewCell.swift
 //  Group01Project
 //
-//  Created by AnimaeTech-MacMini2018 on 25/11/2019.
+//  Created by Vincent on 25/11/2019.
 //  Copyright © 2019 Stanley. All rights reserved.
 //
 

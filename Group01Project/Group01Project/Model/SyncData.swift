@@ -9,6 +9,7 @@
 import Foundation
 import RealmSwift
 import Alamofire
+import ObjectMapper
 import AlamofireObjectMapper
 
 enum SyncDataFailReason: Error {
@@ -19,9 +20,9 @@ enum SyncDataFailReason: Error {
 
 
 class SyncData {
-  static var realmBackgroundQueue = DispatchQueue(label: ".realm", qos: .background)
+    static var firstSync : Bool  = false
     
-//    public func responseObject<T: BaseMappable>(queue: DispatchQueue? = nil, keyPath: String? = nil, mapToObject object: T? = nil, context: MapContext? = nil, completionHandler: @escaping (DataResponse<T>) -> Void) -> Self
+    static var realmBackgroundQueue = DispatchQueue(label: ".realm", qos: .background)
     
     static func writeRealmAsync(_ write: @escaping (_ realm: Realm) -> Void,
                                 completed: (() -> Void)? = nil) {
@@ -47,12 +48,55 @@ class SyncData {
       }
     }
     
+    func firstSync(completed: ((SyncDataFailReason?) -> Void)?) {
+            let insightURL = "https://api.hkma.gov.hk/public/insight-articles?lang=en"
+            let pressURL = "https://api.hkma.gov.hk/public/press-releases?lang=en"
+
+            Alamofire.request(insightURL).responseObject(keyPath: "result"){ (response: DataResponse<InsightResponse>)  in
+
+                guard let insightResponse = response.result.value else{
+                    completed?(nil)
+                    return
+                }
+                //print((insightResponse).records)
+
+                SyncData.writeRealmAsync({ (realm) in
+                    let record = realm.objects(InsightResponse.self)
+                    realm.add(insightResponse)
+    
+                  },completed:{
+                          completed?(nil)
+                    return
+                })
+
+            }
+        
+        Alamofire.request(pressURL).responseObject(keyPath: "result"){ (response: DataResponse<PressResponse>)  in
+
+                       guard let pressResponse = response.result.value else{
+                           completed?(nil)
+                           return
+                       }
+                       //print((insightResponse).records)
+
+                       SyncData.writeRealmAsync({ (realm) in
+                           let record = realm.objects(PressResponse.self)
+                           realm.add(pressResponse)
+           
+                         },completed:{
+                                 completed?(nil)
+                           return
+                       })
+
+                   }
+        }
+    
     func syncInsight(completed: ((SyncDataFailReason?) -> Void)?) {
         let insightURL = "https://api.hkma.gov.hk/public/insight-articles?lang=en"
 //        let pressURL = "https://api.hkma.gov.hk/public/press-releases?lang=en"
-//
+
         Alamofire.request(insightURL).responseObject { (response: DataResponse<InsightResponse>) in
-            
+
             guard let insightResponse = response.result.value else{
                 completed?(nil)
                 return
@@ -65,10 +109,41 @@ class SyncData {
                 print(insightResponse.result!.records.first)
               },completed:{
                       completed?(nil)
-                    })
+                return
+            })
+
         }
     }
     
+    func syncPress(completed: ((SyncDataFailReason?) -> Void)?) {
+//            let insightURL = "https://api.hkma.gov.hk/public/insight-articles?lang=en"
+            let pressURL = "https://api.hkma.gov.hk/public/press-releases?lang=en"
+
+            Alamofire.request(pressURL).responseObject(keyPath: "result"){ (response: DataResponse<PressResponse>)  in
+
+                guard let pressResponse = response.result.value else{
+                    completed?(nil)
+                    return
+                }
+                print((pressResponse).records)
+
+                SyncData.writeRealmAsync({ (realm) in
+                    
+                    let record = realm.objects(PressResponse.self)
+                    
+                    record.first?.datasize = pressResponse.datasize
+                    record.first?.records = pressResponse.records
+                    
+    //                realm.delete(realm.objects(InsightResponse.self))
+    //                realm.add(insightResponse)
+    //
+                  },completed:{
+                          completed?(nil)
+                    return
+                })
+
+            }
+        }
     
     
 }

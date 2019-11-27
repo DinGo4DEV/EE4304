@@ -49,7 +49,6 @@ class Press: Object, Mappable{
 }
 
 
-
 class result:Object, Mappable{
     @objc dynamic var datasize : Int = 0
 //    var records = List<Insight>()
@@ -62,13 +61,13 @@ class result:Object, Mappable{
     func mapping(map: Map) {
         datasize <- map["datasize"]
         records <- map["records"]
-        var records: [Insight]?
+       var records: [Insight]?
+    
         if let records = records {
-             for record in records {
-               self.records.append(record)
-             }
+            for record in records {
+                self.records.append(record)
+            }
         }
-
     }
 }
 
@@ -113,7 +112,7 @@ class InsightResponse: Object, Mappable {
 
 
 class PressResponse: Object, Mappable {
-    var dataSize : Int?
+    var datasize : Int?
     var records = List<Press>()
     
     required convenience init?(map: Map) {
@@ -121,13 +120,14 @@ class PressResponse: Object, Mappable {
     }
     
     func mapping(map: Map) {
-        dataSize <- map["datasize"]
+        datasize <- map["datasize"]
+        
+           var records: [Press]?
         records <- map["records"]
-        var records: [Press]?
-        if let records = records {
-             for record in records {
-               self.records.append(record)
-             }
+            if let records = records {
+                for record in records {
+                    self.records.append(record)
+                }
+            }
         }
-    }
 }

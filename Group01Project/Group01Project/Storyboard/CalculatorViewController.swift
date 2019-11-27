@@ -62,6 +62,9 @@ class CalculatorViewController: BaseViewController, UITabBarDelegate, UIPickerVi
     @IBOutlet var selectout: UIButton!
     @IBOutlet var output: UILabel!
     @IBOutlet var input: UITextField!
+    @IBOutlet var image: UIImageView!
+    @IBOutlet var image2: UIImageView!
+
     
     override func loadView() {
         super.loadView()
@@ -152,10 +155,16 @@ class CalculatorViewController: BaseViewController, UITabBarDelegate, UIPickerVi
                 amount = 0
             }
             print(amount)
-        }
             let new = Double( round(1000 * amount)/1000 )
             var b: String = String(new)
             output.text! = b
+        }
+        else {
+            let alert = UIAlertController(title: "Data Validation Error", message: "You haven't selected both currency", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Close", style: .default, handler: { (action: UIAlertAction!) in
+            }))
+            present(alert, animated: true , completion: nil)
+            }
     }
         else {
             let alert = UIAlertController(title: "Data Validation Error", message: "Input cannot empty", preferredStyle: UIAlertController.Style.alert)
@@ -252,13 +261,53 @@ class CalculatorViewController: BaseViewController, UITabBarDelegate, UIPickerVi
             select.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
             select.setTitle(cur[row], for: .normal)
             firstUnit = cur[row]
+            changeflag(country: firstUnit, flag: image)
         }
         else{
             selectout.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
             selectout.setTitle(cur2[row], for: .normal)
             secondUnit = cur2[row]
+            changeflag(country: secondUnit, flag: image2)
         }
         
     }
+    func changeflag(country: String, flag: UIImageView ){
+        switch country{
+        case "USD":
+            flag.image = UIImage(named: "usd")
+        case "GBP":
+            flag.image = UIImage(named: "gbp")
+        case "JPY":
+            flag.image = UIImage(named: "jpy")
+        case "SGD":
+            flag.image = UIImage(named: "sgd")
+        case "AUD":
+            flag.image = UIImage(named: "aud")
+        case "TWD":
+            flag.image = UIImage(named: "twd")
+        case "CAD":
+            flag.image = UIImage(named: "cad")
+        case "CHF":
+            flag.image = UIImage(named: "chf")
+        case "CNY":
+            flag.image = UIImage(named: "cny")
+        case "KRW":
+            flag.image = UIImage(named: "krw")
+        case "THB":
+            flag.image = UIImage(named: "thb")
+        case "MYR":
+            flag.image = UIImage(named: "myr")
+        case "EUR":
+            flag.image = UIImage(named: "eur")
+        case "PHP":
+            flag.image = UIImage(named: "php")
+        case "INR":
+            flag.image = UIImage(named: "inr")
+        case "HKD":
+            flag.image = UIImage(named: "hkd")
+        default:
+            flag.image = UIImage(named: "hkd")
+    }
     
+    }
 }
