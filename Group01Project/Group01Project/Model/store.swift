@@ -38,21 +38,6 @@ import ObjectMapper
 //   }
 //]
 
-class store: Object, Mappable{
-    var candidates = List<candidates>()
-    
-    
-    required convenience init?(map: Map) {
-      self.init()
-    }
-    
-    func mapping(map: Map) {
-        
-        candidates <- map["candidates"]
-        
-    }
-}
-
 class candidates: Object, Mappable{
     @objc dynamic var formatted_address : String?
     
@@ -73,6 +58,9 @@ class candidates: Object, Mappable{
         
     }
     
+    override static func primaryKey() -> String?{
+        return "place_id"
+    }
 }
 
 class geometry: Object, Mappable{
