@@ -63,11 +63,11 @@ class StoreViewController: BaseViewController,CLLocationManagerDelegate {
             animate(toogle: true)
             place.isUserInteractionEnabled = true
             mapView.isUserInteractionEnabled = false
-//            self.view.bringSubviewToFront(viewForButton)
+            //            self.view.bringSubviewToFront(viewForButton)
             self.viewForButton.bringSubviewToFront(place)
             
             print("Place user interaction = \(place.isUserInteractionEnabled)")
-//            print("Place \(place.)")
+            //            print("Place \(place.)")
             
         }else{
             animate(toogle: false)
@@ -132,12 +132,15 @@ class StoreViewController: BaseViewController,CLLocationManagerDelegate {
         
         
         // Creates a marker in the center of the map.
-        let marker = GMSMarker()
-        
-        //      marker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
-        //      marker.title = "Sydney"
-        //      marker.snippet = "Australia"
-        marker.map = mapView
+        for i in 0...5 {
+            let marker = GMSMarker()
+                  
+            marker.position = CLLocationCoordinate2D(latitude: 22.3700556 + Double(i), longitude: 114.1535941)
+                        marker.title = "Sydney"
+                       marker.snippet = "Australia"
+                  marker.map = mapView
+        }
+      
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -161,7 +164,7 @@ extension StoreViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         button.setTitle("\(PlaceList[indexPath.row])", for: .normal)
-
+        
         animate(toogle: false)
         
         var camera: GMSCameraPosition = GMSCameraPosition()
@@ -224,7 +227,28 @@ extension StoreViewController: UITableViewDelegate, UITableViewDataSource {
         mapView.animate(to: camera)
     }
     
-    
+    func marker (_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        var markerDict: [String: GMSMarker] = [:]
+        struct State {
+            let name: String
+            let long: CLLocationDegrees
+            let lat: CLLocationDegrees
+        }
+        var states : [State] = [State]()
+        for state in states {
+            let state_marker = GMSMarker()
+            state_marker.position = CLLocationCoordinate2D(latitude: state.lat, longitude: state.long)
+            state_marker.title = state.name
+            state_marker.snippet = "Hey, this is \(state.name)"
+            state_marker.map = mapView
+            markerDict[state.name] = state_marker
+        }
+        
+        //test
+        
+        // *IMPORTANT* Assign all the spots data to the marker's userData property
+        //marker.userData = spot
+    }
     // Handle incoming location events.
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location: CLLocation = locations.last!
