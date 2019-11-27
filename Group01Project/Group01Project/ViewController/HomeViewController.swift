@@ -69,7 +69,7 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         var date = NSDate()
         dateLabel.text = dateFormatterDay.string(for: date)
         dayLabel.text = dateFormatterPrint.string(for: date)
-    RestManager.HKMARateJson.result?.records![0].value(for: "usd")
+    //RestManager.HKMARateJson.result?.records![0].value(for: "usd")
         
         
 //        print(dict1[])
