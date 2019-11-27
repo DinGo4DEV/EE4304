@@ -15,6 +15,7 @@ class BaseNavigationController: UINavigationController {
           if let topVC = topViewController as? BaseViewController {
             topVC.router = router
           }
+            
         }
       }
 
@@ -22,6 +23,7 @@ class BaseNavigationController: UINavigationController {
         super.viewDidLoad()
 
         automaticallyAdjustsScrollViewInsets = true
+        
       }
 
       override var preferredStatusBarStyle: UIStatusBarStyle {

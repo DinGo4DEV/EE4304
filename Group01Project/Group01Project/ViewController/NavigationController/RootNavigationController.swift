@@ -17,6 +17,7 @@ var router: RootRouter?
        super.viewDidLoad()
        router = RootRouter(self)
        router?.showStart(animated: false)
+        
         // Do any additional setup after loading the view.
     }
     
