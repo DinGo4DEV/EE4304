@@ -11,7 +11,7 @@ import Charts
 import UIKit
 
 
-class ChartViewController: UIViewController {
+class ChartViewController: BaseViewController {
     
     @IBOutlet weak var secondCurrency: UILabel!
     @IBOutlet weak var firstCurrency: UILabel!

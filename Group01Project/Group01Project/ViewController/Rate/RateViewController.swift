@@ -141,10 +141,10 @@ class RateViewController: BaseViewController, UITabBarDelegate ,UITableViewDeleg
        
             cell.arrow.tintColor = UIColor.red
         }
-        if (indexPath.row % 2 == 0) {
-            cell.backgroundColor = UIColor.lightGray
-        }
-        else {cell.backgroundColor = UIColor.white}
+//        if (indexPath.row % 2 == 0) {
+//            cell.backgroundColor = UIColor.lightGray
+//        }
+//        else {cell.backgroundColor = UIColor.white}
         return cell
         
     }
