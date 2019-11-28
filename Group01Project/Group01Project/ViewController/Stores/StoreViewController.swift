@@ -58,22 +58,7 @@ class StoreViewController: BaseViewController,CLLocationManagerDelegate {
     }
     @objc func buttonAction(sender: UIButton!){
         dropDown.show()
-//        if place.isHidden {
-            
-//            place.layer.zPosition = 100
-//            view.sendSubviewToBack(mapView)
-//            animate(toogle: true)
-//            place.isUserInteractionEnabled = true
-//            mapView.isUserInteractionEnabled = false
-//            //            self.view.bringSubviewToFront(viewForButton)
-//            self.viewForButton.bringSubviewToFront(place)
-//
-//            print("Place user interaction = \(place.isUserInteractionEnabled)")
-            //            print("Place \(place.)")
-            
-//        }else{
-//            animate(toogle: false)
-//        }
+
     }
     
     override func loadView() {

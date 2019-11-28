@@ -2,7 +2,7 @@
 //  SyncData.swift
 //  Group01Project
 //
-//  Created by Zensis on 25/11/2019.
+//  C/Users/neptunewong/Documents/EE4304/Project/EE4304/Group01Project/Group01Project/Modelreated by Zensis on 25/11/2019.
 //  Copyright © 2019 Stanley. All rights reserved.
 //
 
@@ -162,22 +162,6 @@ class SyncData {
             
             completed!(storeResponse)
 
-//                    SyncData.writeRealmAsync({ (realm) in
-//
-//
-////                        realm.delete(StoreResponse.self)
-//                        let record = realm.objects(StoreResponse.self)
-//                        record.first?.results = storeResponse.results
-//                        print(record.first?.results)
-////                        record.first?.records = pressResponse.records
-//
-//        //                realm.delete(realm.objects(InsightResponse.self))
-//        //                realm.add(insightResponse)
-//        //
-//                      },completed:{
-//                              completed?(nil)
-//                        return
-//                    })
 
                 }
             }

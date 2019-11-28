@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,7 +10,7 @@
         <!--Exchange Rate-->
         <scene sceneID="cHo-LZ-QGQ">
             <objects>
-                <viewController storyboardIdentifier="RateViewController" title="Exchange Rate" id="eCl-ib-vKZ" customClass="RateViewController" customModule="Group01Project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RateViewController" title="Exchange Rate" id="eCl-ib-vKZ" customClass="RateViewController" customModule="Check_OUT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1jH-3V-IEl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,7 +109,7 @@
                                 <rect key="frame" x="0.0" y="117" width="375" height="550"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="rate" rowHeight="60" id="oS1-Fm-4MN" customClass="RateTableViewCell" customModule="Group01Project" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="rate" rowHeight="60" id="oS1-Fm-4MN" customClass="RateTableViewCell" customModule="Check_OUT" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oS1-Fm-4MN" id="lXc-7y-ZVu">
@@ -183,16 +183,19 @@
                                 <rect key="frame" x="0.0" y="55" width="375" height="62"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are using" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tjo-jI-E2r">
-                                        <rect key="frame" x="48.5" y="15" width="103" height="32"/>
+                                        <rect key="frame" x="58" y="15" width="103" height="32"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yuy-2Y-1yt">
-                                        <rect key="frame" x="171.5" y="15" width="93.5" height="32"/>
+                                        <rect key="frame" x="181" y="15" width="99" height="32"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VNM-3f-ei5">
-                                                <rect key="frame" x="62" y="5" width="16.5" height="22"/>
+                                                <rect key="frame" x="62" y="5" width="22" height="22"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="VNM-3f-ei5" secondAttribute="height" multiplier="1:1" id="lpk-YI-1CN"/>
+                                                </constraints>
                                                 <state key="normal" image="arrowtriangle.down.fill" catalog="system"/>
                                                 <connections>
                                                     <action selector="currecyonlclick:" destination="eCl-ib-vKZ" eventType="touchUpInside" id="bJl-ZX-6XH"/>
@@ -224,7 +227,7 @@
                                     <constraint firstAttribute="bottom" secondItem="Tjo-jI-E2r" secondAttribute="bottom" constant="15" id="O4f-aI-5Ms"/>
                                     <constraint firstItem="yuy-2Y-1yt" firstAttribute="leading" secondItem="Tjo-jI-E2r" secondAttribute="trailing" constant="20" id="UbB-2I-rJx"/>
                                     <constraint firstItem="Tjo-jI-E2r" firstAttribute="top" secondItem="A8A-KQ-ueP" secondAttribute="top" constant="15" id="jgI-KM-E2g"/>
-                                    <constraint firstAttribute="trailing" secondItem="yuy-2Y-1yt" secondAttribute="trailing" constant="110" id="siV-Qj-781"/>
+                                    <constraint firstAttribute="trailing" secondItem="yuy-2Y-1yt" secondAttribute="trailing" constant="95" id="siV-Qj-781"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -259,7 +262,7 @@
         <!--Chart View Controller-->
         <scene sceneID="IyH-Mu-S89">
             <objects>
-                <viewController storyboardIdentifier="ChartViewController" id="iOC-I5-zXx" customClass="ChartViewController" customModule="Group01Project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChartViewController" id="iOC-I5-zXx" customClass="ChartViewController" customModule="Check_OUT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="F31-gT-jAn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

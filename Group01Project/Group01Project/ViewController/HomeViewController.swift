@@ -64,15 +64,8 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeRateTableViewCell", for: indexPath) as! HomeRateTableViewCell
-        // Basic Cell
-        //        cell.textLabel?.text = restaurants[indexPath.row].name
-        //        cell.imageView?.image = UIImage(named: restaurants[indexPath.row].image)
-        // Custom Cell
-//
-//        guard let value = viewModel.currencyArray.value(for: currencyName[indexPath.row]) as? Double? else {
-//            viewModel.loadData()
-//            return UITableViewCell()
-//        }
+        
+        
         guard let tempCurr = (viewModel.currencyArray.filter{$0.name == currencyName[indexPath.row].uppercased()}).first else {
             self.viewModel.loadData()
             return UITableViewCell()
@@ -105,8 +98,7 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
 
 
 // Make your own VC inherit the BaseViewController
-//if you need to use the tab view connect to the tabBar inside the baseViewController.swift
-//if you dont need the tabBar just let it be, then it will disapear
+
 
 class  HomeViewModel{
     
