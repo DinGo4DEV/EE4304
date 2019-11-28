@@ -268,7 +268,7 @@ extension StoreViewController: UITableViewDelegate, UITableViewDataSource {
     //        gMarker.setImageSize(scaledToSize: .init(width: 40, height: 40))
             gMarker.map = mapView
         } else {
-            print("Marker is showed")
+//            print("Marker is showed")
         }
     }
 
@@ -291,12 +291,22 @@ extension StoreViewController: UITableViewDelegate, UITableViewDataSource {
                 imageName = "boc-marker"
             } else if(marker.name.lowercased().contains("construction")){
                 imageName = "ccb-marker"
-            } else if(marker.name.lowercased().contains("dah sing")){
+            } else if(marker.name.contains("大新")||marker.name.lowercased().contains("dah sing")){
                 imageName = "dahsing-marker"
-            } else if(marker.name.lowercased().contains("citi")){
+            } else if(marker.name.contains("花旗")||marker.name.lowercased().contains("citi")){
                 imageName = "citi-marker"
             } else if(marker.name.contains("東亞")||marker.name.lowercased().contains("east asia")){
                 imageName = "bea-marker"
+            } else if(marker.name.contains("星展")||marker.name.lowercased().contains("dbs")){
+                    imageName = "dbs-marker"
+            } else if(marker.name.contains("大眾")||marker.name.lowercased().contains("public")){
+                imageName = "public-marker"
+            } else if(marker.name.contains("南洋")||marker.name.contains("nanyang")||marker.name.lowercased().contains("ncb")){
+                    imageName = "ncb-marker"
+            } else if(marker.name.contains("上海")||marker.name.contains("shanghai")){
+                        imageName = "shanghai-marker"
+            } else if(marker.name.contains("招商")||marker.name.contains("永隆")||marker.name.contains("cmb")){
+                        imageName = "cmb-marker"
             }
             
         }
