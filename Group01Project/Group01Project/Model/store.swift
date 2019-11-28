@@ -10,11 +10,33 @@ import Foundation
 import RealmSwift
 import ObjectMapper
 
-struct GMarker{
+
+class GMarker:NSObject{
     var name:String
     var icon:String?
     var location:latlng?
     var type:[String]?
+    
+    init(name:String, icon:String?, location:latlng?, type:[String]?) {
+             self.name = name
+             self.icon = icon ?? ""
+            self.location = location
+            self.type = type ?? [""]
+         }
+
+         override var hash: Int {
+         return location.hashValue
+    }
+
+    override func isEqual(_ object: Any?) -> Bool {
+        guard let rhs = object as? GMarker else {
+            return false
+        }
+        let lhs = self
+
+        return lhs.location == rhs.location
+    }
+         
 }
 
 class Geometry: Object, Mappable{

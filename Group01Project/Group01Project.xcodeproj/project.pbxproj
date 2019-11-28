@@ -34,6 +34,7 @@
 		109A1C38238B9166009E5DC4 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109A1C37238B9166009E5DC4 /* StoreViewController.swift */; };
 		109A1C3A238B92BA009E5DC4 /* RootStoreNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109A1C39238B92BA009E5DC4 /* RootStoreNavigationController.swift */; };
 		109A1C3C238BD0B1009E5DC4 /* store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109A1C3B238BD0B1009E5DC4 /* store.swift */; };
+		109A1C46238FC65B009E5DC4 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109A1C45238FC65B009E5DC4 /* UIImageViewExtension.swift */; };
 		10A8CB80237971A80014B8A9 /* RestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8CB7F237971A80014B8A9 /* RestManager.swift */; };
 		10A8CB8423798C480014B8A9 /* HengSengModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8CB8323798C470014B8A9 /* HengSengModel.swift */; };
 		10E531E3237AB0560028F094 /* HKMAModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E531E2237AB0560028F094 /* HKMAModel.swift */; };
@@ -84,6 +85,7 @@
 		109A1C37238B9166009E5DC4 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StoreViewController.swift; path = Group01Project/ViewController/Stores/StoreViewController.swift; sourceTree = SOURCE_ROOT; };
 		109A1C39238B92BA009E5DC4 /* RootStoreNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootStoreNavigationController.swift; sourceTree = "<group>"; };
 		109A1C3B238BD0B1009E5DC4 /* store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = store.swift; sourceTree = "<group>"; };
+		109A1C45238FC65B009E5DC4 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		10A8CB7F237971A80014B8A9 /* RestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestManager.swift; sourceTree = "<group>"; };
 		10A8CB8323798C470014B8A9 /* HengSengModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HengSengModel.swift; sourceTree = "<group>"; };
 		10E531E2237AB0560028F094 /* HKMAModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKMAModel.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				00FD9711237403F300294281 /* UIButtonDesignExtension.swift */,
 				00FD97132374049800294281 /* UIViewRoundCorner.swift */,
 				00FD9715237404DE00294281 /* UIColorInitExtension.swift */,
+				109A1C45238FC65B009E5DC4 /* UIImageViewExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 				00FBE7B2238B8D60002E3B92 /* InsightPress.swift in Sources */,
 				00FD97042373F79300294281 /* Router.swift in Sources */,
 				003782E923864B03003D3667 /* TabBarController.swift in Sources */,
+				109A1C46238FC65B009E5DC4 /* UIImageViewExtension.swift in Sources */,
 				89255E48238C2D1A00B325BD /* RateViewController.swift in Sources */,
 				89255E41238C2A9B00B325BD /* Rate.swift in Sources */,
 				2489E79123758B5C004DB596 /* CalculatorViewController.swift in Sources */,
@@ -616,14 +620,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = kamtatho;
-				DEVELOPMENT_TEAM = KNUSSDM7T5;
+				DEVELOPMENT_TEAM = R7XD4U2558;
 				INFOPLIST_FILE = Group01Project/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "-.Group01Project";
+				PRODUCT_BUNDLE_IDENTIFIER = Stanley.Group01Project;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -637,14 +641,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = kamtatho;
-				DEVELOPMENT_TEAM = KNUSSDM7T5;
+				DEVELOPMENT_TEAM = R7XD4U2558;
 				INFOPLIST_FILE = Group01Project/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "-.Group01Project";
+				PRODUCT_BUNDLE_IDENTIFIER = Stanley.Group01Project;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

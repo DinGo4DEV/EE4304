@@ -28,7 +28,8 @@ class StoreViewController: BaseViewController,CLLocationManagerDelegate {
     var currentLocation: CLLocation?
     var placesClient: GMSPlacesClient!
     var PlaceList = ["Central and Western","Eastern","Southern","Wan Chai","Sham Shui Po","Kowloon City","Kwun Tong","Wong Tai Sin","Yau Tsim Mong","Kwai Tsing","North","Sai Kung","Sha Tin","Tai Po","Tsuen Wan","Tuen Mun","Yuen Long","Islands"]
-    var markers:[GMarker] = []
+//    var markers:[GMarker] = []
+    var markers=Set<GMarker>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -237,6 +238,54 @@ extension StoreViewController: UITableViewDelegate, UITableViewDataSource {
         mapView.animate(to: camera)
     }
     
+    func createMarker(marker:GMarker,_ manager:CLLocationManager){
+        var gMarker = GMSMarker()
+        gMarker.position = CLLocationCoordinate2D(latitude: marker.location!.lat!, longitude: marker.location!.lng!)
+        gMarker.title = marker.name
+        print("title = \(gMarker.title ?? nil)")
+        guard let image = toUIImage(marker: marker) else{
+            print("maker cant translate the image")
+            gMarker.map = mapView
+            return
+        }
+        
+        print("marker icon: \(marker.icon)")
+        gMarker.icon = image.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
+        gMarker.icon?.draw(in: CGRect(x: 0, y: 0, width: 40, height: 40))
+//        gMarker.setImageSize(scaledToSize: .init(width: 40, height: 40))
+        gMarker.map = mapView
+    }
+
+    // Create UIImage for marker
+    func toUIImage(marker:GMarker)->UIImage?{
+        var imageName:String = ""
+        if((marker.icon)?.contains("atm"))!{
+            imageName = "atm-71"
+        } else if((marker.icon)?.contains("bank_dollar"))!{
+            imageName = "bank_dollar-71"
+        }
+        if((marker.type?.contains("bank"))!){
+            if(marker.name.contains("恆生")||marker.name.lowercased().contains("hang seng")){
+                imageName = "hengseng-marker"
+            } else if(marker.name.lowercased().contains("hsbc")){
+                imageName = "hsbc-marker"
+            } else if(marker.name.lowercased().contains("standard chartered")){
+                imageName = "standardchartered-marker"
+            } else if(marker.name.lowercased().contains("bank of china")){
+                imageName = "boc-marker"
+            } else if(marker.name.lowercased().contains("construction")){
+                imageName = "ccb-marker"
+            } else if(marker.name.lowercased().contains("dah sing")){
+                    imageName = "dahsing-marker"
+            }
+            
+        }
+        
+        return UIImage(named: imageName)?.RBResizeImage(targetSize: CGSize.init(width: 65, height: 65))
+    }
+    
+    
+    
     func marker (_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         var markerDict: [String: GMSMarker] = [:]
         struct State {
@@ -268,7 +317,7 @@ extension StoreViewController: UITableViewDelegate, UITableViewDataSource {
         
         let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
                                               longitude: location.coordinate.longitude,
-                                              zoom: 13)
+                                              zoom: 14)
         if(!isLoadedSearchAPI){
 //            syncData(type: "bank", lat: location.coordinate.latitude, lng: location.coordinate.longitude, radius: 1000)  { [weak self] (failReason) in
 //
@@ -277,15 +326,16 @@ extension StoreViewController: UITableViewDelegate, UITableViewDataSource {
 //
 //                                 }
 //                               }
-            SyncData().syncStore(type: "bank", lat: location.coordinate.latitude, lng: location.coordinate.longitude, radius: 1000){
+            SyncData().syncStore(type: "bank", lat: location.coordinate.latitude, lng: location.coordinate.longitude, radius: 2000){
                 [weak self](storeResponse) in
                 for store in storeResponse.results{
                     let marker:GMarker = GMarker(name: store.name!, icon: store.icon ?? "", location: store.geometry?.location, type: store.types)
-                    self!.markers.append(marker)
+                    self!.markers.insert(marker)
                 }
-                print(self!.markers)
-                
-                
+                for marker in self!.markers {
+                    self!.createMarker(marker: marker, self!.locationManager)
+                }
+//                print(self!.markers)
                 
             }
 
