@@ -15,7 +15,7 @@ class TabBarController: UITabBarController {
         let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
         let tabBar = appDelegate.window!.rootViewController as! UITabBarController
 
-           tabBar.selectedIndex = 0
+           tabBar.selectedIndex = 2
   
 
            }

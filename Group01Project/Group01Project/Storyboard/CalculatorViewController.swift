@@ -73,7 +73,7 @@ class CalculatorViewController: BaseViewController, UITabBarDelegate, UIPickerVi
             var parma:HKMA.params = HKMA.params()
             apiManager.request_fxChange_HKMA(params: parma){
                 [weak self](result) in
-                RestManager.HKMARateJson = result as? HKMA.FxRateJson
+                RestManager.HKMARateJson = (result as? HKMA.FxRateJson)!
             }
         }
     }

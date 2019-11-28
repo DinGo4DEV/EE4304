@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EG9-es-fg9">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -95,21 +94,39 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ibe-nl-Yzn">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="102"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 Nov, 2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0U-4F-vYn">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 Nov, 2019" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0U-4F-vYn">
                                                         <rect key="frame" x="20" y="20" width="305" height="28"/>
                                                         <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="24"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thur" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dq0-DT-kK8">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thur" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dq0-DT-kK8">
                                                         <rect key="frame" x="20" y="56" width="315" height="26"/>
                                                         <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="22"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p0V-Ff-GFA">
+                                                        <rect key="frame" x="265" y="42" width="90" height="45"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="p0V-Ff-GFA" secondAttribute="height" multiplier="2:1" id="rDh-2N-Mxa"/>
+                                                        </constraints>
+                                                        <state key="normal" title="   REFRESH   ">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="15"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="refreshClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zR0-WV-wIg"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="p0V-Ff-GFA" secondAttribute="bottom" constant="15" id="2uv-QZ-fk1"/>
                                                     <constraint firstItem="c0U-4F-vYn" firstAttribute="leading" secondItem="ibe-nl-Yzn" secondAttribute="leading" constant="20" id="9UI-gZ-RFN"/>
                                                     <constraint firstAttribute="bottom" secondItem="dq0-DT-kK8" secondAttribute="bottom" constant="20" id="JvO-Zg-Qza"/>
                                                     <constraint firstItem="c0U-4F-vYn" firstAttribute="top" secondItem="ibe-nl-Yzn" secondAttribute="top" constant="20" id="TYA-nL-K4U"/>
@@ -117,12 +134,13 @@
                                                     <constraint firstItem="dq0-DT-kK8" firstAttribute="top" secondItem="c0U-4F-vYn" secondAttribute="bottom" constant="8" id="ZDU-fE-07l"/>
                                                     <constraint firstAttribute="trailing" secondItem="dq0-DT-kK8" secondAttribute="trailing" constant="40" id="cF1-AT-UeM"/>
                                                     <constraint firstAttribute="trailing" secondItem="c0U-4F-vYn" secondAttribute="trailing" constant="50" id="gFe-ad-3bA"/>
+                                                    <constraint firstAttribute="trailing" secondItem="p0V-Ff-GFA" secondAttribute="trailing" constant="20" id="nbh-0a-xON"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EKu-I8-jqb">
                                                 <rect key="frame" x="0.0" y="107" width="375" height="467"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2f-9C-Ki0">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2f-9C-Ki0">
                                                         <rect key="frame" x="20" y="5" width="315" height="24"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                         <nil key="textColor"/>
@@ -178,18 +196,18 @@
                                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tZ7-XB-9oh">
                                                                                     <rect key="frame" x="187.5" y="0.0" width="187.5" height="124"/>
                                                                                     <subviews>
-                                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GcO-K9-Klt">
-                                                                                            <rect key="frame" x="30" y="10" width="127.5" height="64"/>
-                                                                                            <constraints>
-                                                                                                <constraint firstAttribute="width" secondItem="GcO-K9-Klt" secondAttribute="height" multiplier="2:1" id="NcK-XA-PH6"/>
-                                                                                            </constraints>
-                                                                                        </imageView>
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XA9-9U-bjv">
                                                                                             <rect key="frame" x="73" y="79" width="42" height="30"/>
                                                                                             <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="18"/>
                                                                                             <nil key="textColor"/>
                                                                                             <nil key="highlightedColor"/>
                                                                                         </label>
+                                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GcO-K9-Klt">
+                                                                                            <rect key="frame" x="30" y="10" width="127.5" height="64"/>
+                                                                                            <constraints>
+                                                                                                <constraint firstAttribute="width" secondItem="GcO-K9-Klt" secondAttribute="height" multiplier="2:1" id="NcK-XA-PH6"/>
+                                                                                            </constraints>
+                                                                                        </imageView>
                                                                                     </subviews>
                                                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                                     <constraints>
@@ -210,6 +228,7 @@
                                                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="110" id="IQ1-9x-qkj"/>
                                                                                 <constraint firstAttribute="trailing" secondItem="tZ7-XB-9oh" secondAttribute="trailing" id="KQ9-5L-hKZ"/>
                                                                                 <constraint firstItem="tZ7-XB-9oh" firstAttribute="leading" secondItem="mrQ-ZE-0UX" secondAttribute="trailing" id="Lq7-qL-hyx"/>
+                                                                                <constraint firstItem="GcO-K9-Klt" firstAttribute="width" secondItem="3wn-R9-Tvp" secondAttribute="width" id="O5b-ob-tgF"/>
                                                                                 <constraint firstAttribute="bottom" secondItem="tZ7-XB-9oh" secondAttribute="bottom" id="Qec-oJ-8fD"/>
                                                                                 <constraint firstAttribute="bottom" secondItem="mrQ-ZE-0UX" secondAttribute="bottom" id="Se1-J7-Mtv"/>
                                                                                 <constraint firstItem="mrQ-ZE-0UX" firstAttribute="top" secondItem="dlP-PS-dfz" secondAttribute="top" id="Tti-D9-GrW"/>
@@ -288,6 +307,7 @@
                         <outlet property="currencyTableView" destination="Yj9-Kh-7Se" id="Vke-qi-q67"/>
                         <outlet property="dateLabel" destination="c0U-4F-vYn" id="Wvf-gK-toa"/>
                         <outlet property="dayLabel" destination="dq0-DT-kK8" id="f2e-AY-cgr"/>
+                        <outlet property="refreshButton" destination="p0V-Ff-GFA" id="ZZ6-7P-ygz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
