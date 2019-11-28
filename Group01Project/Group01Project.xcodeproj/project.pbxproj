@@ -309,7 +309,7 @@
 				108B976223279678000C09F5 /* Frameworks */,
 				108B976323279678000C09F5 /* Resources */,
 				D4AB6C9CBBF0A68DB1076735 /* [CP] Embed Pods Frameworks */,
-				3D9C5C23EC036277F4EE84FF /* [CP] Copy Pods Resources */,
+				D5C44B67FEB13E45A7848E07 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -371,23 +371,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3D9C5C23EC036277F4EE84FF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Group01Project/Pods-Group01Project-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Group01Project/Pods-Group01Project-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Group01Project/Pods-Group01Project-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		BBDB9A5A97DE26786BC16564 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -425,6 +408,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Group01Project/Pods-Group01Project-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D5C44B67FEB13E45A7848E07 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Group01Project/Pods-Group01Project-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Group01Project/Pods-Group01Project-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Group01Project/Pods-Group01Project-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
