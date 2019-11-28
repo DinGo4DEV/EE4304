@@ -10,29 +10,28 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 import CoreLocation
+import DropDown
 
 class StoreViewController: BaseViewController,CLLocationManagerDelegate {
     
     @IBOutlet weak var viewForButton: UIView!
-    @IBOutlet weak var place: UITableView!
     var button = UIButton()
+    var dropDown = DropDown()
     
     let locationManager = CLLocationManager()
     var rootRouter: RootRouter? {
         return router as? RootRouter
     }
     
+    var isLoadedSearchAPI:Bool = false
     var mapView:GMSMapView!
     var currentLocation: CLLocation?
     var placesClient: GMSPlacesClient!
     var PlaceList = ["Central and Western","Eastern","Southern","Wan Chai","Sham Shui Po","Kowloon City","Kwun Tong","Wong Tai Sin","Yau Tsim Mong","Kwai Tsing","North","Sai Kung","Sha Tin","Tai Po","Tsuen Wan","Tuen Mun","Yuen Long","Islands"]
-    
+    var markers:[GMarker] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        place.isHidden = true
-        place.delegate = self
         DispatchQueue.main.async {
             if(BaseViewController.loaded){
                 self.stopLoading()
@@ -57,33 +56,23 @@ class StoreViewController: BaseViewController,CLLocationManagerDelegate {
         // Do any additional setup after loading the view.
     }
     @objc func buttonAction(sender: UIButton!){
-        if place.isHidden {
-            place.layer.zPosition = 100
-            view.sendSubviewToBack(mapView)
-            animate(toogle: true)
-            place.isUserInteractionEnabled = true
-            mapView.isUserInteractionEnabled = false
-            //            self.view.bringSubviewToFront(viewForButton)
-            self.viewForButton.bringSubviewToFront(place)
+        dropDown.show()
+//        if place.isHidden {
             
-            print("Place user interaction = \(place.isUserInteractionEnabled)")
+//            place.layer.zPosition = 100
+//            view.sendSubviewToBack(mapView)
+//            animate(toogle: true)
+//            place.isUserInteractionEnabled = true
+//            mapView.isUserInteractionEnabled = false
+//            //            self.view.bringSubviewToFront(viewForButton)
+//            self.viewForButton.bringSubviewToFront(place)
+//
+//            print("Place user interaction = \(place.isUserInteractionEnabled)")
             //            print("Place \(place.)")
             
-        }else{
-            animate(toogle: false)
-        }
-    }
-    
-    func animate(toogle: Bool) {
-        if toogle{
-            UIView.animate(withDuration: 0.3) {
-                self.place.isHidden = false
-            }
-        }else{
-            UIView.animate(withDuration: 0.3) {
-                self.place.isHidden = true
-            }
-        }
+//        }else{
+//            animate(toogle: false)
+//        }
     }
     
     override func loadView() {
@@ -94,14 +83,18 @@ class StoreViewController: BaseViewController,CLLocationManagerDelegate {
         
         button.frame = self.viewForButton.frame
         
+        button.cornerRadius = 10
+        button.borderWidth = 5
         // Set the font of the button text
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18.0)
+        
+        button.setBackgroundImage(UIImage.init(color: .white), for: .normal)
         
         // The default text of the button
         button.setTitle("Places", for: .normal)
         
         // The text that will appear when the button is tapped
-        button.setTitle("I am being tapped", for: .highlighted)
+//        button.setTitle("I am being tapped", for: .highlighted)
         
         // The default color of the button text
         button.setTitleColor(UIColor.black, for: .normal)
@@ -111,6 +104,25 @@ class StoreViewController: BaseViewController,CLLocationManagerDelegate {
         button.layer.zPosition = 100
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         
+        dropDown.dataSource = PlaceList
+        dropDown.anchorView = viewForButton
+        dropDown.direction = .bottom
+        dropDown.cellHeight = 45
+        dropDown.bottomOffset = CGPoint(x: 0, y:viewForButton.bounds.height/2)
+        
+        dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+            self.button.setTitle("\(item)", for: .normal)
+            
+//          print("Selected item: \(item) at index: \(index)")
+        }
+        
+        dropDown.cancelAction = { [unowned self] in
+          print("Drop down dismissed")
+        }
+
+        dropDown.willShowAction = { [unowned self] in
+          print("Drop down will show")
+        }
         
         
         
@@ -164,8 +176,6 @@ extension StoreViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         button.setTitle("\(PlaceList[indexPath.row])", for: .normal)
-        
-        animate(toogle: false)
         
         var camera: GMSCameraPosition = GMSCameraPosition()
         
@@ -249,14 +259,37 @@ extension StoreViewController: UITableViewDelegate, UITableViewDataSource {
         // *IMPORTANT* Assign all the spots data to the marker's userData property
         //marker.userData = spot
     }
+    
     // Handle incoming location events.
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location: CLLocation = locations.last!
         print("Location: \(location)")
         
+        
         let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
                                               longitude: location.coordinate.longitude,
                                               zoom: 13)
+        if(!isLoadedSearchAPI){
+//            syncData(type: "bank", lat: location.coordinate.latitude, lng: location.coordinate.longitude, radius: 1000)  { [weak self] (failReason) in
+//
+//                               if failReason != nil {
+//
+//
+//                                 }
+//                               }
+            SyncData().syncStore(type: "bank", lat: location.coordinate.latitude, lng: location.coordinate.longitude, radius: 1000){
+                [weak self](storeResponse) in
+                for store in storeResponse.results{
+                    let marker:GMarker = GMarker(name: store.name!, icon: store.icon ?? "", location: store.geometry?.location, type: store.types)
+                    self!.markers.append(marker)
+                }
+                print(self!.markers)
+                
+                
+                
+            }
+
+        }
         if mapView.isHidden {
             mapView.isHidden = false
             mapView.camera = camera
@@ -265,7 +298,9 @@ extension StoreViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
     }
-    
+    func syncData(type:String, lat:Double, lng: Double, radius: Int, completed: ((SyncDataFailReason?) -> Void)?) {
+//        SyncData().syncStore(type: type, lat: lat, lng: lng, radius: radius, completed: completed)
+    }
     // Handle authorization for the location manager.
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {

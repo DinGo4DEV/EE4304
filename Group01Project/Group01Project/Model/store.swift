@@ -10,62 +10,16 @@ import Foundation
 import RealmSwift
 import ObjectMapper
 
-//"candidates" : [
-//   {
-//      "formatted_address" : "Lower Ground Floor, The Westwood of The Belcher's, 8 Belcher's Street Sai wan, Shek Tong Tsui, Hong Kong",
-//      "geometry" : {
-//         "location" : {
-//            "lat" : 22.2856599,
-//            "lng" : 114.1329968
-//         },
-//         "viewport" : {
-//            "northeast" : {
-//               "lat" : 22.28700757989272,
-//               "lng" : 114.1342769798927
-//            },
-//            "southwest" : {
-//               "lat" : 22.28430792010727,
-//               "lng" : 114.1315773201073
-//            }
-//         }
-//      },
-//      "name" : "花旗銀行(香港) – 自動櫃員機/ Citibank Hong Kong – ATM",
-//      "opening_hours" : {
-//         "open_now" : true
-//      },
-//      "place_id" : "ChIJLVd0uYT_AzQR3SsngPr7y4w",
-//      "types" : [ "atm", "finance", "point_of_interest", "establishment" ]
-//   }
-//]
-
-class candidates: Object, Mappable{
-    @objc dynamic var formatted_address : String?
-    
-    var geometry = List<geometry>()
-    @objc dynamic var name: String?
-    @objc dynamic var place_id: String?
-    var types = List<types>()
-    
-    required convenience init?(map: Map) {
-        self.init()
-    }
-    
-    func mapping(map: Map) {
-        geometry <- map["geometry"]
-        name <- map["name"]
-        place_id <- map["place_id"]
-        types <- map["types"]
-        
-    }
-    
-    override static func primaryKey() -> String?{
-        return "place_id"
-    }
+struct GMarker{
+    var name:String
+    var icon:String?
+    var location:latlng?
+    var type:[String]?
 }
 
-class geometry: Object, Mappable{
-    var location = List<location>()
-    var viewport = List<viewport>()
+class Geometry: Object, Mappable{
+    var location:latlng?
+    var viewport:[Viewport] = []
     
     required convenience init?(map: Map) {
         self.init()
@@ -74,6 +28,39 @@ class geometry: Object, Mappable{
     func mapping(map: Map) {
         location <- map["location"]
         viewport <- map["viewport"]
+        var viewport:[Viewport]?
+        if let viewport = viewport {
+            for v in viewport{
+                self.viewport.append(v)
+            }
+        }
+    }
+}
+
+class Viewport:Object, Mappable{
+    var northeast: latlng?
+    var southwest: latlng?
+    required convenience init?(map: Map) {
+        self.init()
+    }
+    
+    func mapping(map: Map) {
+        northeast <- map["northeast"]
+        southwest <- map["southwest"]
+    }
+}
+
+class latlng:Object,Mappable{
+    var lat:Double?
+    var lng:Double?
+    
+    required convenience init?(map: Map) {
+        self.init()
+    }
+    
+    func mapping(map: Map) {
+        lat <- map["lat"]
+        lng <- map["lng"]
     }
 }
 
@@ -127,7 +114,7 @@ class southwest:Object,Mappable{
     }
 }
 
-class types:Object,Mappable{
+class Types:Object,Mappable{
     @objc dynamic var atm : String?
     @objc dynamic var finance : String?
     @objc dynamic var point_of_interest : String?
@@ -143,6 +130,124 @@ class types:Object,Mappable{
         point_of_interest <- map["point_of_interest"]
         establishment <- map["establishment"]
     }
+}
+
+class OpenNow:Object,Mappable{
+    var open_now:Bool?
+    required convenience init?(map: Map) {
+        self.init()
+    }
+    
+    func mapping(map: Map) {
+        open_now <- map["open_now"]
+    }
+}
+
+class Photo:Object,Mappable{
+    var height:Int?
+    var html_attributions:[String] = []
+    var photo_reference:String?
+    var width:Int?
+    
+    required convenience init?(map: Map) {
+        self.init()
+    }
+    
+    func mapping(map: Map) {
+        height <- map["height"]
+        html_attributions <- map["html_attributions"]
+        var html_attributions:[String]?
+        if let html_attributions = html_attributions{
+            for a in html_attributions{
+                self.html_attributions.append(a)
+            }
+        }
+        photo_reference <- map["photo_reference"]
+        width <- map["width"]
+    }
+}
+
+class PlusCode:Object,Mappable{
+    var compound_code:String?
+    var global_code:String?
+    required convenience init?(map: Map) {
+        self.init()
+    }
+    
+    func mapping(map: Map) {
+        compound_code <- map["compound_code"]
+        global_code <- map["global_code"]
+    }
+}
+
+class StoreResponse:Object, Mappable{
+    var html_attributions: AnyObject?
+    var next_page_token: String?
+    var results:[Store]=[]
+    var status:String?
+    required convenience init?(map: Map) {
+        self.init()
+    }
+    
+    func mapping(map: Map) {
+        html_attributions <- map["html_attributions"]
+        next_page_token <- map["next_page_token"]
+        results <- map["results"]
+        var results:[Store]?
+        if let results = results{
+            for result in results{
+                self.results.append(result)
+            }
+        }
+        status <- map["status"]
+    }
+}
+
+class Store:Object,Mappable{
+    var geometry: Geometry?
+    var icon: String?
+    var id: String?
+    var name:String?
+    var opening_hours:[OpenNow]=[]
+    var photos:[Photo]=[]
+    var place_id:String?
+    var plus_code:[PlusCode] = []
+    var rating: Float?
+    var reference:String?
+    var scope:String?
+    var types:[String] = []
+    var user_ratings_total:Int?
+    var vicinity:String?
+    
+    required convenience init?(map: Map) {
+        self.init()
+    }
+    
+    func mapping(map: Map) {
+        geometry <- map["geometry"]
+        icon <- map["icon"]
+        id <- map["id"]
+        name <- map["name"]
+        opening_hours <- map["opening_hours"]
+        photos <- map["photos"]
+        place_id <- map["place_id"]
+        plus_code <- map["plus_code"]
+        rating <- map["rating"]
+        reference <- map["reference"]
+        scope <- map["scope"]
+        types <- map["types"]
+        user_ratings_total <- map["user_ratings_total"]
+        vicinity <- map["vicinity"]
+        
+        var types:[String]?
+        if let types = types{
+            for type in types{
+                self.types.append(type)
+            }
+        }
+    }
+    
+    
 }
 
 

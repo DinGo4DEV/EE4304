@@ -149,5 +149,38 @@ class SyncData {
             }
         }
     
+//    func syncStore(type:String, lat:Double, lng: Double, radius: Int, completed: ((SyncDataFailReason?) -> Void)?) {
+    func syncStore(type:String, lat:Double, lng: Double, radius: Int, completed: ((StoreResponse)  -> Void)?) {
+        let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?type=\(type)&location=\(lat),\(lng)&radius=\(radius)&key=AIzaSyDae4Sln1xBvUwOF1ChiX0zOPQAfysEBOc"
+
+        Alamofire.request(url).responseObject{ (response: DataResponse<StoreResponse>)  in
+
+                    guard let storeResponse = response.result.value else{
+//                        completed?(nil)
+                        return
+                    }
+            
+            completed!(storeResponse)
+
+//                    SyncData.writeRealmAsync({ (realm) in
+//
+//
+////                        realm.delete(StoreResponse.self)
+//                        let record = realm.objects(StoreResponse.self)
+//                        record.first?.results = storeResponse.results
+//                        print(record.first?.results)
+////                        record.first?.records = pressResponse.records
+//
+//        //                realm.delete(realm.objects(InsightResponse.self))
+//        //                realm.add(insightResponse)
+//        //
+//                      },completed:{
+//                              completed?(nil)
+//                        return
+//                    })
+
+                }
+            }
+    
     
 }
