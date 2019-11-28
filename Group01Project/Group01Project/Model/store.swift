@@ -16,6 +16,7 @@ class GMarker:NSObject{
     var icon:String?
     var location:latlng?
     var type:[String]?
+    var isShowed:Bool = false
     
     init(name:String, icon:String?, location:latlng?, type:[String]?) {
              self.name = name

@@ -113,7 +113,76 @@ class StoreViewController: BaseViewController,CLLocationManagerDelegate {
         
         dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             self.button.setTitle("\(item)", for: .normal)
+            var camera: GMSCameraPosition = GMSCameraPosition()
             
+            if self.button.titleLabel?.text == "Central and Western" {
+                camera = GMSCameraPosition.camera(withLatitude: 22.282115, longitude: 114.150952, zoom: 11.0)
+                self.mapView.center = self.view.center
+            }else if self.button.titleLabel?.text == "Eastern" {
+                camera = GMSCameraPosition.camera(withLatitude: 22.279458, longitude:  114.225114, zoom: 11.0)
+                self.mapView.center = self.view.center
+            }else if self.button.titleLabel?.text == "Southern" {
+                camera = GMSCameraPosition.camera(withLatitude: 22.238400, longitude: 114.195040, zoom: 11.0)
+                self.mapView.center = self.view.center
+            }else if self.button.titleLabel?.text == "Wan Chai" {
+                camera = GMSCameraPosition.camera(withLatitude: 22.272365, longitude:  114.185052, zoom: 11.0)
+                self.mapView.center = self.view.center
+            }else if self.button.titleLabel?.text == "Sham Shui Po" {
+                camera = GMSCameraPosition.camera(withLatitude: 22.332401, longitude:  114.155752, zoom: 11.0)
+                self.mapView.center = self.view.center
+            }else if self.button.titleLabel?.text == "Kowloon City" {
+                camera = GMSCameraPosition.camera(withLatitude: 22.329341, longitude:  114.193341, zoom: 11.0)
+                self.mapView.center = self.view.center
+            }else if self.button.titleLabel?.text == "Kwun Tong" {
+                camera = GMSCameraPosition.camera(withLatitude: 22.318703, longitude: 114.215730, zoom: 11.0)
+                self.mapView.center = self.view.center
+            }else if self.button.titleLabel?.text == "Wong Tai Sin" {
+                camera = GMSCameraPosition.camera(withLatitude: 22.345828, longitude:  114.195964, zoom: 11.0)
+                self.mapView.center = self.view.center
+            }else if self.button.titleLabel?.text == "Yau Tsim Mong" {
+                camera = GMSCameraPosition.camera(withLatitude: 22.312566, longitude: 114.170738 , zoom: 11.0)
+                self.mapView.center = self.view.center
+            }else if self.button.titleLabel?.text == "Kwai Tsing" {
+                camera = GMSCameraPosition.camera(withLatitude: 22.349689, longitude: 114.116549, zoom: 11.0)
+                self.mapView.center = self.view.center
+            }else if self.button.titleLabel?.text == "North" {
+                camera = GMSCameraPosition.camera(withLatitude: 22.510726, longitude: 114.161783, zoom: 11.0)
+                self.mapView.center = self.view.center
+            }else if self.button.titleLabel?.text == "Sai Kung" {
+                camera = GMSCameraPosition.camera(withLatitude: 22.357449, longitude: 114.251295 , zoom: 11.0)
+                self.mapView.center = self.view.center
+            }else if self.button.titleLabel?.text == "Sha Tin" {
+                camera = GMSCameraPosition.camera(withLatitude: 22.390321, longitude: 114.202504, zoom: 11.0)
+                self.mapView.center = self.view.center
+            }else if self.button.titleLabel?.text == "Tai Po" {
+                camera = GMSCameraPosition.camera(withLatitude: 22.460286, longitude: 114.197886, zoom: 11.0)
+                self.mapView.center = self.view.center
+            }else if self.button.titleLabel?.text == "Tsuen Wan" {
+                camera = GMSCameraPosition.camera(withLatitude: 22.370848, longitude: 114.094151, zoom: 11.0)
+                self.mapView.center = self.view.center
+            }else if self.button.titleLabel?.text == "Tuen Mun" {
+                camera = GMSCameraPosition.camera(withLatitude: 22.420046, longitude: 113.982891, zoom: 11.0)
+                self.mapView.center = self.view.center
+            }else if self.button.titleLabel?.text == "Yuen Long" {
+                camera = GMSCameraPosition.camera(withLatitude: 22.444638, longitude: 114.040671, zoom: 11.0)
+                self.mapView.center = self.view.center
+            }else if self.button.titleLabel?.text == "Islands" {
+                camera = GMSCameraPosition.camera(withLatitude: 22.296049, longitude: 113.958418, zoom: 11.0)
+                self.mapView.center = self.view.center
+            }
+            self.mapView.animate(to: camera)
+            SyncData().syncStore(type: "bank", lat: camera.target.latitude, lng: camera.target.longitude, radius: 1500){
+                [weak self](storeResponse) in
+                for store in storeResponse.results{
+                    let marker:GMarker = GMarker(name: store.name!, icon: store.icon ?? "", location: store.geometry?.location, type: store.types)
+                    self!.markers.insert(marker)
+                }
+                for marker in self!.markers {
+                    self!.createMarker(marker: marker, self!.locationManager)
+                }
+                //                print(self!.markers)
+                
+            }
 //          print("Selected item: \(item) at index: \(index)")
         }
         
@@ -178,82 +247,29 @@ extension StoreViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         button.setTitle("\(PlaceList[indexPath.row])", for: .normal)
         
-        var camera: GMSCameraPosition = GMSCameraPosition()
         
-        if button.titleLabel?.text == "Central and Western" {
-            camera = GMSCameraPosition.camera(withLatitude: 22.282115, longitude: 114.150952, zoom: 11.0)
-            mapView.center = self.view.center
-        }else if button.titleLabel?.text == "Eastern" {
-            camera = GMSCameraPosition.camera(withLatitude: 22.279458, longitude:  114.225114, zoom: 11.0)
-            mapView.center = self.view.center
-        }else if button.titleLabel?.text == "Southern" {
-            camera = GMSCameraPosition.camera(withLatitude: 22.238400, longitude: 114.195040, zoom: 11.0)
-            mapView.center = self.view.center
-        }else if button.titleLabel?.text == "Wan Chai" {
-            camera = GMSCameraPosition.camera(withLatitude: 22.272365, longitude:  114.185052, zoom: 11.0)
-            mapView.center = self.view.center
-        }else if button.titleLabel?.text == "Sham Shui Po" {
-            camera = GMSCameraPosition.camera(withLatitude: 22.332401, longitude:  114.155752, zoom: 11.0)
-            mapView.center = self.view.center
-        }else if button.titleLabel?.text == "Kowloon City" {
-            camera = GMSCameraPosition.camera(withLatitude: 22.329341, longitude:  114.193341, zoom: 11.0)
-            mapView.center = self.view.center
-        }else if button.titleLabel?.text == "Kwun Tong" {
-            camera = GMSCameraPosition.camera(withLatitude: 22.318703, longitude: 114.215730, zoom: 11.0)
-            mapView.center = self.view.center
-        }else if button.titleLabel?.text == "Wong Tai Sin" {
-            camera = GMSCameraPosition.camera(withLatitude: 22.345828, longitude:  114.195964, zoom: 11.0)
-            mapView.center = self.view.center
-        }else if button.titleLabel?.text == "Yau Tsim Mong" {
-            camera = GMSCameraPosition.camera(withLatitude: 22.312566, longitude: 114.170738 , zoom: 11.0)
-            mapView.center = self.view.center
-        }else if button.titleLabel?.text == "Kwai Tsing" {
-            camera = GMSCameraPosition.camera(withLatitude: 22.349689, longitude: 114.116549, zoom: 11.0)
-            mapView.center = self.view.center
-        }else if button.titleLabel?.text == "North" {
-            camera = GMSCameraPosition.camera(withLatitude: 22.510726, longitude: 114.161783, zoom: 11.0)
-            mapView.center = self.view.center
-        }else if button.titleLabel?.text == "Sai Kung" {
-            camera = GMSCameraPosition.camera(withLatitude: 22.357449, longitude: 114.251295 , zoom: 11.0)
-            mapView.center = self.view.center
-        }else if button.titleLabel?.text == "Sha Tin" {
-            camera = GMSCameraPosition.camera(withLatitude: 22.390321, longitude: 114.202504, zoom: 11.0)
-            mapView.center = self.view.center
-        }else if button.titleLabel?.text == "Tai Po" {
-            camera = GMSCameraPosition.camera(withLatitude: 22.460286, longitude: 114.197886, zoom: 11.0)
-            mapView.center = self.view.center
-        }else if button.titleLabel?.text == "Tsuen Wan" {
-            camera = GMSCameraPosition.camera(withLatitude: 22.370848, longitude: 114.094151, zoom: 11.0)
-            mapView.center = self.view.center
-        }else if button.titleLabel?.text == "Tuen Mun" {
-            camera = GMSCameraPosition.camera(withLatitude: 22.420046, longitude: 113.982891, zoom: 11.0)
-            mapView.center = self.view.center
-        }else if button.titleLabel?.text == "Yuen Long" {
-            camera = GMSCameraPosition.camera(withLatitude: 22.444638, longitude: 114.040671, zoom: 11.0)
-            mapView.center = self.view.center
-        }else if button.titleLabel?.text == "Islands" {
-            camera = GMSCameraPosition.camera(withLatitude: 22.296049, longitude: 113.958418, zoom: 11.0)
-            mapView.center = self.view.center
-        }
-        mapView.animate(to: camera)
     }
     
     func createMarker(marker:GMarker,_ manager:CLLocationManager){
         var gMarker = GMSMarker()
-        gMarker.position = CLLocationCoordinate2D(latitude: marker.location!.lat!, longitude: marker.location!.lng!)
-        gMarker.title = marker.name
-        print("title = \(gMarker.title ?? nil)")
-        guard let image = toUIImage(marker: marker) else{
-            print("maker cant translate the image")
+        if(!marker.isShowed){
+            marker.isShowed = !marker.isShowed
+            gMarker.position = CLLocationCoordinate2D(latitude: marker.location!.lat!, longitude: marker.location!.lng!)
+            gMarker.title = marker.name
+            
+            guard let image = toUIImage(marker: marker) else{
+                print("maker cant translate the image")
+                gMarker.map = mapView
+                return
+            }
+            
+            gMarker.icon = image.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
+            gMarker.icon?.draw(in: CGRect(x: 0, y: 0, width: 40, height: 40))
+    //        gMarker.setImageSize(scaledToSize: .init(width: 40, height: 40))
             gMarker.map = mapView
-            return
+        } else {
+            print("Marker is showed")
         }
-        
-        print("marker icon: \(marker.icon)")
-        gMarker.icon = image.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
-        gMarker.icon?.draw(in: CGRect(x: 0, y: 0, width: 40, height: 40))
-//        gMarker.setImageSize(scaledToSize: .init(width: 40, height: 40))
-        gMarker.map = mapView
     }
 
     // Create UIImage for marker
@@ -269,14 +285,18 @@ extension StoreViewController: UITableViewDelegate, UITableViewDataSource {
                 imageName = "hengseng-marker"
             } else if(marker.name.lowercased().contains("hsbc")){
                 imageName = "hsbc-marker"
-            } else if(marker.name.lowercased().contains("standard chartered")){
+            } else if(marker.name.contains("渣打")||marker.name.lowercased().contains("standard chartered")){
                 imageName = "standardchartered-marker"
             } else if(marker.name.lowercased().contains("bank of china")){
                 imageName = "boc-marker"
             } else if(marker.name.lowercased().contains("construction")){
                 imageName = "ccb-marker"
             } else if(marker.name.lowercased().contains("dah sing")){
-                    imageName = "dahsing-marker"
+                imageName = "dahsing-marker"
+            } else if(marker.name.lowercased().contains("citi")){
+                imageName = "citi-marker"
+            } else if(marker.name.contains("東亞")||marker.name.lowercased().contains("east asia")){
+                imageName = "bea-marker"
             }
             
         }
