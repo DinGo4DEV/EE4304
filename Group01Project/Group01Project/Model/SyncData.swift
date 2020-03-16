@@ -159,8 +159,17 @@ class SyncData {
 //                        completed?(nil)
                         return
                     }
+            SyncData.writeRealmAsync({ (realm) in
+                            
+                            let record = realm.objects(StoreResponse.self)
+                            
+                            realm.delete(realm.objects(StoreResponse.self))
+                            realm.add(storeResponse)
             
-            completed!(storeResponse)
+                          },completed:{
+                                  completed?(nil)
+                            return
+                        })
 
 
                 }

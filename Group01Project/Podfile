@@ -9,7 +9,7 @@ target 'Group01Project' do
 	pod 'RAMAnimatedTabBarController'
 	pod 'ObjectMapper', '~> 3.3'
 	pod 'AlamofireObjectMapper', '~> 5.0'
-	pod 'RealmSwift', '3.16.2'
+	pod 'RealmSwift'
 	pod 'RxSwift',    '~> 4.0'
 	pod 'RxCocoa',    '~> 4.0'
 	pod 'RxRealm'

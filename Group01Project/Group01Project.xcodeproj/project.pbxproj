@@ -74,7 +74,7 @@
 		00FD97172374096500294281 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		00FD971923740FCA00294281 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		00FD971B2374120B00294281 /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
-		108B976523279678000C09F5 /* Group01Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Group01Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		108B976523279678000C09F5 /* Check-OUT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Check-OUT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		108B976823279678000C09F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		108B976A23279678000C09F5 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		108B976D23279678000C09F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -227,7 +227,7 @@
 		108B976623279678000C09F5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				108B976523279678000C09F5 /* Group01Project.app */,
+				108B976523279678000C09F5 /* Check-OUT.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -309,7 +309,7 @@
 				108B976223279678000C09F5 /* Frameworks */,
 				108B976323279678000C09F5 /* Resources */,
 				D4AB6C9CBBF0A68DB1076735 /* [CP] Embed Pods Frameworks */,
-				D5C44B67FEB13E45A7848E07 /* [CP] Copy Pods Resources */,
+				4AD6C697B88AF71C639847F1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -317,7 +317,7 @@
 			);
 			name = Group01Project;
 			productName = Group01Project;
-			productReference = 108B976523279678000C09F5 /* Group01Project.app */;
+			productReference = 108B976523279678000C09F5 /* Check-OUT.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -371,6 +371,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4AD6C697B88AF71C639847F1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Group01Project/Pods-Group01Project-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Group01Project/Pods-Group01Project-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Group01Project/Pods-Group01Project-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BBDB9A5A97DE26786BC16564 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -408,23 +425,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Group01Project/Pods-Group01Project-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D5C44B67FEB13E45A7848E07 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Group01Project/Pods-Group01Project-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Group01Project/Pods-Group01Project-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Group01Project/Pods-Group01Project-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -620,15 +620,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = kamtatho;
-				DEVELOPMENT_TEAM = R7XD4U2558;
+				DEVELOPMENT_TEAM = 9JQ7HF2Q6L;
 				INFOPLIST_FILE = Group01Project/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Stanley.Group01Project;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "Check-OUT";
+				PRODUCT_NAME = "Check-OUT";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -641,15 +641,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = kamtatho;
-				DEVELOPMENT_TEAM = R7XD4U2558;
+				DEVELOPMENT_TEAM = 9JQ7HF2Q6L;
 				INFOPLIST_FILE = Group01Project/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Stanley.Group01Project;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "Check-OUT";
+				PRODUCT_NAME = "Check-OUT";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
