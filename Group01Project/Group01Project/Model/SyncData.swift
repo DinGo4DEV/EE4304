@@ -167,7 +167,7 @@ class SyncData {
                             realm.add(storeResponse)
             
                           },completed:{
-                                  completed?(nil)
+                            completed?(storeResponse)
                             return
                         })
 
